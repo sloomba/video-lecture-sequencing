@@ -1,0 +1,665 @@
+Artificial Intelligence 
+Prof. Anupam Basu 
+Department of Computer Science and Engineering 
+Indian Institute of Technology, Kharagpur 
+Lecture - 11 
+Knowledge Representation and Logic 
+ 
+ 
+In the earlier lectures you have learnt about different search techniques, game theory and 
+other aspects of artificial intelligence. Now one of the most important aspects of any 
+artificial intelligence activity is how to represent knowledge that is knowledge 
+representation. And one of the major techniques of knowledge representation is logic. So 
+in this lecture we will be discussing about the different knowledge representation 
+schemes. In fact this discussion will be divided into number of lectures and that will 
+together constitute a particular module which you are naming as module four of this 
+lecture series.  
+ 
+The first technique we will be looking into is propositional logic. In the course of this 
+lecture we will gradually come to know about what is propositional logic and how it can 
+help us in representing knowledge. But even before coming to the aspect of knowledge 
+representation let me first enumerate the objective of this lecture. This lecture will enable 
+you to represent simple facts that we use in our day to day life in the language of 
+propositional logic. 
+ 
+(Refer Slide Time: 02:33)  
+ 
+ 
+ 
+In order to express anything we need to take the help of some language and in general 
+logic is one such language. We will see how we can represent simple facts using 
+propositional logic and we will see how we can interpret a propositional logic statement. 
+That means, whenever a propositional logic statement is made we have to understand 
+what it means. And there is a mechanism that helps us in understanding the meaning of a 
+propositional logic statement. Unless we understand what it means we will not be able to 
+work with it.  
+ 
+For example, if somebody tells you something in a language that you do not know you 
+will not be able to understand it and unless you understand it you will not be able to act 
+according to it. Hence it is essential to interpret a propositional logic statement that is the 
+second objective of the lecture. And thirdly we will be able to compute the meaning of a 
+compound proposition. A compound proposition is essentially a collection, a particular 
+way of collecting a number of single propositions and joining them together which forms 
+a compound proposition. So, in order to understand meaning of a compound proposition 
+first of all we have to understand the meaning of the individual propositions we should be 
+able to interpret a proposition and we should also learn as to how we can integrate the 
+meanings of the individual propositions to understand the whole.  
+ 
+(Refer Slide Time: 05:22)  
+ 
+ 
+ 
+Before delving into the details of knowledge representation first let us look at what is 
+meant by intelligence and how is knowledge related to intelligence. There are different 
+ways of interpreting knowledge philosophers, scientists, logicians psychologists etc have 
+give some meaning to intelligence. Now, what is the role that knowledge plays in an 
+intelligent behavior? Let us try to first look at it.  
+ 
+Let us first try to address the question does knowledge have any role at all in 
+demonstrating intelligent behavior?  
+This is a debatable issue. For example, you may ask that, well this boy is very intelligent 
+but he has never gone to school and he does not have enough knowledge but still all of us 
+accept that he is intelligent. But the debate remains that what is really meant by 
+knowledge? Is it the knowledge that we derive from formal education only?  
+Yes that is certainly a part. but besides that there are different other aspects that come 
+from day to day experience as we evolve as any human being or animal evolves. They 
+acquire from nature some intelligence, some knowledge and that is somehow 
+incorporated inside the being and that plays a major role in displaying intelligent 
+behavior. Sometimes that is too succinct too intuitive that we do not understand the fact 
+that knowledge exists but still that is evident from the behavior. Common sense 
+knowledge for example, even without any formal education people can act according to 
+their common sense. Instead of going to the details or debate on what is knowledge and 
+how far we will say that this is knowledge, this is intuition etc.  
+ 
+(Refer Slide Time: 07:17)  
+ 
+ 
+ 
+Let us first look at how this knowledge can help in displaying intelligent behavior in 
+whatever form it might be. Here you can see that we are trying to sense something from 
+the world, we are sensing. And we have to sense the environment. As soon as we sense 
+we accept that and work according to it. We make some decisions and those decisions 
+force us to take some actions so that is the action part. So this is the loop that is executed 
+all the time in our day to day life. 
+ 
+Now, when this decision maker senses from the environment some event, may be the 
+temperature has gone up very high and we have to act accordingly. The decision maker 
+takes the help of knowledge to decide on what to do given the environment that it has 
+sensed, given the fact that observed. Based on that it makes the decision and while 
+making the decision the background knowledge that is either explicitly there or it is in the 
+background either we can recognize that, yes he is a knowledgeable man so he can do 
+that or even for a common person that in-built knowledge that has come with him with 
+evolution in whatever form might be that plays a role and tells the decision maker what to 
+do that may be in the biological system as such and based on that the action is taken. So 
+we can see from here that knowledge certainly have a role in demonstrating intelligent 
+behavior because if we cut this part off then we will be able to sense but we will not be 
+able to say what to do, we will not be able to act properly.  
+ 
+The fact that we act properly tells us we have knowledge in some form which tells us 
+how to act given a particular scenario in the environment. That is the basic background of 
+knowledge and intelligence. Therefore here you see that this knowledge certainly plays a 
+very important part. But the question is our decision maker when we are starting 
+Artificial Intelligence our objective is to build machine that will be able to behave like a 
+human being or at least demonstrate some intelligent behavior.  
+ 
+Therefore, it is necessary for human beings we may or may not know exactly how 
+knowledge has been incorporated in the brain. But in order to build a machine that will 
+act intelligently it is mandatory that we must have a means of representing knowledge. 
+How to represent knowledge? How to represent knowledge in a way that a machine can 
+understand is all that we are going to learn in this lecture and the subsequent lectures in 
+this module.  
+ 
+Knowledge representation:  
+How can we represent knowledge in a machine?  
+Now, in order to represent express anything that we want to talk about we need a 
+language. So, just for expressing the knowledge we also need to have a language that will 
+be able to represent the domain knowledge. The word domain is underlined because 
+knowledge is not a small thing; it is very difficult to have a complete knowledge of 
+everything. Even for a small problem solving activity, for example geometry, the amount 
+of knowledge besides the theorems the intuition that this theorem can be applied at this 
+point of time is also a part of knowledge. Now all these are really vast. Hence we should 
+try to first capture or first focus on a particular domain and try to represent the knowledge 
+about that domain.  
+ 
+We can only expect a machine to demonstrate an intelligent behavior when that machine 
+is left to work in a particular environment in a particular domain provided we empower 
+the machine with the relevant knowledge of that domain. Let us take the example of the 
+theorems in the case of geometry, a theorem is just an expression and that takes help of 
+the language English as well as the basic definitions, names, vocabulary of the domain 
+geometry. So we always need a language. Algebra for example is a language of 
+expression. We can very succinctly express many things in algebraic equation.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 13:38) 
+ 
+ 
+ 
+Similarly, for representing knowledge we need to take the help of some language. 
+Suppose there is some language that has represented some knowledge, now what is the 
+use of that knowledge? Unless there is somebody who can take the help of this 
+knowledge who can understand the language in which the knowledge has been expressed 
+and therefore can use it the knowledge is of no significance. Hence we must first have a 
+language no doubt about it but also there must be a method that will be able to use this 
+knowledge.  
+ 
+If we think of knowledge representation we must think about the things, one is the 
+language another is a viable method that can be executed in a machine so that it can read 
+the language, understand the language and act according to the knowledge that is 
+expressed in that language. This method is used to interpret knowledge in response to an 
+environmental fact that has been sensed.  
+ 
+Remember we discussed earlier, we sense from the environment, first you have to sense 
+and then you have to use the knowledge to act accordingly. That entire thing is clubbed in 
+the name inference machine. So an inference machine or inference mechanism what it 
+does is, it reads the environment, can interpret the knowledge that has been represented in 
+a suitable language and use that knowledge to act according to the need. Therefore it can 
+generate proper actions which we often say that the machine or object is behaving 
+intelligently.  
+ 
+So, in order to demonstrate intelligent behavior specifically two things are needed. One is 
+the knowledge represented in some language and the method to use the language in all 
+we must have a powerful inference machine that can understand the language in which 
+knowledge has been represented. So a knowledge representation should include both; the 
+language to represent knowledge and an inference mechanism that can use this 
+knowledge. These two together when defined gives us a knowledge representation 
+scheme. Whenever we talk of any language we talk about grammar, some rules that the 
+language must follow because unless the language is grammatically well formed, it is 
+grammatically correct it will be difficult for others to understand it. We can take the 
+example of our normal day to day English, if we say a wrong English statement then 
+many people will not be able to understand it, some may be able to apply their own 
+knowledge and still understand it.  
+ 
+(Refer Slide Time: 17:15)  
+ 
+ 
+ 
+But for a computer or for a machine the scenario is little different because here a machine 
+can play with the things that it knows it cannot as yet interpret in any particular way. So 
+we must stick to the grammar the syntax of the language so that the inference machine 
+which is nothing but a machine which is a program running in a computer will be able to 
+understand what it says. So the syntax is the grammar of any language and semantics of a 
+language is the meaning.  
+ 
+For example, I say pen cut road cut is a verb; pen is a noun and road is also a noun, but 
+all these together do not really convey anything meaningful to you although everything 
+was there. Here I have made a syntactic mistake, even if it is syntactically correct I 
+should have said that the pen cuts the road. Now does it really mean anything? Can you 
+really map this to a real world scenario? Have you ever seen a pen cutting the road? So 
+the semantics is an issue, does it carry the meaning?  
+So two things are important; one is the syntax, one is the semantics. Both of them must 
+be well defined in order to form a knowledge representation language. For example, if 
+you write laughs tom. Now laughs then parenthesis tom. What does it mean? Does it 
+mean tom laughs? Does it mean tom is laughed at? What does it mean? Assuming that 
+this is the correct syntax in some language what is the meaning of that, what is the 
+semantics of this? We must understand this. For example, likes (Sunita, Aditi) now what 
+does it mean? Sunita likes Aditi or Aditi likes Sunita? There must be a specific 
+interpretation that should be given in order that this statement like (Sunita, Aditi) can 
+qualify as a value knowledge representation language.  
+ 
+When we are talking of language we must search for a language and logic is one such 
+formal language. Let us start with propositional logic because propositional logic is a 
+relatively simpler form of logic. Anything that we use in our day to day world is a 
+proposition. Now I make a statement Anil is intelligent. It is a statement, it is a 
+proposition. Anil is hard working, it is another proposition. I am making a statement 
+about Anil, Anil is hard working. So both these are propositions. So Anil is intelligent is 
+a proposition, Anil is hardworking is a proposition. Again if I make a statement like, if 
+Anil is intelligent and Anil is hard working then Anil scores high marks. This is also 
+proposition because I am making another statement.  
+ 
+(Refer Slide Time: 20:21)  
+ 
+ 
+ 
+But this statement is a combination of some other propositions. Anil is intelligent is a 
+proposition and this one says, if Anil is intelligent and Anil is hardworking this Anil is 
+hardworking is itself a proposition here, then Anil scores high marks, so all these white 
+ones are also individual propositions. But when I am connecting all this together I am 
+making another proposition. This one is called compound proposition. So briefly 
+speaking whenever we speak in our day to day life, whatever statements we make 
+consists of propositions. Now these propositions Anil is intelligent, Anil is hardworking 
+are constituted of objects and relations or functions. Now, the statement, Anil is 
+intelligent can be true or false. Anil is hardworking can be true or can be false.  
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 21:59) 
+ 
+ 
+ 
+Therefore any proposition in propositional logic can have either of two values true or 
+false. And it is constituted of objects and relations or functions. So Anil is an object, 
+hardworking, intelligent are some functions or relations depending on the usage. So, 
+when we write intelligent on Anil I am putting in some function on Anil and that means 
+Anil is intelligent and this entire thing can be true if the Anil that I am taking about is 
+true, is intelligent if that Anil is intelligent then this statement is true. Hardworking Anil 
+again means Anil is hardworking. So again these are propositions. Now, propositions can 
+be written either in this way or intelligent Anil I could have also written in that way 
+provided my language the syntax of the language are allowed. A proposition can be true 
+or false. Now let us look at it a little more formally. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 23:04)  
+ 
+ 
+ 
+Can I write it in any particular way or the way I like?  
+For example, intelligent Anil or intelligent Anil within parenthesis or what should I 
+write? We must come to the syntax in order to know that. And syntax basically talks 
+about the grammar of the sentence. Now, let P stand for this proposition that I was using 
+intelligent Anil. Let Q stand for hardworking Anil. Now look at this symbol this is a 
+logical n.  
+ 
+What does P AND Q mean?  
+P AND Q is a new proposition. Now P AND Q is true when P is true and Q is true that is 
+when both of them are true. If either of them is false then P AND Q is not true. But P 
+AND Q is another proposition, although P is true Q is false, P AND Q both will be false. 
+Or when P is true and Q is true I will have to separately evaluate P AND Q and see that P 
+AND Q is true. This symbol means P OR Q. 
+ 
+What does P OR Q mean?  
+This is again another proposition P OR Q. this means that when either P is true or Q is 
+true any one of them is true then this proposition P OR Q will be true. So P OR Q are 
+examples of compound propositions because P is a proposition statement, Q is a 
+statement. I have formed a new statement by applying some connection operators like 
+AND OR etc. There are other operators also which you can use to make more compound 
+statements. Now let us look at it in a more formal manner. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 25:00) 
+ 
+ 
+ 
+Syntactic Elements of Propositional Logic:  
+Any language will have some vocabulary. For example, the language English for that we 
+have got the vowels, consonants, some numbers etc. Similarly, for propositional logic 
+also the vocabulary is a set of propositional symbols. Now whether Anil is intelligent or 
+Anil is hardworking, Geetha is beautiful, Sita is smart etc we can symbolically represent 
+each of these propositions as P, Q, R etc. So let us symbolically represent P, Q, R which 
+is a set of propositional symbols.  
+ 
+There should be a set of propositional symbols and as we have seen any proposition can 
+be either true or false. Each of these P, Q, R can be true or false. Besides there will be a 
+set of logical operations. Why do you say it is logical operator? It is because this operator 
+can have either true value or false value. After I apply a logical operator on two variables 
+P and Q I will get P AND Q that will return a value true or false. That is the significance 
+of logical operator.  
+ 
+Now we can have AND OR NOT and implies these are the basic four logical operators 
+that are used in propositional logic. Often parenthesis is also used for grouping. There are 
+two special symbols true and false. Basically these are logical constants. Any proposition 
+can have the value true or false. Therefore both these true or false are very important 
+logical constants you will be using all through.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 28:02)  
+ 
+ 
+ 
+Basically we have seen that there are four basic operators besides parenthesis AND OR 
+NOT and implies. Now we will see the meaning of those but before that we will see how 
+to form propositional sentences. We have got the vocabulary which is set of propositional 
+symbols, we have got the logical operators and we have got the logical constants like true 
+or false. So let us see how we can form logical sentences using these. Each symbol 
+whether it is a proposition or a constant is a sentence, it is always the sentence. If P is a 
+sentence and Q is a sentence then if we block them in parenthesis, parenthesis P is a 
+symbol. Since P is a sentence and Q is a sentence P AND Q is a sentence.  
+ 
+Similarly, P OR Q is a sentence. If P is a sentence NOT P is also a sentence. For 
+example, if we say Anil is good which is P then NOT P is NOT Anil is good. Anil is 
+good was true and NOT of Anil is good will be false. But NOT of Anil is good is also a 
+valid sentence. It may evaluate to true or may evaluate to false. P implies Q is also a 
+sentence, nothing else is a sentence. This is very important, that, in order to qualify as a 
+valid propositional sentence each of these statements that are formed, where P is a 
+sentence and Q is a sentence now I can comply with these only if these allowed are ways. 
+Either I block them bracket them in the parenthesis then it is a valid sentence, P AND Q 
+will be a sentence, P OR Q will also be a sentence, NOT P is a sentence, P implies Q is a 
+sentence and nothing else is a sentence.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 30:31)  
+ 
+ 
+ 
+Often you will see that sentences are also called well formed formulae written in short 
+wff. We will use the term sentence or well formed formulae interchangeably. Here are 
+some examples of wff well formed formulae: P S is a well formed formulae, true is a 
+logical constant so it is a well formed formulae, P AND Q uses allowed operator so it is a 
+well formed formulae.  
+ 
+Now let us look at P OR Q implies R so P OR Q is a valid proposition and any valid 
+proposition P implies R is a valid proposition so this whole thing implies R is a valid 
+proposition so this is a valid sentence. P AND Q OR R implies S is a valid sentence. 
+Now, NOT of P OR Q here I see that P is a proposition or a sentence, Q is a proposition 
+or sentence, if P is a valid sentence, Q is a valid sentence therefore P OR Q is also valid 
+sentence. Since this is a valid sentence if I apply the NOT operator over there that is also 
+a valid sentence. Similarly here you see that NOT of P OR Q implies R AND S is also 
+valid sentence.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 32:22) 
+ 
+ 
+ 
+There is a special meaning of this implication statement we are talking of. What does 
+implication mean?  
+When we say X implies Y or P implies Q that means if P is true then Q is true. P implies 
+Q when P is true then Q is true. But not the other way round. It tells of a sufficient 
+condition. If P is true then Q will certainly be true. For example, if it rains then the roads 
+are wet. So, it rains, that is my P and the roads are wet that is Q. So if it rains, that is if it 
+rains is true then the roads are wet. But if you say if the roads are wet then it rains now is 
+it an implication because if the roads are wet can I always infer that it rains because the 
+roads can be wet because of some other reason also. There might be a sprinkler that has 
+been used to clean the road or the road has been washed it did not rain. So roads are wet 
+is not a sufficient condition to say that it rains. So, in the case of implication when we 
+write P implies Q that means if P is true then Q is true but Q can be true even if P is false. 
+Now this is a sufficient condition but not a necessary condition.  
+ 
+Equivalence is a bi junction that means for example it is a bidirectional statement. If P is 
+true then Q is true and again if Q is true then also you can infer that P is true. Now, here 
+let us try with an example: If two sides of a triangle are equal then two base angles of the 
+triangle are equal. Now we know from our knowledge of geometry two sides of a triangle 
+are equal then that is an isosceles triangle and the base angles of an isosceles triangle are 
+equal. So if I had stated it in a different way that if two base angles of a triangle are equal 
+then the two sides of the triangle are equal that will be true also. Therefore in that case if I 
+say two sides of a triangle are equal that is P and two base angles of a triangle are equal 
+that is Q then I could have said P implies Q and Q implies P.  
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 36:01) 
+ 
+ 
+ 
+Equivalence can be expressed using two sentences P implies Q, Q implies P. In 
+propositional logic equivalence is not a necessary operator. We have seen that along with 
+AND OR NOT. We had implies operator and with implies operator with two sentences 
+giving both directions of implication we can capture equivalence. So we can have P 
+implies Q and Q implies P. Next is a very important issue.  
+ 
+With this brief discussion on syntax let us come to the semantics the meaning of a 
+propositional sentence. When we try to understand a sentence essentially what we do is 
+we interpret that sentence. We try to understand each of the propositions and try to see 
+whether that is true or false and then we make a decision on the whole. So, if there be a 
+sentence P we must first interpret what does that P mean, Anil is intelligent what is the 
+meaning of intelligent? What is Anil? All these are nothing but symbolic labels. That is, 
+we interpret in a particular world. When we interpret a sentence in a particular world the 
+world can be the world of football match, world of cricket match, the world of picnic, the 
+world of class room all these things are different worlds and each of these worlds have 
+got some known relations some known functions and there are some interpretations we 
+give in a particular world. What is true in this world may not be true in another world. 
+The rule of a baseball match is different from the rule of a cricket match.  
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 38:07) 
+ 
+ 
+ 
+So the cricket match along with all its rules, all its definitions and all these things form a 
+world. Similarly a soccer match or a baseball match forms a different world. So when we 
+interpret a sentence in a world we assign meaning to it and that evaluates to true or false. 
+For example, let us start with a proposition P and suppose that proposition means a child 
+can write that is a proposition. So this proposition P is a level for the child can write. And 
+suppose here we have got a world nursery and there is another world class two, now what 
+is the truth value of this statement the child can write?  
+When I interpret it in this world nursery probably it evaluates as false because suppose 
+the children in the nursery cannot write. But again when I interpret it in the world of class 
+two then it evaluates to true. The same proposition P can be interpreted in two different 
+worlds in two different ways.  
+ 
+Again suppose this P is now interpreted as another statement the child can speak now the 
+child can speak is an interpretation of P but again that one when I interpret to the world 
+nursery that should evaluate to true, again that thing when interpreted in the world of 
+class two that is true. Therefore this statement P can have value true or false depending 
+on its interpretation.  
+ 
+When I interpret P as the child can write and that is interpreted in the world nursery then 
+it evaluates to false. But when this is interpreted in the world class two then it evaluates 
+to true. Now when P is interpreted to the child can speak that can evaluate to true when 
+interpreted in this world. The statement, when interpreted in a particular world, is very 
+important to note. And this interpretation itself attributes the meaning or the semantics to 
+the proposition. We will see a couple of more examples.  
+ 
+ 
+ 
+ 
+(Refer Slide Time: 40:19) 
+ 
+ 
+ 
+Here is another example P; now P says Ram is intelligent, P is leveled as Ram is 
+intelligent and Q is another statement which is saying Gita is diligent. Now you can say 
+that there is some hidden interpretation here; P: Ram is intelligent. Which Ram I am 
+talking about? I must be meaning some Ram which is constant and that is the subject to 
+the way I have interpreted it.  
+ 
+Then I will again look at class 2 and there is class 3 and there is a Ram in class 3 who is 
+intelligent. Then, this, ‘Ram is intelligent’ evaluates to true and might be Gita is diligent, 
+that is talking about new proposition, Gita is diligent is false. When I talk about Gita, 
+Gita studies in class 2, but Ram is intelligent, also, there is another Ram in class 2 and 
+that Ram is not that intelligent so that evaluates to false.  
+ 
+Similarly Gita is diligent and that evaluated to true for Gita who was in class 2 but if I 
+interpret for Gita who is in class 3 she is also intelligent so both of them are intelligent. 
+Here we will be dealing with these two symbols P and Q. Now whether P is true or P is 
+false Q is true or Q is false is totally dependent on the way we interpret it in a particular 
+world. These are the two examples of worlds we are talking of. So how do you get the 
+meaning of it? Remember that sentences can be compound propositions.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 42:05)  
+ 
+ 
+ 
+We have seen that P is a sentence; Q is a sentence now we can connect them in different 
+ways and thereby we can get different compound statements. So sentences can be 
+compound propositions. For that, in order to understand the meaning of the sentence we 
+have to interpret each individual atomic proposition in the same world and that is 
+important. And unless we interpret it in the same world it will not be really meaningful. 
+So the first step is, we interpret each atomic proposition in the same world and assign 
+truth values to each of the atomic interpretations. We take atomic propositions we assign 
+truth values to the interpretation of each of the atomic propositions and compute the truth 
+value of the compound proposition.  
+ 
+(Refer Slide Time: 44:01) 
+ 
+ 
+Therefore there are three steps: We interpret each atomic proposition, assign truth values 
+to each interpretation and then compute the truth value of the compound proposition.  
+ 
+Examples: P is a proposition that is actually meaning likes( Sumit, Sunil). My 
+interpretation is that Sumit likes Sunil and Q is knows (Jyoti, Sudhir) that means Jyoti 
+knows Sudhir. Suppose Sumit likes Sunil is my syntactic aspect now the world that we 
+are talking of is that Sumit and Sunil are friends and Jyoti and Sudhir are known to each 
+other. Then what will happen? Sumit and Sunil are friends so obviously friends like each 
+other so this one will evaluate to true and Jyoti and Sudhir are also known to each other 
+so this is also true in that world. But might be Gita and Sudhir do not know each other so 
+the proposition knows Gita Sudhir will evaluate to false. But knows (Jyoti, Sudhir) 
+evaluates to true.  
+ 
+Here we see that P evaluates to true and Q also evaluates to true. Therefore in this case P 
+AND Q is true because both of them are correct. But what happens to P AND NOT Q? 
+Here Q was true and here NOT of Q means knows (Jyoti, Sudhir). I negate that which 
+means does not know (Jyoti, Sudhir). But Jyoti and Sudhir know each other so knows 
+(Jyoti, Sudhir) is true and the statement does not know (Jyoti, Sudhir) is false.  
+ 
+(Refer Slide Time: 46:24)  
+ 
+ 
+ 
+Here the world we are talking about plays a very important role because the truth value of 
+this proposition would have varied depending on the world in which you are interpreting. 
+Here you find P AND Q is true but now NOT Q means that this part which was true in 
+this world NOT Q is false in the same world. So now this is false P is true so P AND 
+NOT Q is false. We have seen the world part. Now there is a very important concept 
+validity of a sentence.  
+ 
+Often you say this is valid this is invalid but in the case of logic this validity is a very 
+important notion and we must try to understand that. A propositional sentence is said to 
+be valid if under all possible interpretations it is true. If a proposition sentence is true 
+under all possible interpretations then it is called valid. So, irrespective of the world in 
+which we interpret it if the propositional sentence always evaluates to true then it is a 
+valid proposition. There are other definitions like satisfiability which we will look into 
+later. Therefore whenever a proposition is evaluated to true in a particular world then that 
+is satisfied by that world but it is not a valid statement. When we say a particular 
+statement is valid then it will be true irrespective of the world in which I interpret.  
+ 
+Now a typical example is; P OR NOT P. Now P can be true, if P is true then NOT P will 
+be false. But we know that in OR connector P OR NOT Q in that case if any one of them 
+is true it will be true. Now what will happen if P is false?  
+If P is false then NOT P will be true so any one of them will ultimately be true always 
+irrespective of whatever P means. If P means Gita is intelligent, Sita is diligent etc 
+whatever interpretation you give it does not really matter P OR NOT P will always be 
+true for any particular interpretation you give in any particular world. If P is some 
+statement from the world of cricket and NOT P is also computed in that particular 
+domain then of course P or NOT P either of them will always be true and hence this 
+proposition will always be true. Therefore this is known as tautology and tautology is a 
+classical example of a valid sentence.  
+ 
+(Refer Slide Time: 49:45) 
+ 
+ 
+ 
+So once again I repeat, what is a valid sentence?  
+A sentence that is true irrespective of interpretation. Before going to the quiz let me once 
+again summarize whatever we have looked at. We said at the very beginning that, in 
+order to represent knowledge we have to take recourse to a particular language. And any 
+language if it has to be very easily and mechanically understood, if it has to be 
+understood by machine then it must adhere to a strict syntax and that syntax will be 
+interpreted by the machine which will understand its meaning.  
+ 
+We also said that, knowledge is important in order to exhibit intelligent behavior because 
+whenever we sense something from the world we have to act according to it. Now, in 
+order to act according to it we will have to sense it but just merely sensing will not do but 
+we will also have to act according to it and how do you know how to act? For that we 
+will have to have some knowledge that will be accumulated and kept.  
+ 
+Now we may keep the knowledge in some way. But it will be not it will not at all be 
+useful unless we use that knowledge. In order to use that knowledge we need an inference 
+mechanism which must understand the knowledge and in order that an inference 
+mechanism can understand it and can interpret it then it must have a strict syntax 
+language structure. And we started with logic and specifically propositional logic which 
+is a part of logic. This propositional logic has got a set of vocabulary.  
+ 
+A vocabulary consists of some atomic statements like P, Q, and R each of which we have 
+given examples of. Each of them are sentences and there are some rules using which we 
+can form compound sentences. We can use AND OR NOT implication and using this we 
+will make compound sentences. And the semantics of a particular sentence may be 
+compound or simple depends on its interpretation in a particular world. We have shown 
+how to interpret it. After interpretation we will find out the truth value of that. Now in the 
+next lecture we will see how the actual inferencing is done in case of propositional logic. 
+In this lecture we have just introduced you so that you can take it up from here. In the 
+meanwhile it will be good to have a couple of these exercises done.  
+ 
+(Refer Slide Time: 53:40)  
+ 
+ 
+ 
+Quiz: Express the following English statements in the language of propositional logic. It 
+rains in July. The book is not costly. If it rains today and one does not carry umbrella he 
+will be drenched. Some of these will be very easy and some of them will be little 
+difficult. We will look at in the next lecture how to solve them. Now you can see, here 
+this one is a compound proposition. It will require some compound proposition and these 
+are simple propositions. But here again you will need some logical operators.  
+ 
+And the second part is; if P is true and Q is true then are the following true or false? P 
+implies Q, so if P is true and Q is true then I am asking whether this entire proposition is 
+true or false. NOT P OR Q implies Q, NOT P OR Q implies Q, NOT P, the third one is 
+NOT P OR Q implies P, P OR NOT P implies T where T is a logical constant true. In the 
+first one what we are showing here is, we want you to first translate these in the language 
+of propositional logic. Just follow the syntax and transform them in the language of 
+propositional logic. The second one, the book is not costly, if it rains today and one does 
+not carry umbrella he will be drenched etc.  
+  
+(Refer Slide Time: 56:05)  
+ 
+ 
+ 
+In the second assignment here there is a little bit of semantics. When you look at it you 
+have to know whether they are evaluating true or false. You have to try to compute the 
+truth value for these. In the next lecture we will be talking about inferencing and how we 
+will automatically find the truth value of the propositional sentences.   
+    
+      
+ 
+                
+ 
+ 
+ 
+ 
+ 
+

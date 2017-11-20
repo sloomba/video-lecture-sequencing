@@ -1,0 +1,736 @@
+Artificial Intelligence 
+Prof. Anupam Basu 
+Department of Computer Science and Engineering 
+Indian Institute of Technology, Kharagpur 
+Lecture - 40 
+Natural Language Processing - II 
+ 
+This will be last lecture of this course Artificial Intelligence and in this lecture we will be 
+dealing with some of the issues of natural language processing. In the previous lecture on 
+we were trying to bring out some of the issues. Let us discuss issues on machine 
+translation and discuss the remaining part of natural language processing.  
+ 
+To start with let us have a look at the issues involved in machine translation because we 
+have seen that machine translation is a very important aspect of many natural language 
+applications like speech to speech, text to speech, even for text to speech from another 
+language, information retrieval, cross language information retrieval.  
+ 
+Right now in India which is a multilingual country a lot of effort has been extended 
+towards development of machine translators. IIT Kanpur has developed Anglabharti a 
+machine translator from English to Hindi and there are other efforts at different IITs like 
+IIT Kharagpur and C-DAC where machine translation activities have been carried out 
+and also at IIIT Hyderabad Sakthi a machine translator has been developed.  
+ 
+When we talk about machine translation it can be text to text machine translation. That 
+means say a text is given in Hindi and that has been translated in Bengali or it can be 
+from speech to speech so speech to text and then machine translation at the text level and 
+then again converting that to speech. Now most of the work that has been done has 
+addressed pairs of widely spread languages like English French, English Chinese, English 
+German, English Hindi etc. We are working on English to Bengali and this sort of 
+activities are gone in. Right now works are also been carried out from Hindi to English, 
+Hindi to Bengali and government of India has taken a lot of initiate in these activities.  
+ 
+How to translate a text?  
+There are different approaches. Example, base translations where we have got some 
+templates and given a particular sentence we try to fit it to a template and that template 
+will tell us the best way to translate it. But the most commonly used approach is 
+statistical where we learn again from the previously translate data. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 03:56) 
+ 
+ 
+ 
+Where from can we get translated data?  
+For that we need parallel corpora. What is a parallel corpora? A parallel corpora is a 
+collection of the pair-wise sentences. For example, there is a English sentence and the 
+corresponding Hindi translation of that which is sentence wise and also word level. Every 
+word having its translated form so it may appear to be very simple then but it is not so 
+because of the several reasons that there are so many issues of resolving ambiguities and 
+other things.  
+ 
+For French and English and from Chinese to English there are required tools and there 
+has been reasonable translations. When a translation is being done by a machine we are 
+not expecting perfect translation, we are not also right now thinking of translating 
+literature keeping the flavor which the human beings also cannot do most often. But if we 
+just restrict ourselves to some routine day-to-day sentences without special levels then we 
+get reasonably good translations here. Chinese to Hindi for example there are no such 
+tools there are efforts going on for translating for building parallel corpora for English 
+Hindi, Bengali Hindi etc. 
+ 
+Now a major laborious task is how to obtain the parallel texts? Can you get it from the 
+web? In the web most of the contents are in English so how do we get the same contents 
+in Hindi? That is difficult but there are some cases where we get parallel corpora in many 
+government records where those are stored both in Hindi and English so that may be one 
+approach. Once we have the text how to get the most out of them? We have to do the 
+word alignments. We have to really align the Hindi word with the corresponding English 
+word. We have to obtain the proper lexicon and also we will have to input some 
+knowledge from well studied language. In spite of all these techniques the domain 
+knowledge will be required and very helpful for better performance. From machine 
+translation which is a very important activity we now move on to another respect of 
+natural language processing that is natural language understanding.  
+Understanding natural language is very important. You have seen the dialog in MYCIN. 
+In a very strict sense that was not a natural language understanding program but in a 
+restricted sense yes because for the small domain it interpreted in particular way in a very 
+restricted format. But if we want to make a dialog system for example I type in some 
+query and the system will understand, it is not the sort of query we give in Google, I can 
+type in natural language query like for example what would be the best for possible train 
+if I would like to go to Delhi may be through Agra or may be through Allahabad? It is 
+this sort of construct. Now, if we type that thing in or modify the sentence a little bit, 
+what will be the best way to go from Delhi to Bombay possibly through Allahabad or 
+possible through some other place at a low cost? 
+ 
+Now we would like to have the system, process this query understanding what exactly I 
+want and respond back to me. Natural language understanding can often be very difficult. 
+Now our objective is to make the computers react intelligently to human speech, speech 
+is the ultimate but as an intermediate we can assume that we are typing in text. This is the 
+most natural interface to computers. For example, in database query now we type in 
+standard SQL query in the SQL language but the ultimate aim could be that I am just 
+asking for the query, I am just giving the speech query and I am getting the answer or I 
+am writing the query in a free format of English and I want the answer. 
+ 
+(Refer Slide Time: 09:12) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 09:40) 
+ 
+ 
+ 
+Now the research that is involved in that belongs to two disciplines; one is AI who are 
+focusing on programs that will react to language and linguistics is the discipline studying 
+the human language used. Both these disciplines must collaborate hand in hand in order 
+to get a good result. Verbal speech recognition is related but it also requires some digital 
+signal processing and other things where we have to extract the speech signals.  
+ 
+(Refer Slide Time: 07:07) 
+ 
+ 
+ 
+The point to remember is all natural languages are as complex as the other. There cannot 
+be any language which is very simple and the other is very complex. And no natural 
+language is best suited towards modeling or easier to process. And the vocabulary of the 
+different languages is different and that is because of the different social factors. Now 
+relatively easy to derive natural language parsers are grammar for constrained English but 
+not for general English however because in natural language we get a lot of flexibility 
+and we can use some dictionary or lexicon of words and their grammatical usage. 
+Grammar can both recognize and generate sentences, we can use grammar to do that.  
+ 
+(Refer Slide Time: 11:24) 
+ 
+ 
+ 
+Another very important issue is to understand the meaning of the sentence, semantics. 
+That is much more complex. As we have shown earlier that parsing a sentence helps in 
+some way to understand which part is the subject of the sentence, which part is the object 
+and which part is the verb etc. As in the earlier example, from the sentence I went to the 
+bank to enjoy sunset. We could buy syntactic method we could eliminate the possibility 
+of bank from being a verb like depend that was eliminated but true understanding 
+requires much more common sense knowledge, the relation, the context and all these 
+issues. If I just take this simple sentence Mary ate spaghetti with George and if I write 
+Mary ate spaghetti with chopstick now what is the difference between these two 
+sentences? The structure is same, x ate y with z is the structure. But since George is a 
+person and basically it means Mary and George ate spaghetti together whereas in the 
+other case Mary ate spaghetti using a chopstick. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 12:42) 
+ 
+ 
+ 
+So what we really mean by understanding a sentence?  
+One way we can say that when we listen to a sentence we probably make a picturization 
+make a perception of that. May be if we think of a large semantic net describing the 
+world in our mind some of the nodes of those semantic net gets activated and we get 
+some sub tree model. But still it is an open question that what we really mean by 
+understanding a sentence? And an indirect way might be that if I really understand a 
+sentence properly then I can reply to that or respond to that properly. 
+ 
+Now we look at another sentence: When the balloon touched the light bulb it broke. What 
+broke? A balloon touched the light bulb and the light bulb broke. Or is it when the 
+balloon touched the light bulb the balloon broke? Explore it because it touched the hot 
+light bulb. Now how do you understand that? How the machine understands that? We 
+immediately assume that the light bulb cannot be broken by the touch of a balloon but it 
+is the balloon that got broken. But in order to understand this we need so much of domain 
+specific knowledge that are related that a balloon is a light object and a balloon cannot 
+break a light bulb which is a stronger object etc. 
+ 
+So how do you go about it?  
+When the balloon touched the light bulb it broke. Now we are going to a discourse that is 
+a set of sentences. This caused the baby to cry. Now what is this and this? The balloon 
+caused or the event of the balloon getting broken caused the baby to cry? Obviously as a 
+human being we know that the balloon got broken and that made the baby cry. But how 
+do you know that? We know that because we have got a domain knowledge which has 
+got the information that a baby likes the balloon. And if any thing that is light is broken 
+then the person feels sad. That may be stored in semantic net or may be in some other 
+form or may be in the form of rules.  
+ 
+Another point is, when the balloon touched the light bulb it broke. Now if there was some 
+ambiguity to which my system was a little hesitant to really decide on what broke 
+probably the second sentence actually helps to resolve this ambiguity in this case. But in 
+some cases it can create further ambiguities as well. Mary gave John a dirty look and 
+picked up the baby. Probably you can picturize that John is the father who led the balloon 
+go and it touched the light bulb and it broke. So Mary the mother was really annoyed 
+with John and John shrugged and picked the balloon. Now what does it mean?  
+With this sentence there is so many scope of interpretation but we are interpreting it so 
+naturally because of the deep knowledge of the domain or the world that we have with us. 
+Now let us see how the system will react to some questions.  
+ 
+Which one got broken? Suppose the system says balloon then who cried? The answer is 
+baby, was anyone angry? Now by reasoning where I expected the background knowledge 
+to be there I can get the answers and these keywords are directly in this sentence. But was 
+anyone? Nowhere written that Mary was angry or John was angry. But that is subject to 
+interpretation because Mary gave John a dirty look. The deeper knowledge or the more 
+complicated scenario we are going in that giving a dirty look implies that someone is 
+angry.  
+ 
+Now the issue is, in the real world there are so many possibilities. In a rule based system 
+if you thing of can you really store all these possibilities? How much will you store? And 
+can you ever make it complete? So that makes the entire scenario very difficult and this is 
+one side. Another side is that natural language gradually evolves, new words are coming 
+in, new phrases are coming in, new expressions are coming in so how to deal with that? 
+That is why there is an attempt to go towards statistical reasoning, statistical method, 
+statistical learning and translation which is helping to have a quick fit solution though not 
+always very correct but mostly it works fine. Did John care? John shrugged and picked 
+the balloon. So, John probably cared more for the balloon and not for the baby but that 
+has to be inferred and this inference is quite complex. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 18:40) 
+ 
+ 
+ 
+The next thing is the same thing; was the light bulb hot? The answer is yes. Now how did 
+you get it as yes? Now here it is also subject to interpretation and inference because it is 
+coming from the domain of physics or domain of the real world that when a balloon 
+touches the light bulb the light bulb if it was kept on then it is hot then only a balloon can 
+break. If the light bulb was off then obviously it will not break. But here weather the light 
+bulb was on or not is not the issue since it broke we infer that the light bulb must be hot.  
+ 
+Was the balloon inflated?  
+Yes and how did you get that otherwise if it is not inflated how do you say that it broke? 
+Was the balloon exploded? This is another question. Was John concerned? Questions as 
+such are all subject to interpretation and complicated inference. Who was responsible for 
+the baby crying? John? In a way yes but actually the balloon was responsible but since 
+Mary gave John a dirty look it tells us that obviously John had something to do with the 
+balloon going of and touching the light bulb.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 19:07) 
+ 
+ 
+ 
+Therefore it is a much deeper inference that gives this answer John. So if we say that we 
+were trying to parse a paragraph then all sentences we find are related to one another to 
+different degrees. And we have to denote the relationship among the components that we 
+are getting after parsing the individual sentences.  
+ 
+(Refer Slide Time: 20:22) 
+ 
+ 
+ 
+First of all we are getting the components as words and we try to find the partnerships. 
+But when these words get embedded in a sentence then also there are some ambiguities 
+and we have to resolve them. Now there is a paragraph so now we will have to discuss 
+about inter sentence relationship and may be when we are going for discourse consisting 
+of a number of paragraphs we will have to establish inter paragraph relationships and in 
+that way it gets more complicated. There are some implicit knowledge about the universe 
+and thus knowledge representation is very crucial about the whole thing. Natural 
+language systems like early toy systems were attempted for a long time. One of the well 
+known systems is Eliza. It pretends to be a psychologist and talks to the user. What does 
+it do? It parses a sentence and looks for keywords and phrases. The user for example says 
+I feel angry today.  
+ 
+(Refer Slide Time: 22:22) 
+ 
+ 
+ 
+Now, feel is the keyword that Eliza knows so Eliza can therefore respond as, tell me why 
+you feel angry today? So it takes this entire component this entire part of the sentence 
+feel angry today and just replaces I with u so you feel angry today and this is a very 
+routine mechanical way of forming a question. Tell me why you feel angry today? 
+Actually it is not deep understanding but in a way it can fool the naïve users and the naïve 
+users can find it very interesting that Eliza is conversing to that.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 23:22)  
+ 
+ 
+ 
+Now, in order to really build a good knowledge understanding system we require  
+knowledge representation and we require knowledge structures. We have to have some 
+internal representations for representing the meanings of these sentences. We have to 
+have some kind of inference generation, we have to do some syntax and semantic 
+analysis. So if we look at sentence analysis here is a serial flow of control we need many 
+things but here only a few things are enlisted. 
+ 
+(Refer Slide Time: 23:52) 
+ 
+ 
+ 
+We have got an input sentence here and that is undergoing syntactic analysis and for that 
+we are using the grammar, this grammar is being used and consequently we are getting 
+the parse tree as the out put of this syntactic analysis. And this is followed, this parse tree 
+at the syntactic level after doing some part of speech tagging we can handle or we can 
+deal with some of the semantic issues. But there are many more semantic issues which 
+cannot be handled at this level. This is followed by semantic analysis. And this is a 
+complex problem where we will be needing features of the domain. And after that we 
+need some pragmatic analysis.  
+ 
+Some things are really not possible to be uttered in a particular context those are 
+pragmatic considerations and also we have to carry out inferences in order to discover the 
+meanings. In the previous example of the balloon breaking issue we have already seen 
+that we often need deep semantic understanding or we need a deeper inference to be 
+carried out in order to understand because many of the things are implicit and need to be 
+inferred and often these inferences are quite complicated.  
+ 
+Now the point is that here we have shown a serial flow of control. Is this serial flow of 
+control enough? I will first do syntactic analysis then I will do semantic analysis then 
+pragmatic analysis then I will do inference but possibly not always.  
+ 
+(Refer Slide Time: 25:53) 
+ 
+ 
+ 
+For example, if we look at these two sentences; John took her flowers, what it means? So 
+somebody brought some flowers and John took that. 
+ 
+A stranger took her money.  
+Now these two takes are different, this is accepted and this is stealing. A stranger stole 
+her money. Now semantics and context are used to resolve the syntactic ambiguities 
+because here this is subject to interpretation. And here when the balloon touched the light 
+bulb it broke this caused the baby to cry. Mary gave John a dirty look and picked up the 
+baby.  
+ 
+(Refer Slide Time: 26:58) 
+ 
+ 
+ 
+John shrugged and picked the balloon. Now we can observe that seven explicit 
+information is given like: 
+The balloon was originally inflated, the light bulb was hot these are also not very explicit 
+they have got some little bit of inferences required but that is quite straightforward, the 
+balloon exploded that is straight away stated over here but there also it broke means what 
+broke? Whether it is the bulb or the balloon? The anaphora reservation was required to 
+find the proper reference.  
+ 
+The explosion made a loud noise this is inferred nowhere it is said that there was a noise 
+but this caused the baby to cry might be the noise. The baby was scared but that is 
+relatively direct, crying may have direct relationship with being scared, the loud noise 
+scared the baby, Mary picked the baby to comfort it. Here none of them are actually so 
+much explicit they require some sort of inference.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 28:22)  
+ 
+ 
+ 
+There have been different methods which has been proposed to carryout an inference for 
+natural language understanding. One way of doing that is the script language which is 
+very helpful to encode stereotypic event sequences. I went to a movie last night. Going to 
+a movie is a very stereotype scenario because all of us know that there are some routine 
+things that we must do in order to go to a movie hall and see the movie. 
+ 
+We must have money, we must go to the movie hall, we must get the ticket, and in order 
+to get the ticket we must have enough money so that we can pay for the ticket and after 
+we get the ticket we proceed towards the movie hall, we have to show the ticket to the 
+usher and then we need to go and sit in the movie hall and watch the movie. I also know 
+that the amount of money I had when I went in the movie hall and when I come out of the 
+movie hall the amount will be less because I had to pay for the ticket. This is a very 
+stereotypic situation.  
+ 
+Another very popular stereotypic situation is going to a restaurant. Before I go to a 
+restaurant I must have money, I must go to the restaurant, I must find the seat in the 
+restaurant, I will have to order food and I have to order food so that the cost of the food is 
+less than the money that I have, after eating I have to pay for the food and when I come 
+out then I will have less amount of money. These are various stereotype situations as if 
+drama script has been written. And whether I go to a restaurant or you go to a restaurant 
+or your friend goes to a movie the steps that will be executed are very similar and that is 
+why this is called a script and as if we are following a script. 
+ 
+If I describe a stereotypic situation using the script language then as soon as I write that I 
+went to a movie last night you understand that I must have had money to buy the ticket. 
+That is possible to infer very easily. The ticket was purchased at the theatre or in the 
+movie hall; I may have had to wait in the movie line for a bit before I can go in to the 
+theatre.  
+(Refer Slide Time: 31:37)   
+ 
+ 
+ 
+That is a typical movie hall scenario there is a queue and you may have to wait, you can 
+further infer more and once inside the theater I could have bought popcorn, candy or ice 
+cream which are the typical things that are possible, and obviously you will not assume 
+that inside the movie hall you will buy a chicken dish. I exchanged the ticket with an 
+usher who gave me a stub back etc and I can go on. Therefore this is the script language. 
+Now, using this sort of script, if we look at this balloon script here is a partial description 
+of the balloon script. 
+ 
+(Refer Slide Time: 32:12)  
+ 
+ 
+ 
+It is possible that I blow up the balloon by mouth and tied the balloon or I could have 
+bumped the balloon with helium and then tied the balloon. After tying the balloon a 
+couple of things can happen. Either the balloon wither away the balloon explodes or the 
+balloon flies away. In that way we can describe the entire scenario this is very small part 
+of balloon. And we can go on keep building a complete screen of the drama. If we 
+consider what happened with the child, Mary, John and the balloon exploded as a drama 
+we can write down a script in the form of some specific language as is provided by the 
+script language. But there are a couple of problems in this approach. First of all the script 
+that you write will be very complicated and often very difficult to handle. Another issue 
+is that the only script that we find is often not enough. In order to understand the scenario 
+we have to have some basic idea of where we are trying to reach.  
+ 
+(Refer Slide Time: 33:36) 
+ 
+ 
+ 
+Some sort of goal based planning is required. But there are different levels of planning 
+which are often found useful to carry out stereotype situations because if I go to a movie 
+hall I have got a complicated script over there but my objective is to see the movie and 
+get a seat. And out of the possible script actions that I may possibility take I will take the 
+best one that will satisfy my goal faster.  
+ 
+For example, just you want to go to the movie hall and you have got different ways of 
+going. Now, in order to understand suppose a statement is there I went to the movie hall 
+yesterday night, I started from my home in the evening I reached the movie hall for the 
+night show just five minutes before the show started and you go on saying different 
+things.  
+ 
+Now if somebody asks why were you late?  
+Will the system be able to infer that he must have gone to the movie hall not by taking a 
+taxi or a cab but probably went by bicycle or by a slower vehicle or taken a longer route, 
+and why would a person choose a longer route, must be he did not have enough money 
+and he wanted to save money. If you have taken a cab the amount of money that you 
+would be left with would not be sufficient to buy a ticket. So these are all inferences and 
+these inferences might be you can write everything out in the script but that becomes very 
+cumbersome instead if we have got a plan and you apply the planning knowledge also 
+over here you will be in a better situation to handle it. So the moral of the story is, in 
+order to build an effective system script is one thing the domain knowledge is another 
+thing may be the semantics nets and all those things are required, we need the lexicon and 
+may be we need the planning structure and in that way there can be numerous things 
+which will have to be used together in order to be an effective system.  
+ 
+(Refer Slide Time: 36:22) 
+ 
+ 
+ 
+Here is a particular approach to be discussed. It is not a unique approach but that is one of 
+the approaches that are found to be very useful in natural language understanding known 
+as case frames or semantic frames. Now you are exposed to the frame structure. A frame 
+is a data structure like a frame boy will consist of different slots like age, height, weight, 
+name etc these are the slots and boy is a and this is human etc, and in age since I am 
+saying a boy I can also have some constraint that the age can be any value between 5 to 
+15 beyond which I will not call him a boy.  
+ 
+So when I instantiate the frame Tom is a boy then we create an instance of this frame 
+where that we talk about a particular boy Tom whose age will be 10 the exact data of 
+Tom maybe 5 ft and weight may be 60 kgs, name is Tom etc that is a frame. And we have 
+also seen that a frame can be used for and these are the constraints that we can associate 
+to the different slots and we have also seen how the frame based inference is done.  
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 38:22) 
+ 
+ 
+ 
+In the case of natural language understanding whenever I make any sentence the boy 
+went to school now if we take the verb and went is a past tense of go we can create a 
+frame go which will be any verb and any verb will have different slots and what these 
+slots will be? One thing is that in this case it can have different tenses so in this case went 
+will be an instance of go with past. But the action of going will require or can generate 
+the question who went? I can ask the questions relevant to going.  
+ 
+What are the possible questions I can ask?  
+I can ask who went. Where did he go? When? With whom etc, these are possible 
+questions I can ask. Similarly, if I consider the verb give then associated with give I can 
+have a number of queries like, who gives? Gives what? To whom? Where? How etc 
+similarly if I take the verb eat then also I can have queries like who eats? Eats what? 
+Where? With what? 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 40:22) 
+ 
+ 
+ 
+Tom ate spaghetti with chopstick, with what etc are some very relevant queries associated 
+with a particular verb. 
+ 
+ (Refer Slide Time: 41:22) 
+ 
+ 
+ 
+Karaka: In Indian languages we got six karakas and basically karaka is determined by the 
+relationship that a word has got with a verb. Like Tom went to school, who went to 
+school?  
+The answer is Tom. That answer is a nominative case in Indian languages katrikara42:12. 
+ 
+Therefore who, what are different roles or in English grammar we also say these are 
+different cases so karaka and case is the same thing. So these sorts of frames like the 
+frame for eat starts with who eats? What etc are different cases and such frames are called 
+case frames or they are also called semantic frames because in some way whenever we 
+identify the karaka we can answer some of the questions like Mary ate spaghetti with 
+chopstick. And if I have got a verb eat then this particular verb will be an instance of eat 
+where the tense will be passed, who will be Mary? What will be spaghetti? With what 
+will be chopstick? 
+When we have got this case frame instantiated then obviously if I ask the questions how 
+did Mary eat spaghetti? The answer will be here and so we can say that Mary ate 
+spaghetti with chopstick. If we ask what did Mary eat? The answer will come directly 
+from the slot of this frame. That is why such case frames find a lot of applications in 
+natural language understanding.  
+ 
+(Refer Slide Time: 44:29) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 47:22) 
+ 
+ 
+ 
+Frame knowledge representation is a good way to represent some common sense and we 
+can define some stereotypical aspects of using frames and sentences about that domain 
+can be parsed and the meaning can be extracted in terms of what the frames expect. What 
+is important here is to know what the frames expect.  
+ 
+(Refer Slide Time: 47:40) 
+ 
+ 
+ 
+I am in a scenario where again I take the case eat, I have got all the possible slots what, 
+who, with what, where etc. now each of these slots have got an expectation so whatever 
+value fills up this part who eats has to be an animate object. So I cannot just say the 
+spaghetti ate Mary because spaghetti is an inanimate object, what eating this must be an 
+inanimate object so we know what is expected over here and this helps in dissolving 
+some of the ambiguities where we expect a place here so that should be some sort of a 
+proper noun so we expect some noun phrase here. And with what, we expect some 
+instrument or some inanimate object here or it can be also if it is an animate object in that 
+case that will relate to whom? Mary ate spaghetti with John and now since John is 
+animate then obviously the relationship will be with whom, that means this will no longer 
+be an instrument but will be a co-agent. The agent of eating is Mary and John was with 
+her so that is a co-agent. In that way by looking at these possible constraints and the types 
+of value filling up these blanks we can approach towards better understanding of the 
+sentence. 
+ 
+Therefore these case frames are being built around the verb phrase. So we start with 
+actions that are the activity of the sentence by the verb phrase and the thematic role of all 
+these cases that I was showing are also mentioned as thematic roles. The different words 
+in a sentence have got a role to play in that entire sentence which could be any sentence. 
+Any sentence that I state builds up a picture. You can think of different ways, I make a 
+sentence and there was an expert artist probably he would have drawn that on the canvas 
+immediately so that instead of listing to the sentence I can look at the picture and 
+understand the same thing.  
+ 
+The other thing is whenever I state a sentence since I have got a good semantic net type 
+of structure and if I understand that sentence the proper nodes of that semantic net will be 
+activated, so this is another way of looking at it. I am just saying in a different way. 
+whenever I say a sentence that can always can be enacted and I always talk about a theme 
+and any theme will have different roles in it, every component every word of the sentence 
+plays a particular role in that drama that the sentence picturizes. Whatever slots are being 
+shown are different thematic roles and these are to be filled by a sentence and the task is 
+to determine the thematic roles of noun phrases.  
+ 
+(Refer Slide Time: 49:39) 
+ 
+ 
+There are many theories that define different semantic thematic roles. However, the 
+common objective is to understand the sentence although is not complete. In Indian 
+languages when we work then we may have a different structure and a little bit of 
+extension of the thematic roles but these are more or less standard agent.  
+ 
+(Refer Slide Time: 50:16) 
+ 
+ 
+ 
+Agent is the passive or active entity that causes an action. For example, in the sentence 
+Donald kicked the ball Donald is the agent, co-agent is the partner with the agent. For 
+example, Donald kicked the ball with friend Mickey. So here Mickey is the co-agent. 
+There is a thematic object, what? Donald kicked what? Kicked the ball and this is the 
+object undergoing change. Often another way of looking at it is that any sentence if I 
+enact it that will create a state change. Donald kicked the ball so the ball moved from one 
+place to another so the over all state changed. That is also a very interesting way of 
+looking at the whole thing. So the object that is undergoing change is the thematic object. 
+The instrument is the tool used by the agent like Donald kicked the ball with his foot. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 51:16) 
+ 
+ 
+ 
+Location is another thematic role that is the place where the action occurred. Donald 
+kicked the ball on the field. And in this way we can go on adding thematic rules. Now let 
+us look at this dialogue.  
+ 
+(Refer Slide Time: 51:16) 
+ 
+ 
+ 
+Again here the verb is give, who is giving? The kind man gave bread to the beggar for his 
+hungry child. So, I start with giving that is the past tense, who gives? The kind man, 
+hence the agent slot the agent role is filled with the kind man, to whom? Who is 
+participating in the action? The beggar that fills up the co-agent or the beneficiary it is not 
+exactly a co-agent but it is a beneficiary the beggar, gave what? That is the theme so 
+bread fills up here the beggar comes up here or sometimes we may like to put the beggar 
+gave the bread to the beggar that is the co-agent and for his hungry child who will be 
+ultimately benefited, the hungry child will fill up here and when means the time, time is 
+not specified. Now if we fill up this frame, this sentence has not filled up all the possible 
+frames. So a partial instantiation of the frame is possible and different verbs can have 
+different frames. The domain of a role is dependent on the verb. 
+ 
+(Refer Slide Time: 53:00) 
+ 
+ 
+ 
+A role can be a single concept or composition based on a qualifier qualified structure like 
+here:  
+The kind man the agent part is being filled up with this entire structure the kind man. It is 
+not only the man but it is qualified so it is not a word but a structure. It is not a single 
+concept but a composition. Once this is filled up, it is partially filled up because this 
+sentence does not talk about time. So, if we look at this frame then we can answer a 
+couple of questions like who gave the bread. Obviously the answer is agent.  
+ 
+Now I am asking a difficult question, why did the kind man give the bread to the beggar? 
+The answer will be the beneficiary, who is the beneficiary for his hungry child. So at least 
+to a particular level we can answer some of the queries corresponding to this. Here is 
+another sentence: Robbie made coffee for Suzie with a percolator, you can make case 
+frame structure, now this is made.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 54:39) 
+ 
+ 
+ 
+Make means making a thing, He made a toy and make coffee that means prepare coffee. 
+So the verb make can have multiple frames making coffee and making a machine, 
+making a noise, the child made noise in that case the frame of make will change. So you 
+have to make an appropriate frame for the particular semantics of the verb and then parse 
+this sentence and fill up the thematic roles manually and you will see that you will be 
+able to answer some of the questions. Now this is just the tip of the iceberg. Natural 
+language understanding is a very interesting and very deep issue and subject and area of 
+research. 
+ 
+ 
+  
+

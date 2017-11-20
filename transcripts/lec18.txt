@@ -1,0 +1,562 @@
+Artificial Intelligence 
+Prof. Anupam Basu 
+Department of Computer Science and Engineering 
+Indian Institute of Technology, Kharagpur 
+Lecture - 18 
+Semantic Net 
+ 
+In the last lectures we looked into different one particular knowledge representation 
+scheme namely the rule based system. Our objective for the entire course is to look into 
+different ways in which a system can demonstrate intelligent behavior. And one of the 
+major components of demonstrating intelligent behavior is acquiring and using 
+knowledge. In the last lecture we saw one such way of representation that is the rules. 
+And we also concluded the lecture with one very important and popular application of 
+such rules in the form of some of the expert systems which are rule based systems. 
+Besides rules there are other methods and modes of representing knowledge.  
+ 
+Today we will start discussing on a few of those other modes of representation of 
+knowledge. So we will be looking at other knowledge representation formalisms and we 
+will be starting with our discussion on semantic nets. Now, as you know the word 
+semantic means meaning. So we are familiar with two words syntax which is essentially 
+the grammar of a language and semantics is the meaning of any sentence for example. I 
+may form the sentence correctly which may be grammatically correct that means it may 
+be syntactically correct but it must be meaningful. In order to be meaningful it should be 
+semantically correct.  
+ 
+When do you say a particular sentence or statement is meaningful?  
+A sentence is meaningful when we can really understand it and map it to some of the 
+known concepts of the real world in which we live or see or can visualize or realize. So 
+the essence of knowledge in one form is built around the different concepts that are 
+spread around us. Whatever we look at for example, if I look at this room then I will be 
+looking at different chairs, tables etc. now each of these are different concepts. And the 
+chair for example is made up of wood usually. There can be chairs which are not made of 
+wood that may be made of iron, steel or some other material. So whenever we talk of 
+chair we can think of some other association with the material by which the chair is made 
+of.  
+ 
+Whenever we talk of chair another pertinent question can be what is the size of the chair? 
+What is the weight of the chair?  
+Whenever I use a word say a boy then obviously with that usage of the word boy it 
+certainly maps into a particular concept within me because along with the boy I have got 
+so many other associations. a boy will be at most if I call him a boy will be at most of say 
+18 years old, whenever he is more than 18 years usually I call him a man or whatever. A 
+boy will be having height, will be having weight, and usually may be going to school so 
+there are so many other associations that come up. If I talk of tiger then immediately 
+some concepts, the tiger is a concept and along with that I can associate how many legs 
+does the tiger have and the immediate answer is four, what is the color of the tiger? There 
+may be two possible answers white or yellow. So whenever we use any particular word 
+we are actually referring to some concept and along with that concept we immediately 
+associate some other related concepts. And this association of the different concepts 
+builds up our knowledge system, our conception, our knowledge base. So this is another 
+view of looking at knowledge that knowledge can be represented as a network as a 
+connection interconnection of different concepts.  
+ 
+Now, in semantic nets that is what has been explored how we can represent a domain 
+specific knowledge using the different concepts. In today’s lecture we will see how we 
+can represent the concepts and how we can represent the knowledge using these concepts. 
+And also as it has been mentioned earlier that I cannot call any collection of facts or 
+information to be knowledge unless I can use it use it for inferring some new facts. So, if 
+I have to call this semantic net as a knowledge representation method or scheme then I 
+must also have some particular inference mechanism by which I can utilize this 
+representation to infer new things to answer different questions all these things we will 
+have to look into and that is what we will try to see in today’s discussion.  
+ 
+(Refer Slide Time 07:26)  
+ 
+ 
+ 
+Now, the idea of semantic nets dates back to 1966 and in two very important papers that 
+were written by Ross Quillian who was one of the early workers of AI and who tried to 
+develop a representation of meaning. This slide has been titled as the thoughts about 
+knowledge representation as it were in the 1960s. And also the subtitle is networks and 
+meaning. That means that here we try to represent the different concepts in the form of 
+network and also try to capture the meaning of the concepts in the network structure. But 
+what Quillian tried to do is to represent different concepts as a hierarchical network, that 
+is very important because if I just say, he is a boy or he is a man then immediately I also 
+know that man is a concept but man is a mammal and I also know the concept mammal 
+and there are many properties we share in common between man and mammals.  
+ 
+And when I say Tom is a man and John is a man then both these other entities tom and 
+John are also examples of man and they share some of the properties in common because 
+of the relationship with the common concept man. Tom and John also share some 
+properties of the concept mammal because all of them are connected to the concept 
+mammal because John and Tom are man and man is a mammal. As a collection of 
+different concepts organized in a network this is organized in a hierarchy or layer.  
+ 
+Now this model was later on amended with some psychological assumptions because the 
+original objective of all these exercises all these research was to try to understand how we 
+the human beings think, how we represent our concepts in our mind. So there has to be 
+some correlation with the structure of human semantic memory not that everything is 
+known about it but a lot of research has gone in into this aspect by psychologists and 
+whatever is learnt from them can also be utilized in our computer representation of 
+knowledge semantics and meaning. In this approach of representing meaning as networks 
+concepts can be represented as hierarchies of interconnected concept nodes. 
+ 
+(Refer Slide Time 11:07)  
+ 
+ 
+ 
+If I assume that one concept will be one node, for example, animal is a concept, bird is a 
+concept, canary is a particular type of bird, stalk is another type of bird all these are birds 
+and they are related to the concept bird therefore. But canary is another class of bird, 
+sparrow is another class of bird but all of them share some things in common with bird 
+and bird again being connected to animal will have some common properties with 
+animal. So we can say that any concept has a number of associated attributes at a 
+particular given level. We can say that the concept animal immediately tells us it has got 
+skin, it eats, it runs, etc. All these properties are related to the concept animal. Similarly, 
+we will have some attributes related to the concept bird.  
+ 
+Now some concept nodes are super ordinates of other nodes. For example, animal is at a 
+higher level than bird because a bird is an animal, a tiger can be an animal, a lion can be 
+an animal, a crocodile can be an animal so animal is more of a super class or super 
+ordinate of all these sub classes or subordinates like bird, tiger etc. Again if we go one 
+level down the hierarchy from here we will see that bird is again a super ordinate of 
+canary. Canary can be a bird, stalk can be a bird, peacock can be a bird, ostrich can be a 
+bird all these are different types of birds but all of them are birds and all birds are 
+animals.  
+ 
+So in this example we can see clearly a three level of hierarchy at the top level as we 
+have shown is animal. After that there is bird and bird is at one level lower than animal, 
+more specific than animal. And tiger, lion all these things may be in the same level as 
+bird. Now individual categories of birds like canary, peacock, and penguin come one 
+level down that hierarchy. So in this example we have seen a three level of hierarchy but 
+there can be multiple levels of hierarch. So the essence of this idea is that we can 
+organize the different concepts at different levels and all these concepts may have some 
+relationship from one level to another. That is the basic idea and each of these concepts 
+will have some attributes specified at that level. Like animal we will have attributes, bird 
+we will some additional attributes etc.  
+ 
+(Refer Slide Time 14:40) 
+ 
+ 
+ 
+However, we cannot store in a computer or might be in our human mind also we do not 
+explicitly store everything. So we often talk of cognitive economy. That means how 
+much we store. So, for reasons of cognitive economy subordinates inherit all the 
+attributes of their super ordinate concepts. So what does it mean? It means that if I had 
+specified something about bird then those attributes will be inherited by whoever are the 
+descendants in that hierarchy. Here is an example, I can say that mammal is a category so 
+here I can say human and I can say might be some animals and they are related. This is at 
+the top level L0 and this is at level L1. Now human beings can have some attribute, this is 
+an attribute link which says has and I write down another concept hands. Now, if I draw 
+another level down here can be man and here can be woman. Now man is linked to 
+human it is down this level L2.  
+ 
+Now man can have some additional properties, woman can have additional properties 
+over human but whatever is there as a property of human will also be there for both man 
+and woman. If it was not the case if I just go on adding properties at the human level like 
+color of blood the color of blood is red, now if I had to store everything here then I had to 
+store has, hands, color of blood, red etc. But this part is not required to be stored 
+explicitly. I would have to store it here as well as for woman and everything so I do not 
+need to store this here because it is already stored at the upper level so I do not need to 
+store this part here and it is sufficient to store at the parent level or the higher level. This 
+is what is meant by cognitive economy.  
+ 
+That means I do not want to store all the attributes at all the levels instead whatever is 
+there at the top level say mammal I can certainly say it drinks milk or born from mother 
+whatever it is. Then all the concepts which are children of this level will inherit these 
+properties that are there at the top level. That is the basic concept of this sentence that is 
+for reasons of cognitive economy subordinates that means whichever are down the 
+hierarchy inherit all the attributes of the super ordinate concepts. Now for some instances 
+of the concepts there are exceptions from the attributes that help us to define the super 
+ordinates.  
+ 
+(Refer Slide Time 19:08)  
+ 
+ 
+ 
+Let us take one example, a typical classical example is, when we say bird, bird is a 
+concept then birds can fly, what is the locomotion of birds? It is flying, how do they 
+move? They move by flying so if it is a sparrow it is a type of bird then obviously it will 
+be automatically inferred that sparrow is a bird and I know birds can fly so sparrows can 
+fly. This is what we can inherit from the parent category. But ostrich is an exception 
+ostrich cannot fly but ostrich is a bird. It has got all other attributes that a bird has such as 
+feathers, wings, two legs, has a beak all those things but only the locomotion is an 
+exception. Therefore at the subordinate level I may need to modify some of the attributes 
+in special cases which are exceptions. So the general rule we that we can think of is, 
+usually we will inherit all the attributes of the parent but at the lower level we can modify 
+them in special cases as required. Various processes search these hierarchies for 
+information. Here is a hierarchical network that we are talking about.  
+ 
+(Refer Slide Time 21:24)  
+ 
+ 
+ 
+What is the super ordinate in this hierarchy? We have got animal, this is the super class 
+the top level. Now we have got bird, we have got fish. Now these are related to this 
+concept animal. Each of these ovals represent one concept. this oval represents bird and 
+look at this green link the name of this green link or this green link is leveled with is-a 
+that means bird is a animal, in proper English it should be is an animal but we are not 
+making a distinction, so here is-a means bird is a subordinate of this super ordinate. 
+Similarly fish is a subordinate of this animal. Now look at these parts; this concept animal 
+is associated with some properties like can breathe, can eat, has skin etc. Now this can 
+and has are different attributes of this concept animal.  
+ 
+Similarly, bird has got some additional attributes like can fly, has wings etc. I cannot say 
+that animals have wings because all animals will not have wings. But bird can fly, has 
+wings, and has feathers. Similarly, if we look at this concept fish we have got some 
+additional attributes like can swim, has fins, has gills etc and fish is a animal. Now, if we 
+go one level down the hierarchy we will see that these colored ones are even more a 
+further specialization of birds.  
+ 
+Canary is a bird, ostrich is a bird, and salmon is a fish. now note a couple of things here 
+that if I look at this concept bird the bird as is written over here has got these three 
+attributes can fly, has wings, has feathers. But just because it is a type of animal it is a 
+subordinate of an animal the property of animal are also inherited, can breathe, can eat, 
+and has skin. So, if anybody asks the question can a bird eat the answer will be yes 
+because though I do not find that the attribute can eat is here in a bird I know that a bird 
+is an animal and therefore whatever property is there in the case of animal will also hold 
+here. Therefore I can say bird can eat.  
+ 
+Similarly, if I ask the question can canary fly or does canary have feathers? When I 
+described canary I just specified some specific attributes that are special to the category 
+class canary can sing and is yellow, the color is yellow. But just looking at this I cannot 
+say whether canary has wings. But yet I can say that canary has wings because I also 
+know there is a link between the concept canary and the bird, the relationship between 
+them is easy. So canary is a bird and I know that birds has wings therefore canary has 
+wings. Similarly look at salmon, salmon is a fish and a fish can swim, has fins, and has 
+gills. But salmon has got some additional specific attributes like lays eggs, swims 
+upstream, is pink, is edible etc.  
+ 
+Now straight away if I say does salmon lays eggs?  
+The answer is yes because I can see that attribute right here. But if I ask the question can 
+salmon swim? The answer is not here but if I follow this link I can see that salmon is a 
+fish and fish can swim that means all fish can swim unless specified otherwise so I can 
+infer that salmon can swim. If I ask can salmon breathe then the answer is not here so I 
+go up this link the answer is not here as well but the answer is here you can see. Since 
+fish is a animal it can breathe. But now let us look at ostrich. Now here I have written 
+ostrich has got the attributes runs fast, cannot fly and is tall.  
+ 
+Suppose this attribute cannot fly is not written over here in that case if I ask can ostrich 
+fly?  
+I will first look at the answer here and since this cannot fly is erased from here I will look 
+over here and find well I do not find an answer here but let me try because ostrich is a 
+bird therefore here is written can fly so the attribute of bird is can fly therefore ostrich can 
+fly that would be my inference. But here in this case we have got specific information 
+that ostrich cannot fly. So this attribute locomotion cannot fly or locomotion might be 
+walks but it cannot fly that will have overriding precedence over whatever I know from 
+the parents. So as I go down the hierarchy in this direction I come from the more general 
+to the more specific. That is what we just now discussed that usually we take the 
+properties from the parents but we go down as we go down we can be more specific and 
+we can at times override the property at a lower level. So this is an example of a 
+hierarchical network which demonstrates the different levels of hierarchy such as animal 
+is in the top level L0, bird and fish is at lower level and canary ostrich salmon is at even 
+lower level.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 28:57) 
+ 
+ 
+ 
+The same hierarchy here has been shown in red that ostrich cannot fly to show that it is 
+an exception at the lower level. Now there are three things we have just now shown, the 
+first one is called inheritance. Inheritance means any child concept. We will inherit all the 
+properties of the parent concept. So canary, ostrich will inherit all the properties of bird, 
+salmon will inherit all the properties of fish and in turn bird and fish will inherit all the 
+properties of animal that is the first thing it is inherited with some exceptions. Specifics 
+can be more detailed. Think of a human species, we inherit many of the genetic 
+characteristics from our parents and that is exactly is what is happening here. It is the 
+parent child relationship so in general the child inherits some of the properties of parents 
+and the child can have its own properties which were not exhibited in the parent. 
+Similarly here specifics can be more detailed and can be something that is inherited from 
+the parent that can be overridden.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 30:48)  
+ 
+ 
+ 
+Through some psychological experiments that has been carried out and when the tests 
+were tried on human subjects it was evident that the human subjects recognize 
+propositions or statements which have lowered down the hierarchy much faster much 
+readily than the propositions which are higher up.  
+ 
+What are the propositions?  
+If I say canary can sing that proposition is some how stored here. How is the proposition 
+stored? Proposition is stored in terms of the attribute and the object relationship. Canary 
+is an object having the attribute can sing so that is at this lower level. Usually human 
+beings very quickly recognize the specifics when they look at a canary the first thing well 
+a canary is yellow, a canary can sing, and ostrich? It cannot fly it runs very fast. But the 
+thing in order to state the proposition is, canary has wings, canary can breathe they 
+automatically do not come in because what you are looking or what you are perceiving is 
+at this lower level and so whatever is very much evident in front of you at the lower level 
+will have more precedence more importance and human beings quickly recognize that.  
+ 
+But for recognizing, not that they cannot understand the other things they can also 
+understand that canary can breathe but somehow the reason that canary is a bird and bird 
+is an animal so all animals can breathe therefore the assumption is that canary can also 
+breathe. One thing is ready acknowledgement another thing is acknowledgement through 
+reasoning. It has been found through psychological tests that the facts which are at a 
+lower level have got more ready acceptance to human subjects and that justifies that 
+validates this model of knowledge representation. Till now what we have been discussing 
+is, how concepts can be represented as hierarchical network. Now we can define semantic 
+networks and semantic network is a structure for representing knowledge as a pattern of 
+interconnected nodes and arcs.  
+ 
+ 
+(Refer Slide Time 33:15) 
+ 
+ 
+ 
+Nodes in the semantic net represent concepts of entities, attributes, events, values etc. 
+Arcs in the network represent relationships that hold between concepts. Therefore arcs 
+are denoting relationships, till now we have shown only one type of relationship that is 
+easy. But priory this part requires a little bit of explanation. Nodes in the net represent 
+concepts of entities, attributes, events, values etc because I can also draw a semantic net 
+in this way. Man is a concept and man is a mammal and man has got different attributes I 
+can say number of legs, I can draw another type of node two that will be there in the 
+mammal. Man, number of legs, number of hands etc or number of eyes can be two but 
+there can be other attributes also like height. Now this height is less than 7 feet which is 
+rather common. In that way I can have different types of nodes. This is one type of node 
+that is representing a concept.  
+ 
+There can be nodes which are representing values as well like these are representing 
+values. All these together are giving me some statements; Man has hair and hair is a type 
+of skin. Now all these things are concepts, has hair, we saw birds has feathers but man 
+has hair and what is hair? Hair is a type of skin so here this is another concept, this is 
+another concept, this is another concept and they are different entities and there can be 
+also values so it is not necessary that only concepts will be nodes. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 36:46) 
+ 
+ 
+ 
+In a semantic network we can have different types of nodes. Nodes in the net represent 
+concepts of entities, attributes, events, values etc. Arcs in the network represent 
+relationships that hold between the concepts. Here I have got so many other concepts. 
+Now, when I store that in a computer I will store that with some particular type of coding. 
+Now I will level the concepts and might be in a table where I will have C1, C2 etc I will 
+have to encode each of those concepts and each of those concepts can have some 
+attributes as well so I have to store them. Now here what we are showing is that C1 is the 
+top level concept and I store C1s attributes. The next level is C1 1 and all the child 
+concepts are leveled as C1 1 1 C1 1 2 so C1 has got two children C1 1 and C1 2 a sort of 
+subscript notation that we use.  
+ 
+So, in that particular way we can represent all these concepts. Now where is the 
+meaning? We are calling it semantic network we have seen that it is a structure of nodes 
+and arcs. The nodes are representing different concepts. Now, do the concepts by 
+themselves express the meaning? No, the concepts do not express the meaning by 
+themselves. In order to understand meaning of the semantics it lies in the structure as well 
+as the relations that are there. For example, the meaning will quickly change when I look 
+at this network and compare it with the earlier network.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 39:12)  
+ 
+ 
+ 
+This network has got two links salmon fish and animal are connected by is-a links and I 
+just change at this level these two links from is-a to it. If I just withdraw these levels the 
+other structures the concepts and the linkages are remaining the same but only thing that i 
+have changed is the relation. Now, immediately the meanings have changed. Now what 
+this structure means is, salmon eats fish and fish eat animals. Now I can no longer answer 
+questions which I was doing earlier.  
+ 
+Does salmon has fins?  
+I look here and find salmon lays eggs, salmon swims upstream, salmon is pink, salmon is 
+edible and I do not know whether it has fins or not and because I cannot now recognize 
+that salmon is a fish that link that connection is lost. If I had another link over here is-a 
+link then it would have been all right and I could have traversed through that is-a link and 
+could have arrived at that answer salmon has fins. But as the structure lies now I can only 
+say salmon eats something called fish which has fins. But whether salmon has fins or not 
+is what I do not know.  
+ 
+In fact it has become really a meaningless thing that fish eat animal and it is not always 
+the case but you see how by changing the relations the total meaning changes and 
+whatever I was able to do earlier in this case I cannot do any further because of the 
+missing link here. So the important thing to state is that, whether we can represent the 
+meanings and concepts in the form of semantic networks, the answer is yes we can do it 
+but the meaning lies in the structure as well as the levels of the arcs and those are the 
+relations we are giving now.  
+ 
+We are talking of concepts, we just mentioned about propositions salmon eats fish that is 
+a proposition, ostrich cannot fly that is a proposition. If you recall we encountered 
+proposition earlier while discussing logic. So, is there any relationship or they are 
+absolutely two different things? Can we represent whatever we are stating in semantic 
+nets through logic? And whatever we are stating through logical propositions can they be 
+represented in semantic nets? All these are very natural questions. Let us look at this 
+example.  
+ 
+(Refer Slide Time 42:27) 
+ 
+ 
+ 
+Suppose this semantic net where we have got four concept nodes person is a mammal, 
+person has part head, and Tom is a person. Now, here you see Tom is a specific person. 
+So till now person is a category or class. Those of you who are familiar with object 
+oriented systems, the concepts of objects, classes, sub classes will find a similarity here 
+with the concept nodes we are discussing. But let me state here that the concepts of 
+objects and object based design, object oriented systems came much later and has been 
+systemized much later. These network concept of representation of meaning dates back to 
+1960s as we have said so this is a predecessor. And it has been certainly much systemized 
+later.  
+ 
+Here if we talked about object oriented terminology then Tom is an instance of the class 
+person. If I have added a node here man is a person, woman is a person then man woman 
+are still classes I am not talking of a particular man or particular woman but Tom is a 
+particular person and through this is-a links in semantic nets I cannot make this 
+distinction between whether it is an instance or a class. Here Tom is a person, person is a 
+mammal and person has part head. So, if we just look at this part I can answer some 
+questions.  
+ 
+Does tom have a head?  
+Yes I can answer Tom is a person and person has part head so Tom has head. And 
+whatever were the attributes of the mammal I could have also talked about those 
+attributes to be valid for Tom. Now the same structure can be represented in logic where I 
+just use these relations as the predicates. Is a person mammal is a person mammal so it is 
+a binary predicate with two attributes. Now, in logic I can say instance Tom person that 
+Tom is a instance of a person, has part person head. If you take any two partitions and the 
+relation connecting them I can represent them as propositions as we do in logic.  
+ 
+We started with the point that we want to represent the concepts and the meaning because 
+that is essential to represent knowledge. And we have seen that concepts can be restored 
+or represented in a form of a hierarchical network and using this idea the semantic net 
+representation came into being where it consists of nodes and arcs and the nodes 
+represent concepts, entities, events, values and the arcs represent different attributes. That 
+is how we can represent different facts that we want to state or model about the real 
+world. Now let us see how we can represent some more facts in semantic nets. Suppose 
+there is a game being played between two teams Norwich and Spurs. Now one team is a 
+winner and another is a loser.  
+ 
+(Refer Slide Time 46:45)  
+ 
+ 
+ 
+Now how do you represent that fact that Norwich defeated Spurs? I just want to say 
+Norwich was the winner spurs is loser. Norwich is a winner of what? So winner of a 
+particular game which I have just named here G5 and what is G5? G5 is a game and any 
+game will have a winner and loser so Norwich is the winner and Spurs is loser. Now, if I 
+want to state it was a football match and Norwich defeated Spurs with a score 3 for 1 then 
+I have to add another attribute score 3 and 1. Let us forget about what is written below 
+and look at this white thing.  
+ 
+Now what can we say about this?  
+We can say G5 was a game that was played in some particular ground, I could have even 
+stated G5 played at, I could have added a particular arc over here saying that it was 
+played at some particular football ground and the attribute G5 is a game and it has got a 
+winner and loser so I can say that in the game G5 Norwich was the winner and Spurs is 
+the loser. And if I look at this I can also say that the result of game G5 was 3 1.  
+ 
+Typically earlier what we have seen is, when we take these two nodes and look at the 
+relation between them what we represent is a two place predicate a predicate is-a which 
+can take two parameters. But often we may need to represent facts with more than two 
+parameters. For example, Norwich Spurs, Norwich defeated Spurs with a score 3 1 or the 
+score of Norwich over Spurs was 3 1. Now this is a three place predicate, now how do 
+you do this? In order to do this if I had just taken these two I would have said Spurs was 
+the loser in game G5. If I had just taken these two I would have said Norwich was the 
+winner in game G5. If I had said what is G5 then I would have looked into these two 
+nodes and would have said G5 is a game. If I had taken these two I would have asked 
+what is the score of G5? The score of G5 is 3 1. All these were two place predicates.  
+ 
+But whenever we need to represent three place predicates I need to create a new node this 
+new node has to be created otherwise I could have just said game in this game there is a 
+winner and loser I could have said spurs and Norwich. But the score of different games 
+will differ so I may need to create a particular node which will specify the additional fact. 
+We will see some more examples from here. For example, if we look at this point we see 
+that it is a more complicated example which we are trying to show: John gave Mary the 
+book; John gave the book to Mary. Now how do you represent this? We have shown that 
+gave is an action, giving this book to Mary is a particular event and this event of giving 
+has got an agent as somebody who gives and somebody who receives. Any giving will 
+have two requirements. Somebody will have to give and somebody has to receive. The 
+person who is giving is an agent and the person who is receiving is a recipient. Therefore 
+for an event of giving the action is giving, it has an agent John and a recipient Mary.  
+ 
+(Refer Slide Time 51:21) 
+ 
+ 
+ 
+Now what is being given?  
+The object that is being given is a book.  
+What is that?  
+It is a particular book. I am not saying John gave Mary a book but I am saying John gave 
+Mary the book so I am talking of a particular book so I can say John gave Mary this 
+giving event has got an object I can give you the pen, I can give you the money so giving 
+is an action which has got a giver, which has got a recipient and also some object that is 
+being given. There is more of it like how it is being given, when it is being given etc. 
+John gave Mary the book. So the object that is being given I could have said book but 
+why I did not say it is a book because book is a general class and we are talking of a 
+particular book that is book 69 and what is this book 69? It is an instance of book.  
+ 
+So you see how this English statement John gave Mary the book simply translates to this 
+nice semantic net form. Now here we have got these where all these are entities, event 
+John Mary book 69, book is a class, giving is a class, these are concepts of giving. I could 
+have written over here given also but this particular node is gave because its tense is past 
+which is a type of giving where the tense is past and I can make it more detailed therefore 
+this is one example.  
+ 
+(Refer Slide Time 53:15)  
+ 
+ 
+ 
+Let us look at another example; suppose we are asked to build a semantic net hat 
+represents the following knowledge. We have just now shown that given a particular 
+semantic net how that can be represented in the form of logic. Now what we are showing 
+in this example is, given some logical statements can we draw a semantic net with that? 
+So let us look at these statements; Man Marcus that means Marcus is a man, married 
+Marcus Madonna so Marcus is married to Madonna so these are propositions. Gave to 
+Madonna Marcus Measles that means Marcus was infected by the disease measles 
+because Madonna had it so Marcus got it from Madonna. So this infection we are 
+explaining through this gave to Madonna, Madonna gave to Marcus measles. These are 
+three place predicates. So these three statements is a story.  
+ 
+Marcus is a man, Marcus married Madonna and what happened was Marcus was infected 
+with measles by Madonna. Now how do I represent this story in the form of a semantic 
+net? Marcus is an instance of man so I take this sentence man Marcus, Marcus is an 
+instance of man which is a concept, Madonna is another instance, Marcus is married to 
+Madonna so the second statement is also covered and third thing is giving. Now Marcus 
+and Madonna married and they probably gave so many gifts to each other may be so 
+many other things were there but this giving measles is a particular instance of giving. So 
+I cannot directly relate it to the concept giving it is a particular giving therefore I can 
+denote it with a particular giving G17 is an instance of give action.  
+ 
+Madonna also gave a book to Marcus so I cannot just say all the give actions are 
+connected to this. This is a particular give action. Now what was given? Measles was 
+given but of course it is a disease but here we are simplifying it. And who gave? 
+Madonna gave and who got? Marcus got. Now I can look at the earlier presentation here 
+and I can understand many things from these three logical statements and the same thing 
+I can understand from this semantic net structure show here. 
+ 
+(Refer Slide Time 56:29) 
+ 
+ 
+ 
+Later on let us see some more representation of semantic nets, how semantic nets can be 
+used to represent more complex concepts and how we can infer using semantic nets and 
+that will be followed by other knowledge representation schemes.       
+

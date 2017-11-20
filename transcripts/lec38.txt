@@ -1,0 +1,624 @@
+Artificial Intelligence 
+Prof. Sudeshna Sarkar 
+Department of Computer Science and Engineering 
+Indian Institute of Technology, Kharagpur 
+Lecture - 38 
+Probabilistic Learning 
+ 
+ 
+Today we have our last lecture on machine learning. Today we will talk about 
+probabilistic learning and may be discuss about computational learning theory. Earlier 
+you have learnt about uncertainty and probabilities. So what we discuss now is how 
+Bayesian learning can be used for the sort of concept learning tasks. 
+ 
+(Refer Slide Time: 01:17) 
+ 
+ 
+ 
+You have already looked at some simple machine learning algorithms that are used for 
+concept learning. For example, you have studied decision trees and looked at algorithms 
+for top down training of decision trees. In the last two classes we have also looked at 
+neural network so mainly multilayer feed forward neural networks and we have seen how 
+to train the neural networks using algorithms like back propagation so that the neural 
+network can recognize the concept. Today we will see that the Bayesian learning 
+framework also provides some ways of concept learning and we will also discuss the 
+applications of these things as well as their limitations.  
+ 
+Why Bayesian learning is as important framework to study?  
+Firstly, Bayesian learning provides many practical learning algorithms. For example, 
+today we will discuss a very simple learning called Naïve Bayes learning which is 
+especially easy to learn and to train. And then we will also discuss how the surprising 
+simple method works quite well for certain classification tasks and it is widely used for 
+applications such as text classification and other areas. Then if you want to have more 
+sophisticated methods you have already learnt about Bayesian belief networks it is 
+possible to learn also Bayesian belief network. However, we will discuss that in the 
+Bayesian learning framework it is possible to easily combine prior knowledge.  
+ 
+For example, in the concept learning problem what you are trying to find out you are 
+trying to learn a concept, you are trying to represent a concept and you are trying to find 
+out an hypothesis which is a good representation of the concept. If you have some prior 
+knowledge on which hypothesis are more likely for example we will see that the 
+Bayesian framework allows you to integrate this prior knowledge into your learning 
+methods so that the posterior hypothesis that you output depends on your prior 
+probabilities or prior knowledge of the hypothesis. 
+ 
+Also, Bayesian learning provides many foundations for machine learning. And the 
+Bayesian description Bayesian approach can be used to evaluate learning algorithms 
+including other learning algorithms. And it can be used to guide the design of new 
+algorithms and it allows us to learn from models or meta learning. Bayesian learning is a 
+very important concept.  
+ 
+(Refer Slide Time: 05:29) 
+ 
+ 
+ 
+How is Bayesian classification useful?  
+Bayesian classification is useful for probabilistic learning. In probabilistic learning we 
+calculate the explicit probabilities for hypothesis. For example, if you have some training 
+example you can output more than one hypothesis and you can attach probabilities with 
+the different hypothesis. For example, let us say you have a decision tree so in neural 
+network or decision tree you give only one hypothesis. When you are giving your 
+training examples you come up with one hypothesis. But in probabilistic learning 
+framework it is possible to you to come with multiple hypotheses and also associate the 
+confidence of probability that you have in each of these hypothesis. The second property 
+of Bayesian classification is that it can be used in an incremental fashion. Each example 
+can incrementally increase or decrease the probability of a hypothesis.  
+ 
+You can find out for the posterior probability of the hypothesis and when you have 
+processed a number of examples you have attached certain posterior probabilities with 
+different hypothesis. For example, your probabilities can get updated incrementally. So, 
+this is one advantage of Bayesian classification techniques.  
+ 
+Thirdly, it allows you to make probabilistic prediction. That is, you can predict multiple 
+hypotheses and you can associate with each of them their probabilities. Also the Bayesian 
+framework provides a standard of optimal decision making. Even when you are not using 
+this technique but using some other technique you can try to evaluate how well the 
+technique corresponds to this model. We can try to evaluate the type of the hypothesis 
+that a learning algorithm outputs whether it satisfies the different criteria that we will 
+study.  
+ 
+(Refer Slide Time: 07:51) 
+ 
+ 
+ 
+Some basic formula for probabilities:  
+For example, the product rule is used to find out the product of the probabilities of A and 
+B. Now P(A and B) can be written as the product of condition of P(A by B) times the 
+P(B). As this is commutative the P(A and B) is the same as the P(B and A). Therefore it 
+can also be written as P(B by A) times the P(A). We can combine this expression P(A by 
+B) times P(B) is equal to P(B by A) times P(A) to derive a very important learning 
+hypothesis called the Bayesian hypothesis. Here are some other rules of combining 
+probabilities. Sum rule allows you to find the probability of the sum of two random 
+variables P(A plus B) is equal to P(A) plus P(B) minus P(A) and B or A intersection B. 
+So this is called sum rule. We have the theorem of total probability. If we have events a1 
+a2 an and these events are mutually exclusive then we can say that P(B) is equal to sum 
+over all i’s P(B by Ai) times P(Ai). So we can condition on the different Ai’s and we can 
+combine these the weighted sum to get the P(B). These three formulas are often used in 
+different manipulation of probabilities. Another very important rule is the Bayes Rule.  
+ 
+(Refer Slide Time: 10:20) 
+ 
+ 
+ 
+This expression can be used to derive Bayes Rule. From this expression we can write the 
+P(A by B) is equal to P(B by A) times P(A) by P(B). And this we can rewrite in the form 
+of P(h by D) is equal to P(D by h) times P(H) by P(D). This follows from the previous 
+expression that we saw.  
+ 
+Now let us see how we can interpret this. If you take that H represents the hypothesis and 
+D represents the data or evidence. So, in the concept learning problem you are given 
+some training examples or the evidence and you have to find out a hypothesis which 
+describes the concept. So this can be represented probabilistically as finding out for 
+different hypothesis. You can consider different hypothesis and find out the probability of 
+that hypothesis given the data. And you can evaluate this probability for the entire 
+possible hypothesis and output that hypothesis which is most likely.  
+ 
+What we are trying to do is evaluate the P(A) by hypothesis by data or evidence that we 
+have. Now we can rewrite P(h by D) in terms of probability D by h. Why we do this 
+rewriting? It is often easier to evaluate the P(D by h). So, if you evaluate P(D by h) from 
+that we can find P(h by D). But we need some other factors for example we need P(H) 
+and P(D). Let us see what these mean. So P(H) can be interpreted as the prior probability 
+of the hypothesis H. So, before you have got any evidence you have a set of possible 
+hypothesis that you are considering and you have your initial belief about the 
+probabilities of each of these hypotheses.  
+ 
+Each of these hypotheses may be equally likely or may be you consider that some of 
+these hypotheses are more likely than the other. So P(H) denotes your belief about the 
+prior probability of the hypothesis H and we can refer to this as the prior. Now what does 
+P(D) stands for? It is the prior probability of the data D or the evidence which is not very 
+intuitively clear what it means. But P(D) is the prior probability of that data.  
+ 
+What is P(h by D) signify? It is the probability of hypothesis given the data. So after you 
+have seen the evidence what is your posterior probability? What is your current belief, 
+posterior belief after seeing the data about the hypothesis? This is called P(h by D). After 
+you have seen some training examples D you want to find out based on this training 
+example what is the probability of each of the hypothesis. And as you increase your 
+training examples this will be updated. Then what is P(D by h) signify? It means the 
+likelihood of the (D by h). So you have some hypothesis H.  
+ 
+Now what is the likelihood that the hypothesis could rise to the data?  
+The P(H by d) is the posterior probability is equal to P(h) the prior probability, this is the 
+prior probability and this is the posterior probability. And what is P(D by h)? It is the 
+likelihood of the data given the hypothesis and this P(d) is the evidence that you have. 
+This is evidence and this is likelihood. You can write it as posterior is equal to likelihood 
+into prior by evidence. So this is the base rule that we have P(H by d) is equal to P(D by 
+h) into P(H) by P(D). Generally we want most probable hypothesis given the training 
+data, the hypothesis which has the maximum posterior probability. We refer to it as hmap.  
+hmap is called the map hypothesis. 
+ 
+(Refer Slide Time: 16:20) 
+ 
+ 
+ 
+The map hypothesis is that hypothesis for which P(h by D) is maximum among all the 
+hypothesis that you are considering. We know what a hypothesis space is. It is the set of 
+hypothesis which you are considering. Your hypothesis space can finite and finite but 
+suppose your hypotheses is finite and suppose there are hundred hypothesis in the 
+hypothesis space.  
+ 
+You want to find out the probabilities, the posterior probabilities for each of the 
+hypothesis so that you can find out that hypothesis for which the posterior probability is 
+the highest. So hMAP is that value of h for which the P(h by D) is maximized. This can be 
+written as argmax (h by H) included in h, h included in the hypothesis space H P(H by d).  
+ 
+Now if we apply Bayes Rule to this expression we can substitute the right hand side of 
+this equation so we can say that hMAP is that hypothesis for which P(D by h) times P(H) 
+times by P(D) is maximized. Now when you inspect this expression you are trying to find 
+out that value of h for which the combination of these three terms is maximized out of 
+which the particular hypothesis we are considering affects these two terms but not this 
+term. So, that hypothesis for which this entire thing is maximized the same hypothesis for 
+which only the numerator is maximized. So a map hypothesis is a hypothesis for which 
+P(D by h) times probability h is maximized.  
+ 
+(Refer Slide Time: 19:24) 
+ 
+ 
+ 
+Suppose you are given a learning problem and you are able to find out these different 
+probabilities you would like to choose the maximum a-posteriori hypothesis hMAP and 
+hMAP is given by argmax, h is included in the hypothesis space, P(D by h) times P(H). 
+Now, as we discussed ph denotes the prior probability of the different hypothesis. 
+Suppose that initially you consider all hypothesis to be equally likely then you can say 
+that P(H) is the same for all h included in the hypothesis space. In that case Hmap would 
+be that hypothesis for which P(D by h) is maximized if you consider P(H) is the same. So 
+such a hypothesis for which only P(D by h) maximized is called the maximum likelihood 
+hypothesis and this is called a maximum a-posteriori hypothesis. Now map and ML 
+hypothesis gives you the same hypothesis if the prior probability of the entire hypothesis 
+are equal otherwise they might give you different values.  
+ 
+ 
+ 
+(Refer Slide Time: 19:24) 
+ 
+ 
+ 
+Here is an illustration of what we mean by prior, posterior and how they affect the 
+decision making. Here is a simple standard problem. In this problem your objective is to 
+find out whether a patient has a malignant tumor or not. And you have the following:  
+A patient takes a lab test and the result comes back positive. The test returns a correct 
+positive result in only 98% of the cases in which a malignant tumor is actually present, 
+and a correct negative result in only 97% of the cases in which it is not present. 
+Furthermore, it is known that only 0.008 of the entire population have this particular 
+tumor. So this is the data that you are given. What you have to find out is whether the 
+patient is likely to have malignant tumor.  
+ 
+Here the two possible hypotheses are; the patient has malignant tumor and the patient 
+does not have malignant tumor. You have to find out whether the probability of the 
+patient having malignant tumor given your evidence is higher or the probability of not 
+having malignant tumor given the evidence is higher. What is the evidence? The evidence 
+is that the patient takes a lab test for which the result is positive so the result of the lab 
+test is positive and the lab test is taken to identify whether the patient has tumor or not. 
+However, the lab test is not 100% accurate.  
+ 
+Now you are told that, if the patient does have malignant tumor the lab tests returns yes 
+only in 98% of the cases. In 2% of the cases the lab test returns wrong result. It tells you 
+that you do not have tumor but actually you have tumor. Also it tells us that if the 
+malignant tumor is not present then in 97% of the cases the lab test returns negative. And 
+3% of the cases the lab test returns positive. Therefore based on this you have to find out 
+if the result is positive how likely the patient is to have malignant tumor. In addition to 
+this you are given some other data that your prior probability on malignant tumor and not 
+malignant tumor are not equal. Hence, only 0.008 of the entire population has this tumor. 
+That is, 0.992 of the population does not have tumor. So the prior probability of tumor is 
+only 0.008 and the prior probability of no tumor is 0.992. Here is a way to proceed in this 
+problem. From the description given in the previous slide we can write that P(tumor) is 
+equal to 0.008 so we can write the P(tumor) is equal to 0.008 and P(not tumor) is equal to 
+0.992. These are your prior probabilities. Now you are also given that, if there is tumor 
+then P(lab test) being plus is 0.98 and if there is tumor P(negative result) in the lab test is 
+0.02. 
+ 
+(Refer Slide Time: 24:15) 
+ 
+ 
+ 
+You are further given that if there is no tumor then P(plus) in lab test is 0.03 and 
+P(negative) in lab test is 0.97. Now, the evidence that you are given is that the lab test 
+returns positive and you have to find out the posterior probability of the two possible 
+hypothesis P(tumor by plus) and P(no tumor by plus). So P(tumor by plus) can be written 
+by using Bayes Rule as P(plus by tumor) P(tumor) by P(plus) and P(not tumor by plus) is 
+equal to P(plus by not tumor) times P(not tumor by P(plus). Now you can evaluate each 
+of these values from the data you are by 0. What is P(plus by tumor)? P(plus by tumor) is 
+equal to 0.98 and P(tumor) is equal to 0.008. 
+ 
+What is P(plus by not tumor)?  
+P(plus by not tumor) is equal to 0.03 and P(not tumor) is equal to 0.992. 
+ 
+And what is P(plus)?  
+It is not known to us but it does not matter. When you have P(tumor by plus) and when 
+P(not tumor by plus) we want to find out which one of them is higher. You can find out 
+which one of them is higher by only evaluating the numerator. Also you know that 
+probability of these two sums to 1. You know that any random variable P(A) and P(not 
+A) is equal to 1. So you can take this P(plus) as some constant alpha and you can say 
+alpha times 0.98 into 0.008 plus alpha times 0.03 into 0.992 is equal to 1, you can find 
+out alpha and you can find the exact values of each of these probabilities.  
+So you need not know the P(plus). In this problem you will see that P(not tumor by plus) 
+is much higher and the reason to why this is the case is because the prior P(not tumor) is 
+much higher.  
+ 
+Prior P(not tumor) is equal to 0.992 and P(tumor) is only 002. If these two prior 
+probabilities were equal then P(plus by tumor) is equal to 0.098 and P(plus by not tumor) 
+is equal to 0.03 so definitely this would have been more likely. The maximum likelihood 
+hypothesis is that the patient has tumor. But if we combine it with the prior probabilities 
+on the hypothesis whether a patient has tumor or not tumor we see that most likely the 
+patient does not have tumor. So this example illustrates to you the role that prior 
+probability plays in finding out the posterior probability. 
+ 
+(Refer Slide Time: 28:25) 
+ 
+ 
+ 
+How does a map learner work?  
+You have the hypothesis space H and you are trying to find out for each hypothesis H in 
+the hypothesis space you compute the posterior probability P(h by evidence) and you 
+compute it using Bayes Rule and then you output that hypothesis for which this is 
+highest. So the posterior probability hmap is maximum and that hypothesis for which P(h 
+by d) is maximum. This is called a map learner maximum a-posteriori probability learner. 
+The Bayesian framework provides a survey of evaluating the probability of hypothesis.  
+ 
+In practice the Bayesian method is not always possible to apply. The main reason is that 
+in the particular case we considered we had only two possible hypothesis in the 
+hypothesis space, the patient has tumor or the patient does not have tumor. Consider a 
+case whether a number of possible hypothesis is very large. So, if you follow this 
+procedure for each hypothesis you have to find out the posterior probability for each of 
+the hypothesis given to it for each of the hypothesis. You have to do it for each of the 
+hypothesis.  
+ 
+If the number of hypothesis is very large it is not practical to enumerate each of the 
+probabilities. Therefore this sort of rule is not applicable. But this nevertheless gives you 
+a very good framework to show what is happening here. And if you study further into 
+machine learning you will see that many of the learning algorithms are evaluated based 
+on whether the hypothesis that they output is the maximum a-posterior hypothesis, 
+whether it is a map hypothesis or ML hypothesis or whatever criteria that satisfies. 
+Therefore this gives us standard for judging the efficacy of different learning algorithms 
+and it can be applied when your hypothesis space is not very large.  
+ 
+(Refer Slide Time: 28:25) 
+ 
+ 
+ 
+So, the map learner is computationally intensive because you got to find out the posterior 
+probability for each of the hypothesis. It provides a standard for judging the performance 
+of learning algorithm. You can analytically find out whether a particular learning 
+algorithm gives the map hypothesis or not. And, by choosing P(h) the prior reflects the 
+prior knowledge about the learning task. And P(D by h) also can be computed in many 
+cases depending on our knowledge about how the hypothesis affects the data. So far we 
+have looked at a map hypothesis.  
+ 
+A map hypothesis gives you the hypothesis which is most likely. In some cases it is not 
+the hypothesis that you really care about but you want to really find out the class. So you 
+have a concept learning problem, you are given some data, you are by a new example and 
+you want to find out the class of the data. If the hypothesis corresponds to the class then a 
+map hypothesis is what you are looking for. However, consider these cases, if the 
+hypothesis that is returned by the map learner is applied on the instance x does it give you 
+the most likely classification of the instance x? 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 32:38) 
+ 
+ 
+ 
+It may not be the case. It depends on what form the hypothesis is in. For example, 
+suppose you have some evidence D and you have three competing hypothesis. So your 
+hypothesis space consists of three hypothesis h1, h2 and h3. And suppose you compute 
+the posterior P(Ph1) to be 0.4 and that of h2 to be 0.3 and that of h3 to be. Now, which is 
+the hypothesis with the highest posterior probability? Definitely it is h1 because P(h1 by 
+D) is equal to 0.4 which is more than P(h2 by D) or P(h3 by D).  
+ 
+Now we pick h1 and we apply h1(x). We find out that when we apply h1(x) h1 applied to 
+x is plus whereas h2 x is minus h3 x is also minus. Now what is the most likely 
+classification of x1? So you can just look at the examples and see that combined 
+probability h1 h2 is 0.36 and they predict that x is minus whereas h1 which has the single 
+highest probability predicts that x is plus but this probability is only 0.4. So in this 
+example x is most likely best classified as minus. Therefore the map hypothesis applied 
+to the instance does not necessarily give you the most probable classification of x. In such 
+cases what we really want is to find out a Bayes optimal classifier. Now let us see what a 
+Bayes Optimal Classifier is. 
+ 
+Suppose you have different classes V so V is the set of possible plus. In your 
+classification problem V is the set of possible classes. Therefore possible classes could be 
+positive or negative in the case of the tumor example. Suppose you are trying to classify a 
+news article as sports, politics, health and entertainment so your possible classes are 
+sports, politics, health and entertainment. These are the four possible classes. So what 
+you are trying to find is the class. So the class vj which is an element of V, V is the set of 
+all classes and you want to find out that class in V for which this quantity for which this 
+is the highest. So you have different hypothesis h1, h2 etc and all these hypothesis belong 
+to the hypothesis space H. So, for each hypothesis hi in the hypothesis space you find out 
+the probability that the probability of a particular value of vj sigma over all hypothesis 
+P(vj by hi) into P(hi by D) so this is the posterior probability of the hypothesis hi and this 
+is the probability that the classification is vj given the hypothesis i.  
+ 
+(Refer Slide Time: 36:58) 
+ 
+ 
+ 
+Suppose you have three hypothesis h1, h2, h3 the posterior P(h1) is equal to 0.4, h2 is 
+equal to 0.3, h3 is equal to 0.3. Then what is the probability that your class is positive? It 
+is p(plus by h1) into 0.4 plus P(plus by h2) into 0.3 plus P(plus by h3) into 0.3. So this is 
+the P(plus).  
+ 
+What is the P(minus)?  
+Similarly, it is P(minus by h1) into posterior P(h1) plus P(minus by h2) into posterior of 
+(h2minus by h3) into posterior(h3). So let us try to apply this to the particular problem we 
+saw in the previous slide. We have already seen that P(h1 by D) is equal to 0.4, P(h2 by 
+D) is equal to 0.3, P(h3 by D) 0.3 and h1(x) is positive that means P(plus by h1) is equal 
+to 1, P(minus by h1) is equal to 0. So this is given to us and we can therefore write as 
+P(h2 by D) is equal to 0.2, P(minus by h2) is equal to 1, P(plus by h2) is equal to 0, 
+P(minus by h1) is equal to 0, P(plus by h1) is equal to 1, h3 classifies instance as negative 
+therefore P(minus by h3) is equal to 1 and P(plus by h3) is equal to 0. So we can find out 
+that P(plus by hi) into P(hi by d) over all hi's gives us 0.4. It is because there are three 
+hypothesis h1, h2, h3 and only h1 classifies the positive. So this expression of P(plus by 
+h1) into P(h1 by d plus by h1) is equal to 1 and P(h1 by D) is equal to 0.4 and the rest of 
+the things are 0. So the P(plus) is finally 0.4 whereas P(minus) is equal to 0.6. So this is 
+the most likely classification therefore the most likely classification of instance is 
+negative.  
+ 
+Therefore, once you have found out the posterior probability of hypothesis you can apply 
+the Bayes Optimal Classifier to find out the most likely classification of examples. 
+Naive Bayes Classifier: This is a very simple classification algorithm but quite effective 
+in especially problems where the number of attributes is very large.  
+ 
+ 
+ 
+(Refer Slide Time: 40:16) 
+ 
+ 
+ 
+So the Naive Bayes Classifier is a popular simple learning algorithm. It works well when 
+a moderate or a large training set is available. To explain the Naive Bayes Classifier we 
+make a very restriction assumption and the assumption is that the attributes that describe 
+instances are conditionally independent given classification. Suppose we have some 
+attributes a1, a2, an for a classification problem we say that the P(a1 by c) is independent 
+of a2 or of the other attributes. So the attributes are independent given the class. So this is 
+an assumption that we make. This is a very restricting assumption. We are trying to say 
+that this attribute features are completely independent features and they do not interact. In 
+practice, in realistic learning problems it is very difficult to find examples of attributes 
+whether all these attributes are independent. 
+ 
+However, even with this wrong assumption which does not hold certain realistic 
+problems the output of the Naive Bayes Algorithm in practical problem sometimes is 
+surprisingly good. And there are some applications on which Naive Bayes has been 
+applied and gives quite good results. For example, in certain diagnosis problems. And in 
+text classification your objective is that you are given some text documents and you have 
+some classes. For example, it could politics, sports, health, entertainment etc so you want 
+to find out which class this article belongs to. And for this classification task Naive Bayes 
+Algorithm has been quite successful in many such classification tasks. For example, there 
+is a particular experiment people have performed on the 20,000 newsgroup data set where 
+you have 20 newsgroups and you have 1000 documents per newsgroup. And on this 
+Naive Bayes was applied and it gave a classification accuracy of 89% which is quite 
+good. Now let us look at what the Naïve Bayes Classifier does.  
+ 
+We assume that we have a discrete target function which takes you from the attribute 
+space X to the class C. And suppose each instance x is described by the attributes a1, a2, 
+an so there are n attributes s sub 1, s sub 2, s sub n and you have a classification from…..  
+ 
+(Refer Slide Time: 43:20) 
+ 
+ 
+ 
+The C is the set of classes and x is the input instance. Now what is the most probable 
+value of f(x)? It is given by the CMAP, CMAP is the class which has the highest probability. 
+The class C with the maximum a-posterior probability is that class cj for which the 
+following maximized. P(cj) given the attributes. So you want to find out CMAP which is 
+that value of cj such that cj is included in C for which the P(cj by a1, a2, an) is maximized. 
+We can rewrite P(cj by a1, a2, an) as P(a1, a2, an by cj) into P(cj by P(a1, a2, an) by applying 
+Bayes Rule. So P(cj by a1, a2, an) is P(a1, a2, an by cj) times P(cj by P(a1, a2, an). And since 
+P(a1, a2, an) does not depend on cj we can say that CMAP is that class for which P(a1, a2, an 
+by cj) times P(cj) is maximum. So CMAP is that class cj for which P(a1, a2, an by cj) times 
+P(cj) is maximum.  
+ 
+The P(cj) we can estimate from either we can have prior belief or we can estimate from 
+the data that we have given. If you are given some training examples and the training 
+examples we find out the proportion of examples belonging to the different classes we 
+can estimate P(cj). Now the difficulty is to find out value of this expression: P(a1, a2, an 
+by cj). This is a joint P(n) attributes. Now if we want to estimate the joint probability 
+from the training data we will require a very large number of training data. It is because 
+we have n attributes. Even in the simplest case when each attribute is Boolean that is each 
+attribute can take two different values the number of combination of a1, a2, an is 2 power 
+n. So the number of such joints is very large.  
+ 
+ 
+ 
+ 
+(Refer Slide Time: 43:20) 
+ 
+ 
+ 
+We look at all combinations of the attribute values; the number of such combinations is 
+very large. Now in order to estimate for each of them the probability requires very large 
+corpus and also requires a large number of the values that you have to store and this is 
+clearly not doable when n is large. Therefore in the Naïve Bayes assumption we make a 
+very simplifying assumption.  
+ 
+We assume that P(a1, a2, an by cj) is the product for P(ai by cj). We assume that (a1, a2, an) 
+are conditionally independent given cj so this can be written as P(a1 by cj) times P(a2 by 
+cj) times P(... an by cj). So we can write P(a1 a2 an by cj )as product of P(ai by cj over all 
+i’s. Therefore C Naïve Bayes is that class for which this times P(cj) is maximized. So CNB 
+is the class cj which is a member of C so that product over i P(ai by cj) into P(cj) is 
+maximized. This is the Naives Bayes Classifier, it works under the assumption that the 
+attributes are conditionally independent of each other given that we know the class. A 
+recap: In Bayesian classification the classification problem may be formalized using a-
+posterior probabilities.   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 48:20) 
+ 
+ 
+ 
+We want to find out P(C by A) probability that the sample tuple is of class C. You are 
+given an instance X and you want to find out the probability that instance belongs to 
+class. For example, suppose you want to know given the attributes of a particular day 
+whether it is a good day for playing. Suppose you are given that the outlook of the day is 
+sunny, windy and so on I want to know whether it is a good day to play or bad day to 
+play. So there are two classes yes and no. Therefore the idea is you want to assign to the 
+sample X the class label c such that P(C by X0) is maximum. This is the problem we were 
+trying to solve and Naives Bayes Classifier is one way of getting the solution provided 
+the independent assumptions hold provided these attributes are independent given the 
+class. And outlook and windy does not depend on each other so whether it is sunny or 
+cloudy does not affect whether it is wind or not which may not be true.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 50:11) 
+ 
+ 
+ 
+We have seen how to estimate a-posterior probabilities by using Bayes Theorem. Bayes 
+Theorem is stated as P(C by X) is equal to P(X by C) times P(C) by P(X); P(X) is 
+constant for all classes and therefore we want to find out that class for which P(X by C) 
+into P(C) is maximum. But we cannot compute P(X by C) because X is an instance which 
+depends on potentially a large number of attributes and if you to estimate each of these 
+possibilities the number of such possibility will be very large. So in Naïve Bayes 
+Classification we have made a very restrictive assumption a naïve assumption which says 
+attributes are independent. That is P(x1, x2, xk by C) is product of P(x1 by C) (x2 by C) (xk 
+by C).  
+ 
+(Refer Slide Time: 51:12) 
+ 
+ 
+Suppose xi is a categorical attribute then how do I estimate P(xi by c)? What we can do is 
+we can look at the training examples and find out for a given class how many times xi has 
+a particular value. So P(xi by c) can be estimated from the training corpus as the relative 
+frequency of those training examples that have value xi as the ith attribute in class c. But if 
+your attribute is continuous, suppose you have an attribute like temperature which takes 
+continuous values then (exi by c) is often estimated by assuming a probability distribution 
+for these attributes. For example, often we assume a Gaussian density function from 
+which P(xi by c) can be estimated.  
+ 
+A recap: Naïve Bayes Algorithm works like this. In Naives Bayes learn you are given 
+some examples. For each target value vj you estimate P(vj). Suppose you have this news 
+group classification or news classification you have four classes sports, politics heath and 
+entertainment. Now, for each of these classes you estimate P(vj) by looking at the corpus 
+and finding out how many news you have from sports, how many from politics, how 
+many from health, and how many from entertainment. So, from this you can estimate 
+P(vj). Now for each attribute value you can estimate P(ai by vj).  
+ 
+So vj is sports, you find out how many times this attribute a1 is true or a1 has a particular 
+value. In a document classification we often use the words in the document as features. 
+So we look at the set of words that occur in the document. So we want to know how 
+many times the word referee is in a document given that it belongs to a sports domain or 
+how many times the word referee is in the document that belongs to entertainment 
+domain or the health domain. 
+ 
+(Refer Slide Time: 54:57) 
+  
+ 
+ 
+For each attribute or each word that we are considering we can find out how many times 
+that attribute takes a particular value for those documents that belong to that class. From 
+this we can estimate P(ai by vj). Once we have estimated for all j P(vj) that is for all class 
+the probabilities and all conditional P(ai by vj) we can use those values to classify a new 
+instance. So the most likely classification of the new instance given by v is that value of 
+vj for which P(vj) into product of (pi by vj) for all Ai is maximum. This is Naive Bayes 
+formula for classifying a new instance.  
+ 
+So how do I compute the P(ai by vj)? 
+P(ai by vj) is, suppose n denotes the number of examples in your training set for which 
+the class is vj and nc denotes the number of examples in your training set for which the 
+class is vj and for which Ai has this particular value that is the attribute has the value of i. 
+So P(ai by vj) can be estimated nc by n. However, this sort of estimation has a problem. It 
+could be that because you do not have sufficient number of examples in your corpus in 
+your training data there is no example with class is equal to vj in attribute is equal to Ai in 
+which case this probability will be 0. And because of you are taking the product of 
+different probabilities if one of the probabilities is 0 the entire value would be 0. 
+Therefore in order to avoid this problem we do some form of smoothing. So, to ensure 
+that the numerator is not 0 we add p which is the prior estimate for P(ai by vj). 
+ 
+(Refer Slide Time: 56:57) 
+ 
+ 
+ 
+So we ensure the prior estimate is greater than 0. And if m is the weight given to the prior 
+estimate then we add mp to the numerator and m to the denominator. So this is the 
+smoothed value of P(ai by vj) to ensure that this never goes to 0. In practice we take p to 
+be a very small value and m is the number of your examples. So let us just illustrate it 
+with an example. Suppose we are given the following data: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 56:57) 
+ 
+ 
+ 
+Suppose we have some training set and in the training set we have the data where we 
+have the different attributes of a particular day. For example, what is the outlook of the 
+day? Is it sunny or overcast or raining? Is the temperature hot mild or cool is the humidity 
+high or normal is that windy or not? And we want to know whether it is a good day for 
+sport or a bad day for sport. And from the data we find out from the P(ai by vj). If it is 
+sunny then the P(good day) is equal to 2 by 9 and bad day is 3 by 5 and so on. So we get 
+this data of P(ai by vj) and when we are given a new instance the new instance is 
+described by the values of the attributes. 
+ 
+(Refer Slide Time: 58:11) 
+ 
+ 
+In this particular instance outlook is sunny, temperature is cool, humidity is high and 
+wind is strong and we want to find out whether it is a good day for playing tennis or a bad 
+day. I have fourteen examples in my training set and nine of them are good days five are 
+bad days so P(yes) is equal to 9 by 14 P(no) is equal to 5 by 14 and then we use the value 
+of the previous table to find out the Naïve Bayes example. The independence hypothesis 
+we make in Naive Bayes makes computation simple but is seldom satisfied in practice.  
+ 
+(Refer Slide Time: 59:11) 
+ 
+ 
+ 
+And if we realistically want to model the problem we have to use joint probabilities 
+which are not feasible. But the way out is to use Bayesian networks. You can have 
+algorithms for learning Bayesian networks.  
+ 
+ 
+ 
+ 
+ 
+ 
+

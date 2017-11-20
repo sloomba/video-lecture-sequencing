@@ -1,0 +1,32 @@
+The idealogy behind the baseline methods is quite simply based on the "knitting phenomenon". Video lectures which are related to one another in some sequence, must have some degree of overlap in their content. We thus need two things here: a notion of a content similarity, and a notion of an ordering. Let's look at the latter first. We decide the ordering of lectures by assuming that the paedagogical ordering of these lectures is correct. By paedagogical ordering, we mean that the ordering of the lectures in the course, from 1 to n, is a proper partial order, which we wish to ensure in the final ordering of lectures we produce.
+
+The former notion of content similarity can be explore by a vareity of techniques, and this is the crucial point of exploration in our baseline experiments. We worked on the following 6 techniques:
+
+1. Simple Bag of Words (BoW):
+	A BoW model generates a so-to-speak document vector of all video lectures, based on the vocabulary generated on all lectures of the course. A simple vector intersection is the similarity score of two documents. If for a lecture i lying below j in the paedagogical ordering, the similarity threshold is over a threshold, it is chosen as a prerequisite lecture for lecture j.
+2. TextRanked BoW:
+	Rather than using a 1/0 boolean value for document vectors, it makes more sense to weight the value by the importance of that word to that document. The intuition is that a content overlap between important words should reveal more about the relation between the two lectures. Thus, TextRank algorithm was used to determine scores of the vocabulary words with respect to every lecture. A cosine similarty of vectors then gave the content overlap. Like in BoW, a threshold was decided, and combined with the paedagogical ordering, prerequisite lectures were found.
+3. Latent Dirichlet Allocation (LDA):
+	Two lectures may be similar not because of literal content and word overlap, but because they talk about the same topic. This, is the high-level idea of finding relationships between lectures. Thus, LDA, an unsupervised method to find top k topics being covered by a lecture (using BoW vectors), was used to find the top topic of every lecture. Lectures with the same top topic were clustered together, and for every ith lecture, all jth lectures in its cluster which were also preceeding i in the paedagogical ordering, were declared as its prerequisites. Note that the parameter in this model is the number of topics, k.
+4. Hierarchically Agglomerative Clustering (HAC):
+	The intuition behind using HAC is same as that of using LDA. HAC is another unsupervised method which hierarchically clusters lectures on their BoW vectors, and then the prerequisite lectures are outputted in a similar fashion as in LDA. The parameter in this model is the number of clusters. In some sense, LDA and HAC are expected to perform better since they consider a global relationship between lectures, contrary to pairwise relationships which were used by BoW and TextRanked BoW.
+5. LDA + TextRank
+	This was a simple tweaking of the LDA method. Instead of using document vectors, the TextRank weight vectors were used for LDA. Expected to perform better than simple LDA or TextRank.
+6. HAC + TextRank
+	Same modification to HAC as in LDA + TextRank. Expected to perform better than just HAC or TextRank.
+
+Results (after grid search on model parameters):
+
+Method f1-score Precision Recall
+
+below 0.710 0.845 0.612
+
+TextRank 0.718 0.779 0.667
+
+LDA 0.784 0.923 0.682
+
+HAC 0.736 0.833 0.659
+
+LDA+TextRank 0.769 0.800 0.741
+
+HAC+TextRank 0.828 0.968 0.723

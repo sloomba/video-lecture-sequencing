@@ -1,0 +1,585 @@
+Artificial Intelligence 
+Prof. Sudeshna Sarkar 
+Department of Computer Science and Engineering 
+Indian Institute of Technology, Kharagpur 
+Lecture # 23 
+Planning - 3 
+ 
+Hello, welcome to the class. Today we will have the third lecture on planning. In the 
+last two classes we looked at planning in Artificial Intelligence and representations 
+for planning problems. We looked at STRIPS representation, the STRIPS algorithm 
+for solving planning problems and we also looked at regression planning and 
+progression planning which involve searching in the state space to find the plans. 
+Today in the third lecture we will explore further the details of Partial Order Planning. 
+ 
+(Refer Slide Time: 01:06) 
+ 
+ 
+  
+ 
+As I mentioned in the previous class in Partial Order Planning we will be searching in 
+the space of partial plans. And our objective is given a problem situation we want to 
+get a plan which makes least commitment about the ordering of the different actions. 
+So we will represent the plan as actions and the ordering between the actions in order 
+to get the final plan of the problem. In any intermediate stage we will maintain 
+consistent partial plans which may not be complete and we will presently see the 
+details of what I mean by this.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+(Refer Slide Time: 02:33) 
+ 
+ 
+ 
+In Partial Order Planning the nodes would be partial plans and to get from one partial 
+plan to another partial plan the step is called plan refinement. By taking a partial plan 
+by doing plan refinement we get to another partial plan. And the solution to the 
+planning problem is a partial plan. So the path to the solution is not important because 
+all the relevant information is captured in the partial plan which is a node in this 
+search problem. That is, we obey the principles of least commitment. We do not 
+commit to any ordering of the actions which is not required.  
+ 
+Before we continue let us recall the problem we worked out in the last class of putting 
+on the socks and shoes problem our objective was to put on the left sock left shoe 
+right sock and right shoe. So these are the four conditions that must be satisfied at the 
+goal. And we one cannot put on the right shoe before the right sock is put on or the 
+left shoe before the left sock is put on. And a solution to such a problem would be, 
+after this start the agent can put on either the left sock or the right sock. Only after the 
+left sock the agent can put on left shoe and only after the right sock the agent can put 
+on right shoe. When both left shoe and right shoe are on the plan is done or finished. 
+So this represents a partial plan for the socks and shoes problem. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 04:33) 
+ 
+ 
+  
+The actual plan will of course not be such a partial order structure but it will be a 
+linear structure. From this partial order structure we can get several linearizations. 
+The agent can put on left sock right sock left shoe right shoe or left sock left shoe 
+right sock right shoe or right sock left sock left shoe right shoe or right sock left sock 
+right shoe left shoe and so on. Therefore how many linearizations can be possible 
+given this partial plan. Let us get to certain terminologies that we will be using today. 
+ 
+(Refer Slide Time: 05:29) 
+ 
+ 
+ 
+We have a step in the partial plan and a step in the partial plan would be a particular 
+action which is taken. So step is bound to a specific action. Then in a partial plan we 
+will have orderings, orderings of the form s1 before s2 which means s1 must precede 
+s2. If s1 is an action s2 is another action, action s1 must come before the action s2 it 
+may come immediately before the action s2 or sometimes before the action s2. 
+Thirdly let us see what we mean by open conditions. Open conditions are the 
+preconditions of the steps which are not yet been satisfied. Suppose we have a step 
+and in order to execute the step we need certain preconditions to hold. 
+ 
+As you know, in the STRIPS representation for every action we have preconditions 
+like P1 and P2 are preconditions of action (a) and also as you know for every action 
+we also have the add list and the delete list suppose q1 and q2 are added and q3 is 
+deleted. So P1 and P2 are the preconditions of the action (a). Open conditions are those 
+preconditions of the step (a) that have not yet been satisfied. Then what is important is 
+we need to know what we mean by causal link.  
+ 
+Now we will say that Ap to Ac on Q is a causal link on Q if the step Ac has a 
+precondition of Q and this precondition is met by the step Ap. If the step Ap supplies 
+the precondition Q which is a precondition of Ac then Ap to Ac is a causal link on the 
+condition Q. So this is a commitment that the condition Q needed by Ac will be made 
+true by Ap. That is Ap must cost Ac. So Ap must have Q as an effect and Ac as Q as a 
+precondition. Now we say that Ap achieves Q for Ac. If in our partial plan Ap achieves 
+Q for Ac what it means is that no action can come between Ap and Ac which deletes 
+Q. So, while developing the partial plan if we want Ap to achieve Q for Ac we must 
+make sure that no action would come between Ap and Ac which deletes Q. There are 
+more terminologies. 
+ 
+(Refer Slide Time: 09:33) 
+ 
+ 
+ 
+Unsafe link: Suppose there is a causal link s1 and s2 on the condition p and then we 
+have another action s3. Now if I put s3 between s1 and s2 and s3 can undo p then s3 
+will not be able to come between s1 and s2. So if my plan permits or if my partial 
+plan permits s3 to come between s1 and s2 and s3 deletes p then this is an unsafe link. 
+This causal link s1 to s2 and p along with s3 together is an unsafe link. So such unsafe 
+links have to be taken care of before we get the final plan. Before we discuss the 
+Partial Order Planning algorithm in order to develop the algorithm we will start with 
+the initial state. 
+ 
+The initial state is an initial partial plan and we will start with this. Empty plan is 
+given by this. In the empty plan we start with an initial state I, a goal state G and we 
+assume that I precedes G. This is an ordering between I and G and at G the 
+preconditions that have to be satisfied are suppose G is g1 and g2 so g1 and g2 are the 
+open preconditions that must be satisfied at G.  
+ 
+Initial plan: There are no causal links and there are no unsafe links. But this plan is 
+not complete because g1 and g2 are the open preconditions. Now let us look at how we 
+will represent partial plans. 
+ 
+A partial plan is represented by a 5-tuple A, O, L, OC and UL. What is A?  
+A is a set of actions in the plan. A is a set of steps in the plan. So S0, S1, S2 up to Sinf 
+let they be the steps in the plan. So plan consists of the set of steps and as I mentioned 
+a partial plan is not necessarily a total order plan. That is it is not just a sequence of 
+steps. We can order the steps according to a partial order. So we have a set of steps 
+and we also specify the set of action ordering. So there is a partial ordering on the 
+actions. Si precedes Sj denotes that the step Si must occur before the state Sj in a 
+realization of the plan. So A is the set of steps, O is the set of action orderings and L 
+is the set of the causal links. And as we saw a causal link Si to Sj on condition p means 
+Si achieves condition p for Sj. So Si has p as an effect and p is a precondition that is 
+required by Sj. So, A, O and L specify the partial plan. 
+ 
+(Refer Slide Time: 13:55) 
+ 
+ 
+  
+Now in a partial plan we have a set of open conditions which we denote by OC. So 
+OC at the sub-goals represent the sub-goals that remain to be satisfied. They could be 
+the sub-goals of the final goal or they could be the sub-goals of the intermediate state, 
+the preconditions of an intermediate state which have not yet been satisfied. So open 
+condition means those conditions that are not satisfied therefore the plan is not yet 
+complete. Then we have a set of unsafe links. If we have the causal link Si achieves p 
+for Sj and there is a step Sk which deletes p then Sk cannot come between Si and Sj. 
+So, if in a partial plan Sk can come between Si and Sj we have an unsafe link. So what 
+does a plan consist of? 
+A plan is a 5-tuple so we have three things; A is a set of steps in the plan, O is the set 
+of partial order relations between the steps and L is the set of the causal links and if 
+the plan is not complete what we will have in the plan is a set of open conditions 
+which are the set of sub-goals that have not yet been satisfied and we have some 
+unsafe links those links which consists of causal links and a step which can come 
+between the two steps in the causal link and delete the condition which is required. 
+When we have a partial plan that plan is flawed if there are some open conditions or 
+there are some unsafe links. And the solution plan would be a partial plan which has 
+no remaining flaw. That is, it achieves all the conditions and there is no unsafe links. 
+So in the final solution plan we would like there must be no remaining flaw. That is, 
+every open condition must be satisfied by some action and then no unsafe links 
+should exist.  
+ 
+(Refer Slide Time: 17:55) 
+ 
+ 
+ 
+Now this is a representation of the partial plan. We introduce two distinguished states 
+S0 for the initial state and Sinf for the goal state. Now we will consider that the initial 
+state description is an effect of the initial step. If in the problem the initial state is q1 
+q2 and the goal desired to be achieved is g1 g2 then we will have an initial state S0 
+whose effect will be q1 q2. So q2 is another effect of S0. And G or Sinf is the goal state 
+and for this goal state it has a set of preconditions. The preconditions are the 
+propositions which are true at the goal state. So the preconditions here are g1 and g2. 
+ 
+In the initial plan that one can draw g1 and g2 are the open conditions. This is S0 and 
+this is Sinfinity and g1 and g2 are the open conditions of G. Now this is a partial plan 
+where this open condition g1 is achieved by S3. So S3 achieves g1 for Sinf. And let us 
+say S1 achieves p for S3, I achieves q1 for S1. Also, suppose S2 achieves g2 for Sinf and 
+now suppose S2 has an effect of 0p that is S2 deletes p and S1 achieves p for S3. 
+ 
+Can you tell me if there are any flaws in the plan? 
+There are two types of flaws in this plan. Firstly S2 is a step which has two 
+preconditions OC1 and OC2 which are not yet satisfied. So OC1 and OC2 are the open 
+preconditions of the state S2 so this is flaw number one. Secondly, the flaw number 
+two is S1 precedes S3, S3 precedes G and S2 precedes G but we have not said anything 
+in this partial plan about the relative ordering of S1, S2 and S3. Now if I put S2 
+between S1 and S3, so in the linearization if we have S0 to S1, S1 to S2 and S2 to S3 and 
+then S3 to done then what will be the problem? 
+The problem is S1 will have p as an effect but that p would be deleted by S2 so S3 will 
+not get p as a precondition. So because S3 requires p as a precondition which is 
+supplied as an effect of S1 we cannot put S2 between S1 and S3 so this is not correct so 
+what can we do?  
+S2 can occur either after S3 or it can occur before S1. S2 which deletes p cannot in 
+between S1 and S3 it can come before S1 or after S3. Now let us look at a very basic 
+version of the Partial Order Planning algorithm. Let p be an initial plan.  
+ 
+Now given an initial plan we first find out if the plan has any flaw. So p is a plan we 
+find out if p has a flaw. So we choose a flaw f. The flaw could be an open 
+precondition or it could be an unsafe link. A partial plan may have several flaws, we 
+choose one of them. Eventually we have to remove all the flaws in the planning 
+algorithm. And the order in which we choose the flaws may have a bearing on how 
+fast we solve the problem. But irrespective of which flaw we choose first we can 
+choose the flaws in any order and we will get the same solution. So we have to choose 
+a flaw and depending on the nature of the flaw we have to take certain steps. 
+ 
+Therefore, as we mentioned flaw is of two types; an open condition is a flaw or unsafe 
+link is also a flaw. If we select a flaw which is an open condition then what should we 
+do? 
+We should choose an action S that achieves this open condition. So if f is an open 
+condition, suppose there is a state S DASH and this state as f as its precondition. 
+Now, in order to correct this flaw we must choose another state S1 which has f as an 
+effect. If you do this then this open precondition is taken care of even though if other 
+flaws are introduced. Namely if the preconditions of S dash are not satisfied there will 
+be new flaws that are introduced. 
+ 
+Secondly, a flaw could an unsafe link. If the flaw is an unsafe link that is if we find 
+that S2 deletes f then S2 cannot come between S1 and S dash so S2 can either be 
+promoted to come before S1 or it can be demoted to come after S1. So this is a 
+protected interval between S1 and S dash where S2 undoes the effect of f cannot come. 
+So S2 can be promoted or S2 can be demoted. Now, after we have done that we must 
+update the partial plan. So, if we promote S2 then we must add a causal link from S2 
+to S1. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 24:43) 
+ 
+ 
+ 
+(Refer Slide Time: 26:44) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 26:55) 
+ 
+ 
+ 
+If I put S2 after S dash then we must add a precedence link from S dash to S2. And 
+while doing this if we find that there is no operator by which we can resolve the 
+conflict then we return now. Therefore this planning algorithm does not succeed. But 
+if it does succeed and if we come to a point where there is no flaw left then we will 
+return the current plan otherwise if there are more flaws left we will go to step two 
+and select the next flaw. We start with an initial partial order plan which consists of 
+the initial state I, the goal state G. The goal state has the desired propositions given as 
+a goal as its open precondition and the initial state has the initial state description as 
+its effect.  
+ 
+Now our algorithm will choose a flaw. A flaw is either an open condition or it is an 
+unsafe link. If the flaw that we have chosen is an open condition we must choose an 
+action S that achieves f. If f is an unsafe link then we will choose to promote or 
+demote the current step in the plan. And once we have done this we update the current 
+plan. We return null if no resolution exist and if there is no flaw left we return p else 
+we go back to state two and continue. 
+ 
+This is the initial plan, S0 is the initial state, Sinf is the final state, g1 and g2 are the 
+open conditions of Sinf. This is an intermediate partial plan. Here we have Sinf, Sinf has 
+the preconditions g1 and g2, S2 achieves g2, S2 deletes p, S3 achieves g1 for Sinf, S1 
+achieves p for S3, S1 has q1 as its prerequisite, S2 has OC1 and OC2 as its prerequisites. 
+So, if I take this open condition I must add a step which has OC1 as its effect. If I look 
+at this causal link from S1 to S3 on q and this node S2 if we put S2 between S1 and S3 
+then we can correct the flaw. Therefore this process of flaw selection and flaw 
+resolution is known as plan refinement. This is an example of a partial plan. 
+ 
+Apart from the initial state S0 and the final state, this is the initial state and the final 
+state Sinf we have three other steps S1, S2 and S3. S3 achieves g1, S2 achieves g2, S2 
+deletes p, S1 achieves p which is required for S3. S1 has a precondition q1 and S2 has 
+two preconditions OC1 and OC2. From this example let us find out the flaws in this 
+partial plan. 
+(Refer Slide Time: 28:18) 
+ 
+ 
+ 
+Now there are several flaws in this partial plan. Firstly, there are three open 
+preconditions. S1 has the condition q1, S2 has the condition OC1 and OC2. Secondly, 
+there are some unsafe links. S2 cannot come between S1 and S3 because S2 deletes p 
+which is required by S3. 
+ 
+(Refer Slide Time: 29:11)  
+ 
+ 
+  
+For flaw selection we have several choices. The choices are the open conditions in the 
+plan and the unsafe link. The flaw resolution deals with how we select partial plans. 
+Here we can select a particular action and treat this as a backtrack point. Or even for 
+finding the unsafe links we can use backtrack search. So this is the repetition of what I 
+said earlier.  
+ 
+A partial plan is described by the tuple A, O, L. A is a set of actions in the plan, O is a 
+set of temporal orderings of the form A precedes b and L is the causal linking actions 
+via a literal. This is an example of a causal link. 
+ 
+(Refer Slide Time: 30:40) 
+ 
+ 
+ 
+(Refer Slide Time: 30:45) 
+ 
+ 
+   
+Ap achieves Q for Ac. Action Ac has precondition for Q that is established by the plan 
+by Ap. Another example; when one moves a from b to the table the effect is to clear b 
+and clear b is required to move c from d to b. Now, when we have an unsafe link as 
+we noted there is a step which can come between a protective link. So we say that a 
+step At threatens a link Ap achieves Q for Ac if At has NOTQ as an effect.  
+ 
+Secondly, if At could come between Ap and Ac, that is if according to the partial plan 
+we can put At between Ap and Ac then in both these places there is a problem with the 
+partial plan it is not fully correct. Let us look at the initial plan. For uniformity we 
+represent the initial state and the goal state with two special actions. A0 is a special 
+action or S0 which has no precondition which has initial state as effects and they must 
+be of first step in the plan. A, O, D has no effects, goals are preconditions and must be 
+the last step in the plan process. 
+ 
+(Refer Slide Time: 32:18) 
+ 
+ 
+  
+Now let us look at the Partial Order Planning algorithm in a slightly greater detail by 
+seeing how we proceed. The Partial Order Planning problem P O P stands for POP, 
+takes three arguments A, O, L. A is a set of steps, O is a set of temporal orderings 
+between steps and L are causal links linking actions with a liberal. So the P O P 
+algorithm takes A, O, L as the argument. In addition it takes two other arguments 
+agenda and the actions. 
+ 
+Agenda are the set of flaws and actions are the set of actions that the agent can take. If 
+agenda is empty then return A, O, L so we have called P O P or Partial Order 
+Planning on A O L has also agenda and actions. If agenda is null then we are done we 
+return A O L, if agenda is null then we return minus A O L, aadd equal to chooses 
+actions such that O is using effects. So, initially if the agenda is empty we return A O 
+L otherwise we pick up a flaw from the agenda. Let the flaw be (Q, a need). Now in 
+order to satisfy this flaw we must choose an action such that this action requires Q. 
+So we must pick up an action which adds Q. 
+ 
+We have to have an action which adds Q so aadd is such an action. If no such a exists 
+then we return failure. Otherwise we put L dash is equa to L union aadd where aadd is 
+the new step we have obtained and Q is the something that aadd achieves and aneed is 
+something that Q needs. So, in other words you have an action aneed. This step aneed 
+has a precondition of Q which as not yet been achieved. So we find a step aadd which 
+has Q as its effect. Now in this case we can say that aadd achieves Q for aneed. Now 
+aadd is a new step because it is a new step then we must add the preconditions of aadd 
+which are not satisfied to the agenda. 
+ 
+Now how has the plan data structure changed? 
+First of all in the plan data structure we add a causal link from aadd to aneed on Q. 
+Secondly, we update the partial ordering relations by adding this new relation aadd 
+which must come before aneed. Then the new agenda is, that is one entry we have 
+removed from the agenda is (Q, aneed) because the open precondition for Q has been 
+achieved in this state so we remove it from the agenda. If aadd is new then A equal to 
+A union aadd. That is, if we have got a new step then I will add it to my action list. 
+And then for all preconditions of aadd we must add (P, aadd) to the agenda. Therefore 
+we have taken care of open preconditions and next we have to take care of unsafe 
+links. 
+ 
+Now for every action at we check if it threatens any causal link. If it does threaten any 
+causal link we must put the action at either before ap or after ac. So, in this diagram 
+you have ap which achieves ac and it achieves it on the state variable Q. Now when we 
+want to bring in a new step I must either bring it before at or I must bring it after ac. 
+Finally if the search succeeds at all points and we have an agenda which is empty then 
+we get the answer. 
+ 
+(Refer Slide Time: 38:29) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 38:33) 
+ 
+ 
+  
+This is the same algorithm written in a small fashion. Initially we are given a Partial 
+Order Planning problem consisting of A, O, L agenda and actions. If agenda is empty 
+initially then we return the current plan A, O, L otherwise we pick (Q, aneed) from 
+agenda this is an empty condition. Q is an empty precondition of aneed so we select 
+our current goal then we choose an action which achieves this effect Q. If there are 
+several such actions this is a choice point. If there is no such action of course the 
+search will fail and then we say L dash is equal to L union aadd (Q, aneed). So L is 
+the set of causal links. We add the causal need from aadd to aneed on Q to L. So this 
+is aadd, this is aneed and this is Q. 
+ 
+Now O dash will be O dash is the set of precedence constraints, I add aadd comes 
+before aneed. From agenda I remove (Q, aneed). If a new step is added then I union it 
+with the step list and for each preconditions of the new state we add it to agenda. For 
+every action at that threatens any causal link we choose to add that at is before ap or ac 
+is before at etc if neither choice is consistent fail. Now this is the same algorithm. 
+Initially I pick a goal then I choose one of the actions then corresponding to the action 
+I update the goals that is I remove aneed from the agenda then I add a new step I find 
+the preconditions of the new step.     
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 41:18) 
+ 
+ 
+ 
+Suppose we find that there is a causal link from ap to ac on Q and if we find that there 
+is an action at which threatens ap and ac. We say at must occur before ap or at must 
+occur after ac. If at cannot occur before ap or after ac if they are not consistent then we 
+fail. And then we recursively call P O P on the action list on the causal link list and on 
+the goal list. So, as we can see the Partial Order Planning problem is sound and 
+complete. The P O P plan is a solution if all the preconditions are supported by causal 
+links that is there are no open conditions, there are no threats to any causal link and 
+we have a consistent temporal ordering and by construction the P O P algorithm 
+reaches a solution plan. 
+ 
+Now we will illustrate this P O P algorithm with a very simple example which is the 
+blocks world example of the Sussman anomaly which we have discussed earlier. In 
+this problem the initial state consist of three blocks C A and B placed as follows A 
+and B on the table C is on top of A. The goal is to get the three blocks stacked like 
+this: A on top of B, B on top of C. Before we do our P O P algorithm on this problem 
+Let us look at the representation of the initial state and the goal. The goal is 
+represented by A is on B and B is on C.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 43:02) 
+ 
+ 
+ 
+Note that we mentioned we can represent a goal by a subset of the conditions that 
+hold. An initial state is specified by the exact behavior of all the variants. In this case 
+on table A and on C A and clear C on table B and clear B is the description of the 
+initial state and ((on A B)) (on B C) is the description of the goal state.  
+ 
+Example of Sussman’s Anomaly: 
+A0 is the initial state or I and Ainf is the goal state or G. It has two open preconditions 
+((on A B)) and (on B C). So what are the flaws in this plan? 
+I have these as the effects. So flaws are there are two open preconditions. Now what 
+should we do?  
+We will try to take one of the preconditions and try to satisfy it. In the first step if we 
+have an action or step A1 which involves moving B from table to C, if I move B from 
+table to C what do we achieve? 
+We achieve the precondition (on B C). (On B C) is an effect of the action move B 
+from table to C and (on B C) is required by the goal. So we have a causal link on (on 
+B C). 
+ 
+Now let us see what the open conditions are and what flaws are there in this partial 
+plan. There are several open preconditions; ((on A B)) is open, clear B is achieved in 
+the initial state but here it is open, clear C is achieved in the initial state but here it is 
+open, on table B is achieved by the initial state. Now what we will do is we will take 
+up one of these open conditions. Let us take up clear B and we see that clear B is 
+satisfied at the initial state so we say that A0 achieves clear B for A1. Next we look at 
+the open condition (on A B) on this sub-goal. Now, to achieve (on A B) we introduce 
+a second step A2 which says move A from table to B. Now move A from table to B as 
+preconditions clear A clear B on table A and effects not on table A not clear B (on A 
+B). Now this (on A B) achieves this (on A B). 
+ 
+What are the open conditions?  
+Clear A clear B on table A. Now we notice that A0 achieves clear B for A1 but A2 
+removes clear B. So clear B is required by A1 and this clear B is achieved by A0. Now 
+this step A2 deletes clear B so A2 cannot come between A0 and A1.Therefore A2 must 
+come before A0 or after A1. A0 is the special first state A2 cannot come before A0 so 
+A2 must come after A1. So recognize this fact we add an ordering constraint from A1 
+to A2. So A0 is followed by A1, A1 is followed by A2, A1 is followed by Ainf and A2 is 
+also followed by Ainf. This is what this particular partial plan represents. 
+ 
+(Refer Slide Time: 47:55) 
+ 
+ 
+ 
+Now we pick up the open precondition clear A which is required by A2. Now we 
+introduce an action A3 that achieves clear A. What is the action A3?  
+Move C from A to table. So, if you move C from A to table then A becomes clear. 
+The other effects are not (on C A) on table C and clear A. And the preconditions are 
+(on C A) and clear C. So this is another step A3. We have introduced three different 
+steps in our plan A1, A2 and A3. The pink arrows are the causal links between the 
+states and the white arrows are the ordering links between the states. 
+ 
+(Refer Slide Time: 48:44) 
+ 
+ 
+ Finally we see that (on C A) is achieved in the initial state, clear C is achieved in the 
+initial state that is for action A3. For the action A1 clear B, clear C, on table B are all 
+achieved in the initial state. For action A2 clear A is achieved by A3, clear B by initial 
+state, on table A by initial state and so on. And we finally find that the ordering 
+relations are A3 then A1 then A2. Why it is A3 then A1? Actually A3 and A1 can come 
+in any order. A1 deletes clear C, A3 requires clear C so we cannot put A1 between A0 
+and A3. So to protect this unsafe link we must add a ordering constraint from A0 to 
+A3. So finally we get a plan A0 to A3 to A1 to A2 then to Ainf which is a plan which 
+meets this goal. So the steps are; move C from A to table. If you recollect the 
+planning problem the goal was A on top of B, B on top of C. And in the initial state I 
+think we had C on A and B on the table. 
+ 
+Now what are the steps? 
+First move C from A to table, then move B from table to C, move A from table to B 
+and then we are done. 
+ 
+(Refer Slide Time: 50:33) 
+ 
+ 
+ 
+Now in summary, if we compare Partial Order Planning versus state space planning 
+the complexity of a search problem is Ob power n in the worst case where b is the 
+branching factor and we have non-deterministic choices. Now in progression planning 
+and regression planning the depth of the plan is the number of actions in the plan. In P 
+O P the depth is the number of steps that we have to take to satisfy the flaws. 
+ 
+What are the flaws?  
+The flaws are the open preconditions and the unsafe links. Therefore n is related to 
+the number of preconditions of the steps and the number of link protection that we 
+require. 
+And generally an action has several preconditions. Now, if we look at the branching 
+factor P O P usually has the smaller value of the branching factor. But the main 
+advantage of P O P is that we have no backtrack due to goal ordering. When we have 
+to satisfy an open condition there could be more than one action which satisfies the 
+precondition so there is a choice point so there could be some backtracking on 
+deciding which action to use to achieve this precondition.  
+ 
+But if we have two sub-goals g1 and g2 let us say (on A B) and (on B C) we do not 
+have to backtrack on which one we should do first, whether we should do (on A B) or 
+whether we should do (on B C). We can do both separately and then while deciding 
+whether we should take action first or this action first we look at what conflicts they 
+generate and we look at the unsafe links. Therefore there is no backtracking due to 
+goal ordering. In Partial Order Planning as we have noted we have this list 
+commitment that is we do not do any premature step ordering. Usually the search 
+involved is less if we do Partial Order Planning.  
+ 
+ 
+

@@ -1,0 +1,591 @@
+Artificial Intelligence 
+Prof. Anupam Basu 
+Department of Computer Science and Engineering 
+Indian Institute of Technology, Kharagpur 
+Lecture - 13 
+First Order Logic 
+ 
+In the last lecture we discussed about one form of logic called propositional logic. We 
+also saw how reasoning is carried out in propositional logic. Today we will discuss about 
+a little more powerful form of logic called first order logic also called as predicate logic. 
+This form of logic can capture more variety of sentences than can be captured with 
+propositional logic. But before moving into the tales of first order logic let us start with 
+quiz’s that we had given in the last class.  
+ 
+You can have a look at the statements we had already given: Mammals drink milk, man 
+is mortal, man is a mammal, Tom is a man. These were the four sentences which were 
+given and you were asked to try to prove these two statements. Tom drink or Tom drinks 
+for grammatical part of English Tom drinks milk and Tom is mortal. Intuitively all of you 
+can understand that mammals drink milk and man is a mammal and Tom is a man and 
+Tom drinks milk that is obvious to common sense. But if you had tried the techniques 
+that we had discussed like Modus ponens resolution probably you will not be able to 
+prove this mechanism with the information that was provided.  
+ 
+(Refer Slide Time 03:05)  
+ 
+ 
+ 
+There is a subtle difference between these two statements I am making. One is that, 
+intuitively you are being able to understand and derive Tom drinks milk. But what is the 
+mechanism that is going behind this reasoning?  
+Unless we can understand that mechanism we cannot emulate that in a computer because 
+a computer will mechanically do this. So the mechanical methods we discussed like 
+Modus ponens, resolution will not be able to prove that. So what is missing? Why cannot 
+we do it mechanically although you can understand that?  
+ 
+We had these statements: mammals drink milk, man is mortal, man is a mammal, Tom is 
+a man and we are supposed to prove these. Now mammals drink milk if we write that in 
+this new form that there were some intuitive assumptions that we are making. Tom is a 
+mammal so mammal (Tom) if Tom is a mammal then drink (Tom, Milk) is true. So the 
+reasoning is possible and in order to make this reasoning possible we had to bring in this 
+implication sign here and we have to write it as an implication proposition. 
+ 
+Similarly, man is mortal can be written as, if Tom is a man then Tom is mortal this is my 
+second implication. Man is a mammal that can be written as, if Tom is a man then Tom is 
+mammal because if Tom is a man then Tom is mammal which my third statement and 
+Tom is a man. Now this is no implication but it is just an assertion Tom is a man. So what 
+I want to really say is that, in my statement mammals drink milk I can say drink mammal 
+milk that will be fine. But that would not help me in this particular type of reasoning and 
+there is also a hidden implication within this mammals drink milk. That means, say a 
+particular person say Tom in this case is a mammal then it is also true that it is that 
+particular person Tom will drink milk. 
+ 
+(Refer Slide Time 05:45)  
+ 
+ 
+ 
+In this way if we write then let us see how we can prove our desired statements. I am now 
+naming these as propositions P, Q, R and S. You can see that mammal (Tom) implies 
+drink (Tom, Milk) is a proposition. Similarly, man (Tom) implies mortal, Tom is another 
+proposition. So all these are propositions and these are implications and this S is just an 
+assertion. I have also numbered them as 1, 2, 3, 4. Now, given these propositions if I 
+select my favorite tool like Modus ponens if I apply Modus ponens in R and S, that is, 
+man (Tom) implies mammal, Tom is true and man (Tom) is true then applying the 
+knowledge of Modus ponens you can certainly arrive at the fact that mammal (Tom). So I 
+can prove that Tom is a mammal.  
+ 
+Again if I apply Modus ponens I have derived mammal (Tom) and if I apply Modus 
+ponens on this number 5 and number 1, that is, if Tom is a mammal then Tom drinks 
+milk and if I apply Modus ponens on P and this new one which is mammal (Tom) then I 
+can again derive drink (Tom, Milk). Thus the desired statement Tom drinks milk can be 
+proved using Modus ponens. Until I wrote them down as implication I could not apply 
+Modus ponens, I could not apply the inference rule of Modus ponens. Now let us try to 
+do the same thing using the other proof technique we learnt. The other proof technique 
+was resolution. And again in resolution there is a subtle difference between Modus 
+ponens and in the application of resolution. In order to apply resolution I have to convert 
+each of these propositions into their clausal form.  
+ 
+(Refer Slide Time 08:09) 
+ 
+ 
+ 
+A clausal form is nothing but a disjunction of literals. So, mammal (Tom) prime implies 
+drink (Tom, Milk) I have written it in different way mammal (Tom) prime that is NOT 
+mammal so NOT mammal (Tom) OR drink (Tom, Milk) I can write it in that way. And Q 
+man (Tom) implies mortal (Tom). When I convert that into clausal form it becomes NOT 
+man (Tom) OR mortal (Tom). Similarly, the third one, man (Tom) implies mammal 
+(Tom) says that man (Tom) prime of that NOT man (Tom) OR mammal (Tom) in this 
+way I convert each of them in clausal form note that is last one Tom is a man, man (Tom) 
+is itself in clausal form so I need not do anything with it. Next what do I have to prove? 
+Suppose there is only one statement given is proven say I take a statement Tom drinks 
+milk.  
+ 
+The clausal form of that is drink (Tom, Milk) and the propositional form of that is drink 
+(Tom, Milk) but in resolution what we do? In resolution we try to disprove we proved by 
+refutation so my starting point would be the negation of the goal which I should try to 
+disprove. That was the basic approach of resolution. So here the goal is drink (Tom, 
+Milk) so I convert my goal to disprove that Tom does not drink milk. The compliment of 
+drink (Tom, Milk) is not drink (Tom, Milk) means Tom does not drink milk I have to 
+disprove it, if I have to disprove it given these statements then I can certainly prove that 
+Tom drinks milk.  
+ 
+Now let us try to do with resolution. I start with the negation of the goal, I select one 
+clause which has got the compliment of this and if I resolve these two I will get a new 
+statement mammal (Tom) prime that means not mammal (Tom). Now I will have to 
+again look into the set of statements that I have to find out which clause has got the 
+negation of not mammal (Tom) or which clause has got the literal mammal (Tom).  
+ 
+And here is one not man (Tom) OR mammal (Tom). So let me resolve these two. As I 
+resolve what I would get, mammal (Tom) and not mammal (Tom) will resolve out and 
+my resolvent will be not man (Tom). So not man (Tom) I get. Now I have to select the 
+other clause that I have man (Tom). Now as I resolve these two what I get the 
+contradiction with the null clause. That means this goal has been disproved. Now let me 
+just go through this and state it in a different way. My job was to disprove that Tom does 
+not drink milk, I had to disprove that Tom is not a mammal and in order to disprove that 
+ 
+ (Refer Slide Time 12:16) 
+ 
+ 
+ 
+I had to show that man (Tom) man (Tom) is not a man but Tom is a man so there is a 
+contradiction. And since there is a contradiction I am arriving at a null clause thereby 
+refuting my basic assumption drink (Tom, Milk). So this is proven that Tom does not 
+drink milk is refuted and Tom drinks milk is proven. Now that is all about propositional 
+logic.  
+ 
+I also made a subtle adjustment in the formulation. When it was written that mammals 
+drink milk I just said if Tom is a mammal then Tom drinks milk. I will show you later 
+that was not very fair. The objective of this specific lecture is to enable you to formulate 
+more variety of sentences using logic. And it will enable you to write correct predicate 
+logic formulae.  
+ 
+We will discuss what predicate logic is. For that first let us look at the limitations of 
+propositional logic. Why do we need another form of logic when you have propositional 
+logic? The limitations of propositional logic will be evident from this statement. Consider 
+the following argument: all dogs are faithful. Tommy is a dog therefore Tommy is 
+faithful. This argument is quite understandable. All dogs are faithful. Tommy is a dog 
+therefore Tommy is faithful.  
+ 
+Now, how to represent and infer this in propositional logic?  
+Suppose P is the proposition all dogs are faithful that stands for all dogs are faithful. And 
+q is a proposition that says Tommy is a dog. But can I combine all dogs are faithful all 
+dogs and how do I know that Tommy belongs to this all dogs. So if all dogs are faithful is 
+true then Tommy is also covered over there all dogs is covering all dogs other than 
+Tommy so p AND q can I say using Tommy is faithful? No, we cannot infer this in 
+propositional logic because here there are two different constants two different things 
+Tommy and all dogs they are different. I do not know what all dogs mean.  
+ 
+(Refer Slide Time 15:55) 
+ 
+ 
+ 
+When we are talking of logic we are talking of mechanical methodology that will work 
+irrespective of my subject of interpretation so we have to prove it mechanically. Let us 
+see a couple of more examples. Tom is a hardworking student. I can certainly write that 
+as hardworking Tom as a proposition. Tom is an intelligent student, I can write down 
+intelligent Tom. If Tom is hardworking and Tom is intelligent then Tom scores high 
+marks. So this is also an implication proposition and I can write it as hardworking Tom 
+AND intelligent Tom implies that scores high marks Tom.  
+ 
+(Refer Slide Time 16:45) 
+ 
+ 
+ 
+There is no problem up to this but what about John and Jill? Here what we have said is, I 
+have made hardworking Tom, intelligent Tom and I have written one rule that, if Tom is 
+hardworking and Tom is intelligent then Tom scores high marks.  
+ 
+Suppose John is another student so I have to write, if John is hardworking and John is 
+intelligent then John scores high marks. If Jill is hardworking and Jill is intelligent then 
+Jill scores high marks. Do I have to enumerate the rules for each of the students 
+separately? Is it a feasible way of doing things? And a new student works in the class you 
+have to know his or her name and you have to write down another rule? That is not the 
+way to do it. You should have a general statement to make which should apply to all 
+these. But unfortunately if we are restricted to propositional logic we are restricted to this 
+sort of statements that we can make.  
+ 
+Instead of this if I could write, all students are hardworking and intelligent scores high 
+marks we have to find that it covers Tom that it covers John that it covers Jill or any 
+student who will come in. Unfortunately these sorts of statements all students who are 
+hardworking and intelligent, scores high marks cannot be written in propositional logic 
+because in propositional logic the structure of the proposition do not allow us to do that.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 18:33)  
+ 
+ 
+ 
+Therefore essentially when I want to write some statement like this; all students who are 
+intelligent and hardworking I can write that in this way. For all x where (x) is a variable 
+this is white this is variable, so for all x such that x is a student and x is intelligent and x 
+is hardworking, first of all, all x, x can be a student, x can be a teacher, can be a visitor 
+but I am restricting myself to only the students. So, for all x such that x is a student and x 
+is intelligent and x is hardworking then x scores high marks. Now (x) being a variable I 
+can put in a value for this variable and can make it Tom, john Jill or whatever I like. So 
+what I need is the ability is the power to write such sentences which unfortunately was 
+not possible in the case of propositional logic. That is why we need the predicate logic.  
+ 
+So essentially what was the problem?  
+The problem is therefore the problem of infinite model. In propositional logic we have to 
+restrict ourselves to constants. But in general, propositional logic can deal with only a 
+finite number of propositions. If there are only three dogs for example Tommy, Jimmy, 
+Laika then I could have written T such that Tommy is faithful, J Jimmy is faithful, L 
+Laika is faithful then all dogs are faithful will be T AND J AND L. If there be a new dog 
+then how long should we go on that is not possible. So that is the finiteness of the 
+statements and also even part of Tommy, Jimmy and Laika I have to write separate 
+propositions and I have to do this conjunction and that is where the problem of 
+propositional logic lies. So what if there were infinite number of dogs? I would have 
+faced a problem.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 20:44)  
+ 
+ 
+ 
+Therefore we move to a new thing called the first order logic. First order logic or 
+predicate logic can be considered to be a generalization of whatever propositional logic 
+you have understood and it allows us to express and infer facts over a large or infinite 
+models.  
+ 
+(Refer Slide Time 21:14) 
+ 
+ 
+ 
+For example, all men are mortal, some birds cannot fly; at least one planet has life on it. 
+Going back to the previous statement all mammals drink milk, all mammals are mortal. 
+For these kinds of statements I can do first order logic or predicate logic but not the 
+propositional logic. So what is added in first order logic? In first order logic in addition to 
+propositional logic we have got the concept of variables and we have got concepts of 
+quantifiers. The syntax of first order logic can be defined in terms of, terms, predicates 
+and quantifiers.  
+ 
+(Refer Slide Time 22:11)  
+ 
+ 
+ 
+We can express them in terms of three things namely terms, predicates and quantifiers. I 
+will explain each of them one by one now. What is a term? A term denotes some object 
+other than the constant that we have already encountered true or false. Tommy is a dog, 
+all men are mortal, men is a term very similar to what we talked in propositional logic 
+lectures we mentioned them as objects so each of them is a term. 
+ 
+(Refer Slide Time 22:56)  
+ 
+ 
+Now, terms in this case can be constants as well as variables. In the case of propositional 
+logic it was only constants. Now here we can see a constant of type W any type is a name 
+that denotes a particular object in a set W. When we are talking about types of objects 
+then that is a set of objects of a particular type. Now when I am saying constant then I am 
+particularly pointing at an individual object of that set. If I say any particular variable that 
+belongs to that set belongs to that type then it can connect itself to any particular object of 
+that set. But whenever we are saying constant then that is mapping to the particular object 
+of that set. For example, if I say 5, 5 is a particular object in the set on natural numbers so 
+it is a constant. Tommy, among all the names all the objects called dogs given their 
+names Tommy is a particular dog. 
+ 
+On the other hand, a variable of type W is a name that can denote any element in the set 
+W. For example, x belongs to N is a set of natural numbers. So x is a particular natural 
+number, (x) is a variable that can connect to any particular natural number whereas if I 
+say 5 then that is in a particular natural number, it is not meaning any element of that set 
+of numbers. Similarly d denotes the name of a dog any dog so that is the basic difference 
+between constants and variables.  
+ 
+(Refer Slide Time 25:00)  
+ 
+ 
+ 
+Next let us understand what is a function?  
+A functional term of arity n, how many parameters the function will have, takes n objects 
+of type W1, W2 up to Wn may be of different types as inputs and returns an object of the 
+type W so it takes parameters of objects which can be variables or constants and returns 
+an object of type W. Now, for example, we are familiar with these statements, f is a 
+function of W1, W2, Wn plus is a function which has taken two constants, two objects of 
+type constant from the set of natural numbers, so this is a function. So here this is the 
+functional term plus is the functional term, 3 and 4 are constant terms and 7 is also a 
+constant term. So 7 is a value that is an object that is returned by this function.  
+ 
+(Refer Slide Time 26:30)  
+ 
+ 
+ 
+Now let plus be a function that takes two arguments of type natural number and returns a 
+natural number. Now if that be my definition let us see, plus 2, 3 is a valid function. Plus 
+5 plus 7, 3 is also a valid function because plus 7, 3 will return an object of type natural 
+number that is 10. Therefore plus 5 and 10 both belonging to type natural numbers we 
+will add up and return a value of type W that is the natural number 15. 
+ 
+Similarly, plus plus 100 in that way I can go on writing in this order it is also valid 
+although they are number of nested functions. And here based on the definition that I 
+gave that plus is a function that takes two arguments of type natural numbers and returns 
+a natural number based on that definition this is an invalid function because minus 1 is 
+not a natural number and I have defined plus to be a function that takes two arguments 
+that both arguments should be of type natural numbers and returns a natural number 
+neither of these two satisfy. Similarly plus (1.2, 3.1) is not a valid function based on the 
+definition of plus because 1.2 and 3.1 are not natural numbers they are belonging to the 
+real numbers.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 28:12)  
+ 
+ 
+ 
+Similarly, we can have functions with variable arguments like plus (x, y) product prod (x, 
+y, z) any of these things we can have. It is not necessary although in the examples we 
+have shown with constants it can also have variables. Now that is what function is. 
+ 
+(Refer Slide Time 28:36) 
+ 
+ 
+ 
+What are predicates?  
+Let us very easily understand that predicates are like functions except that they can only 
+return, the return type can be only true or false. These two constants can be true. Other 
+things are same as functions. A function can be any type of values but here it is a little 
+restricted that a predicate will either be true or false. So predicate is a function except that 
+return type is only true or false.  
+ 
+Now let us look at these examples. Gt stands for greater than, greater than (x, y) variables 
+is true if (x) is greater than y. In propositional logic we could not deal with variables but 
+here in predicate logic in functions we can have variables and predicates being nothing 
+but functions and we can have variables in predicates as well and that is giving us a lot 
+more expressive power.  
+ 
+So, greater than (x) y is true if (x) is greater than y. If (x) is instantiated with a value 5 
+and y is instantiated with a value 10 then this entire predicate value will be false because 
+5 is not greater than 10. Therefore here greater than is a predicate symbol that is taking 
+two arguments of type natural numbers but it is returning a value true or false. So greater 
+than (3, 4) is a valid predicate but greater than 3 minus 4 is not a valid predicate because 
+greater than is a predicate that has been defined. Suppose you take two arguments of type 
+natural number minus 4 is not a natural number therefore this one is not a valid predicate.  
+The validity of the predicate now has got one relationship with it being evaluated true or 
+false. The valid predicate gt (x, y) can sometimes evaluate to true sometimes evaluate to 
+false depending on what values are being given to these variables (x) and (y).  
+ 
+(Refer Slide Time 30:56)  
+ 
+ 
+ 
+Now let us see the different types of predicates. The simplest predicate is a predicate with 
+no variable. If we have no variable then I will get what we had done earlier that is a 
+proposition. So Tommy is a dog is a proposition and this thing is also predicate. So 
+predicate is more general. So predicates can capture everything that proposition can but 
+not the other way round. So predicate with one variable is called a property. Dog (x) that 
+is (x) is a dog. This is true if and only if (x) is a dog. Mortal (y) is true if and only if (y) is 
+mortal.  
+ 
+(Refer Slide Time 32:01)  
+ 
+ 
+ 
+So a predicate with one variable is called a property. Now how do we formulate it? Let P 
+having arguments (x, y) etc and Q having arguments (x, y) etc are two predicates. 
+Remember how we defined well formed formula or valid sentences in case of 
+propositional logic. We have got exactly similar type of definitions in the case of 
+predicates also. So, in predicate logic if P and Q are two predicates then P OR Q is a 
+valid predicate well formed formula, P AND Q is a valid predicate, NOT P is a valid 
+predicate, P implies Q is a valid predicate. Exactly these similar things we had in the case 
+of propositional logic. So let us have some more examples. If (x) is a man then (x) is 
+mortal, this is a statement that I want to make.  
+ 
+So I can write, man (x) implies mortal (x), this is a valid predicate it is no longer a 
+proposition because I have got variables here. If anybody is a man that is any man is 
+mortal. So in the clausal form it will be NOT man (x) OR mortal (x). If (n) is a natural 
+number then (n) is either even or odd. If (n) is a natural number that means (n) is a 
+variable that must be a natural number then n is either even or odd. How do I express it? I 
+can express it natural n if n is a natural number then even (n) OR odd (n). Now even (n) 
+OR odd n any one of them will be true.  
+ 
+Let us once again look at the last example here that looks like a complicated sentence but 
+as soon as we write in the form of predicate logic and if you understand that then it 
+becomes really subtle. Now we have said that predicate logic requires variables, it allows 
+you to have variables and in addition to variables there is another thing that predicate 
+logic is introduced and that is called quantifiers.  
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 34:37)  
+ 
+ 
+ 
+Now there are two basic quantifiers in first order logic or predicate logic for all which is 
+denoted as this V with a horizontal line across it. Now for all is also known as universal 
+quantifier. For example, if we say for all (x) then I am talking of all for any value that (x) 
+can take the proposition to be true. Another one is; there exists which is also called 
+existential quantifier that something exists. There is a subtle difference again between 
+these two. So, for all (x) let us just think of a set, suppose I have got a set and in that set I 
+have got a number of elements.  
+ 
+Now when I write for all (x) something is I write P(x) I just say that P(x) is true for all x. 
+Now this need not be denoted as (x) so I can just put thick dots here, these are just 
+elements of the set. When I write this then what I mean is that this P(x) will be true for 
+any element that I choose from this set. Now, suppose let me choose another caller here 
+and let me put this color and mark it they are some special elements, and suppose I write 
+there exists (x) such that Q(x). That means this Q(x) should be true there should be at 
+least one for these two elements in this set for which Q(x) is true.  
+ 
+Now here I have shown the elements Q(x) is true. Let me just write down an example, 
+there exists (x) such that holiday(x). Now it is 1, 2, 3, 4, 5, 6 and let me put in another 
+one, suppose these are the seven days in a week now is this statement true? There must be 
+an element in this set suppose this is the days of the week. Now, obviously here lies 
+Saturday and Sunday two days for which holiday(x) is true. Therefore there exists an (x) 
+there exist a day for which holiday(x) is true. At least one would have sufficed. Suppose 
+Saturday is not a holiday, only Sunday is a holiday so this one is not a holiday this is just 
+an ordinary dot but at least I have got one then this statement will be true. This entire 
+predicate will be true only if there is at least one (x).  
+ 
+On the other hand, in order that this statement is true all these elements in this set must 
+satisfy P(x) that is the basic difference.  
+(Refer Slide Time 39:00)  
+ 
+ 
+ 
+So, that is the essential difference between existential quantifier and universal quantifier. 
+Now let us look at some more universal quantifiers. All dogs are faithful. Now I write, 
+(x) is faithful is being denoted as faithful x, (x) is a dog is denoted by dog (x) so I can 
+write for all (x) for all dogs in that set for all dogs dog (x) implies faithful (x) and that is 
+true for any (x) which will make dog (x) true. That means for any (x) that is a dog this 
+faithful (x) will be true. Now, how can we do this?  
+ 
+(Refer Slide Time 39:56)  
+ 
+ 
+ 
+The next statement is all birds cannot fly. Suppose we decide that with fly (x) we will 
+denote (x) can fly and (x) is a bird denoted by bird (x). All birds cannot fly, therefore it is 
+not the case that for all (x) bird (x) implies fly (x). Forget about this NOT part right now. 
+In that case if I had written this for all (x) if (x) is a bird then (x) can fly. Now that is not 
+true. I am saying all birds cannot fly so this entire statement for all (x) bird (x) implies fly 
+(x) is not true. So this is the predicate logic expression with quantifier and variable for 
+this statement all birds cannot fly. 
+ 
+(Refer Slide Time 41:06)  
+ 
+ 
+ 
+Now let us quickly revisit the quiz we have done and I said that I did play a little trick I 
+did a little bit of adjustment. The statements which are given were; mammals drink milk, 
+man is mortal, man is a mammal, Tom is a man these were given and I had written them 
+as mammal (Tom) implies drink (Tom, Milk). But this statement is unfortunately not a 
+statement made for Tom alone. So I should write it in a little different way. How should I 
+write it? I can write it in this way now. Now I know predicate calculus so why should I 
+do that sort of adjustment that I did.  
+ 
+So I can write; for all (x) mammal (x) implies drink (x) milk. Note here, milk is a 
+constant object, among all the food milk is one, (x) is a variable so for all x mammal (x), 
+if (x) is a mammal I take one animal and see whether that is a mammal and if that is the 
+case then (x) will drink milk. Man is mortal, for all (x) if (x) is a man then mortal (x). 
+man is a mammal, here I should have written for all (x) with some color.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 43:00)  
+ 
+ 
+ 
+So it should be for all (x) man (x) mammal (x) and Tom is a man was as before man 
+(Tom) there was no problem with that at all. Now we can do it in a much easier and 
+natural way instead of making adjustments and that is the power that predicate logic has 
+given us. In the examples given to you the universal quantifier was sufficient to deal with 
+it.  
+ 
+Now let us look at existential quantifiers. If I make a statement at least one planet has life 
+on it that means here I say planet (x) will denote (x) as a planet has life (x) will denote (x) 
+as life on it. Then my statement would be, there exists an (x) such that planet (x) AND 
+has life (x) that means there must be one planet there must be one element of that set of 
+planets such that it is a planet and it has got life. So this is where I mean universal 
+quantifier would not do. If I had written here for all (x) planet (x) AND has life (x) then 
+this would be true only if all planets have life. But that is not what I want to do, what I 
+want to do is to find whether there is at least one planet which has got life.  
+ 
+I am not going into stars I am just going into planets that is why I put in this predicate 
+planet x. Now let us look into another statement; all birds cannot fly this statement is just 
+equivalent to the statement there exists at least a bird which cannot fly. If you say all 
+birds cannot fly then go ahead and prove it and you can prove it just by selecting at least 
+one bird might be ostrich and you can show that this bird cannot fly. So what you need to 
+really say is; there exists a bird which cannot fly or I can say there exists (x) such that (x) 
+is a bird and (x) cannot fly. So we can straight away say all birds cannot fly and by 
+bidirectional implication that is equivalent to there exists a bird that cannot fly there 
+exists an (x) such that (x) is a bird and NOT fly x. Both these things are true for a 
+particular (x) at least. In that case I can prove that all birds cannot fly.  
+ 
+ 
+ 
+(Refer Slide Time 46:30) 
+ 
+ 
+ 
+Now let’s look at another interesting aspect called the duality of quantifiers. There is a 
+duality between this existential quantifier and universal quantifier. You must have 
+observed if you have noted in the earlier example that all birds cannot fly, it plays a 
+duality, I am saying all but I am translating that into some sort of existential statement. 
+Now say if we have, all men are mortal that is equivalent to no man is immortal. Similar 
+to De Morgan’s double negation no man is immortal.  
+ 
+Now formally we can say for all (x) men (x) this is the notation for a particular type, for 
+all (x) men (x) implies mortal x. That means it is equivalent to there does not exist an (x) 
+such that men (x) and NOT mortal (x) so I can always do that. Similarly there exists birds 
+that can fly. I can always make it make the statement like this it is not the case that all 
+birds cannot fly. Now try to read it a little carefully. There exists birds that can fly.  
+ 
+Again going back to the earlier type, if I have a set here like this in which there are 
+elements and my statement was, is not the case that all birds cannot fly then it is again 
+sufficient for me to show one particular element and show that it can fly so there exists an 
+(x) that can fly. So there exists birds that can fly, one is sufficient. That means it is not the 
+case that all birds cannot fly. Now how to express that? Formally there exist a bird which 
+can fly, if I can prove that then I can certainly prove that for all (x) birds cannot fly is not 
+true. So that shows the duality of such statements. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 49:18)  
+ 
+ 
+ 
+Universal quantifiers can again be expressed in a different way with existential 
+quantifiers. Any predicate is a sentence if sen is a sentence then sen compliment is a 
+sentence. And (x) is a variable then within parenthesis this sentence is a sentence, 
+complement of a sentence is a sentence, there exists (x) sentence is a sentence, for all (x) 
+sentence is a sentence, sentence AND all sentences are connected with AND OR 
+implication are sentences. This varies and nothing else is a sentence. Now if you recall 
+what we discussed in the case of propositional calculus we had also given sort of such 
+strict definitions for a well formed formula and we had given a couple of examples in 
+some sort of hard definitions.  
+ 
+Predicate logic is an extension of propositional logic. It is a more powerful version of 
+propositional logic with incorporation of variables and with the incorporation of 
+quantifiers. Therefore with these incorporations we can capture sentences much more 
+naturally which we either could not capture it propositional logic or we had to play tricks 
+and do some artificial maneuvering to capture those as I did in the first solution of the 
+quiz. But as soon as we have got the power of predicate logic we can do that.  
+ 
+What are the two types of quantifiers?  
+The two types of quantifiers we have are universal quantifiers and existential quantifiers. 
+Again there is a duality between these quantifiers. In the case of propositions we said if P 
+is a proposition and Q is a proposition then if P is a proposition then what was the 
+compound proposition P OR Q? NOT P is a proposition, P within parenthesis is a 
+proposition, P OR Q is a proposition, P AND Q is a proposition, P implies Q is a 
+proposition and nothing else is a proposition. In the case of predicates we also said that if 
+P is a predicate and Q is a predicate then so is not P that is also a predicate. Then for all 
+(x) P is a predicate, there exists (x) P is a predicate. Any predicate implying another 
+predicate is a predicate. Predicate within parenthesis is a predicate and nothing else is a 
+predicate. Now propositional logic and predicate logic we can put them side by side and 
+see the similarity and also you have to observe the extra power we have got in the case of 
+predicate logic because of incorporation of variables and quantifiers. Here are some 
+sentences which you should convert in the form of predicate logic.  
+ 
+(Refer Slide Time 54:01)  
+ 
+ 
+ 
+Some dogs bark, all dogs have four legs, all barking dogs are irritating, no dogs purr, 
+fathers are male parents with children, students are people who are enrolled in courses. 
+These are some of the exercises to work out. 
+ 
+

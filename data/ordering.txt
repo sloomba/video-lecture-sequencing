@@ -1,0 +1,40 @@
+1		definition, approaches to ai, history
+2		sensors, effectors, agents, rationality, environment, types of agents, subsumption architecture
+3		state space representation, search problem, explicit/implicit state space, basic search algorithm, search strategies (introduction)
+4*3		4-colouring problem, TSP, search problem representation, search tree, basic search algorithm, breadth-first search, depth-first search, DFS-limit, DF iterative deepening
+5*3		bi-directional search, state space with exponential search space, avoiding repeated states, graph search algorithm, uniform-cost search, heuristics, best-first search, greedy search, A* search, IDA*, heuristics  properties
+6*5*4*3		A* search, IDA*, recursive breadth-first search, MA*, local search, iterative improvement, hill climbing, local-maxima problem, simulated annealing, water jug problem
+7*3		game playing, minimax algorithm, game tree, brute force search, minimax search, heuristic minimax search
+8*7*3		minimax issues, alpha-beta search, node ordering, transposition table
+9*3		constraint satisfaction problems, colouring as CSP, SAT as CSP, constraints, CSP as search problem, binary constraint network, backtracking algorithm, variable and value ordering, constraint propagation
+10*9*3		forward checking, forward checking limitations, arc consistency, backtracking, backjumping
+11		knowledge representation, logic, propositional logic, implication
+12*11		truth value, de morgan's theorem, clause, inference
+13*12*11	proof by resolution, propositional logic limitations, predicate logic/first-order logic, predicates, quantifiers
+14*13*12*11	sentences, reasoning representation and inference in FOL, horn sentences, substitution, unification
+15*14*13*12*11	proof by refutation, encoding sentences to FOL, resolution, answer extraction
+16		rule-based systems, rules as horn clauses, rule-based system architecture, inference machine
+17*16		conflict resolution, forward chaining, examples of RBS
+18		networks and meaning, semantic net and logic
+19*18		relating entities, reasoning in semantic nets, inheritance, properties, semantic net inference
+20*19*18	frames, semantic net to frame, slots, inference in frames
+21*3*2		planning, action representation, representing change, fluents, successor state axioms, STRIPS, planning with state space search
+22*21*3*2	forward planner, progression, regression, STRIPS planner, total and partial order, plan generation, partial order planning
+23*22*21*3*2	partial plan representation, POP algorithm, POP versus state-space planning
+24*23*22*21*3*2	planning graph, mutual exclusion relations, graphplan algorithm, plan graph search
+25*16		expert systems, system architecture, knowledge engineering, rule-based inferencing
+26		doorbell problem, sources of uncertainty, certainty factors
+27*26		rule chaining in certainty factors, certainty factors, deductive abductive and default reasoning
+28*26		dealing with uncertainty, sources of uncertainty, probability, compound probabilities, conditional probability, bayes' rule
+29*28*26	extended bayes' theorem, belief network, properties of BN, poly-tree, conditional independence, construction and inference in BN
+30*29*28	types of uncertainty, fuzzy set theory, fuzzy logic, fuzzy set representation, profiles, membership functions
+31*30*29*28	linguistic variables, hedges, set of support, fuzziness versus probability, fuzzy set operations, fuzzy rules, max-min composition, (de)fuzzification, fuzzy logic system
+32		human versus machine learning, learning, learning problems, types of learning, data strcutures for knowledge, classification, deduction versus induction, hypothesis/model selection, inductive bias
+33*32		concept learning as search, inductive inference theory, version spaces, list-then eliminate algorithm, performance of learner, error functions, overfitting, cross-validation
+34*32		decision tree, decision tree induction, ID3, attribute selection heuristic, entropy, information gain, overfitting and pruning
+35*34*32	decision tree limitations, overfitting, stopping and pruning, discretising continuous attributes, missing attribute values
+36*32		neural networks, perceptron, perceptron learning rule, gradient descent, linear separability, linear and sigmoidal neurons
+37*36*32	artificial neural networks, multi-layer feedforward network, activation functions, training with gradient descent, backpropagation, parameter tuning
+38*29*28	bayesian learning, maximum aposterior probability learner, bayes optimal classifier, naive bayes classifier
+39		natural language processing, issues in syntax, issues in semantics, issues in information retrieval
+40*39*20	issues in machine translations, natural language understanding, knowledge structures, sentence analysis, script plans and goals, frame based formulation

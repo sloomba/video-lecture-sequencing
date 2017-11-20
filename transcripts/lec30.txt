@@ -1,0 +1,640 @@
+Artificial Intelligence 
+Prof. Anupam Basu 
+Department of Computer Science and Engineering 
+Indian Institute of Technology, Kharagpur 
+Lecture # 30 
+Fuzzy Reasoning - I 
+ 
+In the last lecture we discussed about different kinds of uncertainty and we have seen 
+how probabilistic reasoning helps in reasoning under uncertain circumstances. Today 
+we will discuss about a novel technique called fuzzy reasoning which is based on 
+fuzzy set theory and consequently fuzzy logic. This notion of fuzzy set theory was 
+proposed by Lotfi A. Zadeh.  
+ 
+We have already seen that in our day-to-day conversations and communications we 
+often use terms, words which are rather imprecise in nature. It rained heavily, now 
+what does the term heavily mean? The boy is very strong, how strong is heavy 
+strong? The color of the curtain is more or less red or reddish. Now these terms do not 
+find a direct mapping to any quantification like number. When I say the boy is good, 
+the boy is very good then I obviously do not immediately imply that the boy is 7 good 
+or 8 good or something like that. 
+ 
+Now these sort of terms are very useful in our day-to-day communication but 
+certainly poses a difficulty when you try to compute with these things. Fuzzy 
+reasoning such as the fuzzy set theory and fuzzy logic deals exactly with this 
+particular thing.  
+ 
+How to handle such imprecise scenario? 
+If you are shown this picture on the left side all of you will agree that it looks like 
+Abraham Lincoln but it is more or less like Abraham Lincoln.  
+ 
+How is it that we can certainly identify that this is the figure of Abraham Lincoln? 
+The complexity of the decisions from such subjective inputs the decision making that 
+we do in our mind is really intriguing and often we do not really understand and often 
+we cannot model them in quantified manner. Now we have already seen what is 
+meant by stochastic uncertainty. Those are the cases which we handle with probability 
+theory like the probability of hitting the target is 0.8. That means we have carried out 
+a number of experiments and based on those experiments we have seen that in 80% of 
+the cases we could hit the target properly. But there is another category of uncertainty 
+which is called lexical uncertainty. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 05:45) 
+ 
+ 
+ 
+What is meant by lexical uncertainty?  
+Lexicon means the dictionary or the set of words. So the uncertainty that creeps in 
+from our usage of day-to-day words those are subjective sometimes they are 
+ambiguous and often they are pre- imprecise. So, for that a number different types of 
+uncertainty creep in. For example, we use tall men, hot days, and stable currencies. 
+Now you see everywhere tall, hot, stable etc so what do they really mean? We will 
+probably have a successful business year. Now here the term that we have used 
+probably is again not very stochastic in nature. 
+ 
+It is just our guess or feeling that we will have a successful business year. Now what 
+do you mean by successful? When would you say that your business has been 
+successful in this year? This word itself is very imprecise in nature. The experience of 
+expert A shows that B is likely to occur. Now again B is likely to occur what degree 
+of probability would you assign to the word likely? That is really imprecise. Expert C 
+is convinced that this is not true. Now here you see convinced and it is likely. These 
+are two different terms. Convinced means you are sure that the certainty is one. Now 
+again in order to bring out the difference between probability and uncertainty in terms 
+of the imprecise aspects such as the fuzzy weight aspects that we are talking about 
+today. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 05:55) 
+ 
+ 
+ 
+We can look at this sentence:  
+A person suffering from hepatitis shows in 60% of all cases a strong fever. That 
+means in 60% of all cases so this is rather probabilistic. But what is imprecise? Strong 
+fever, when do you call a particular fever or temperature to be strong. In 45% of all 
+cases a yellowish colored skin.  
+ 
+What inch of the skin would you say yellow? 
+Which tinge will you say to be surely yellow? 
+Which one is more or less yellow? 
+Which one is yellowish? 
+ 
+This term yellowish is again imprecise and vague and in 30% of all cases they suffer 
+from nausea. Now 30% of all cases they suffer from nausea so the symptom nausea is 
+present in 30% of all cases so this part is certainly probabilistic. Whereas this first 
+part, a person suffering from hepatitis shows in sixty percent of all cases. Now this is 
+probabilistic, strong fever is again imprecise so that is fuzzy. In 45% of all cases it is 
+yellowish colored skin. This is also a mix of probabilistic and fuzzy. So here we will 
+show you a conventional Boolean set that is a conventional set.  
+ 
+Now this slide has been taken from another source so these measures of temperatures 
+are not like the ones that we do in India. But in west they measure the body 
+temperature in degree Celsius. So, if we have strong fever as a set then here you see 
+40.1 degree Celsius is certainly strong fever,  41.4 degree is strong fever, 42 is strong 
+fever and 39.3 is strong fever, and 38.7 goes absolutely out of this set so this is not a 
+strong fever. But the question remains that when I say 39.3 to be strong fever why 
+should not I consider 39.2 to be strong fever as well? And if I consider 39.2 to be 
+strong fever why should not I consider 39.1 or 39 or 38.9 and in that way 38.7 also to 
+be strong fever? Can I make such a crisp boundary?  
+In many cases where we use such terms it is very difficult to make such a crisp 
+boundary. On the other hand, in this diagram you see that the boundary is not very 
+crisp it is gradually fading out so at the core it is certainly strong fever and as I go out 
+it is becoming gradually faded so it is becoming less and less of an element of strong 
+fever. This is a critical term that I have used. It becomes less and less of an element. 
+ 
+(Refer Slide Time: 09:33) 
+ 
+ 
+ 
+Gradually its belonging to the set is becoming less. Here either an element belongs to 
+the set or it does not belong to the set. It is a binary decision yes or no. On the other 
+hand, here we can see that 40.1 degree is inside the set, 42 is inside the set, 41.4 is 
+also inside the set, 39.3 is slightly in this shaded region and 38.7 is even farther. So, in 
+order to capture this scenario fuzzy set theory was proposed.  
+ 
+Always there is a very close correspondence between a set and a and logic because in 
+logic we use set. So when we say a particular set let us say we take any particular set 
+a set X in which there are elements a, b, c then obviously we can say that a belongs to 
+X and suppose d is outside the set d does not belong to X. So this can also be 
+expressed as predicate that belongs to (a, X), does not belong (d, X). Might be d is 
+belonging to another set Y so belongs (d, Y). So this belongs is a predicate and 
+therefore this belongingness of a set or definition of a set immediately maps to 
+predicate. So, from set we can always come to predicate logic. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 12:18) 
+ 
+ 
+ 
+Now we say that fuzzy logic deals with qualitative information, the information that is 
+qualitative, we always do not have qualitative figures to deal with it. This is more 
+realistic than predicate calculus because in real life we need to deal with qualitative 
+statements. Here is an example from a chemical plant. We often use rules like this: If 
+the temperature is moderately high and the pressure is medium then turn the knob 
+slightly right. Now, if the temperature is moderately high that is this part, earlier we 
+had dealt with predicates like; if age of Tom is 50 and weight of Tom is 65 here you 
+see everything was precise. But here we are using, if temperature is moderately high. 
+That means what if I write in this way? If- is temperature and then write moderately 
+high. Now this is no longer a precise term. So here we are facing a difficulty but it is 
+nevertheless more realistic and the pressure is medium.  
+ 
+Which pressure is medium?  
+Turn the knob slightly.  
+What angle would make it slightly right or slightly left?  
+So we use this sort of terminologies. So dealing with precise numerical information is 
+often inconvenient because it is not very suitable for human beings. 
+ 
+If you ask the expert to say what exactly the pressure should be, he will not say that 
+because he has got a feeling that if the pressure is medium turn the knob slightly right, 
+exactly how much will not be told like 42.7 degree or 40.56 degree not to that 
+precision that is more realistic and so here are some more examples which deal with 
+such imprecise statements and these impreciseness are coming from the power of 
+language, linguistic variables these are called as. 
+ 
+Natural language allows us to express in a much more comfortable way. And in order 
+to model it in the quantitative world often we have to translate that into a quantitative 
+statement and that translation is often artificial. So we are trying to be as natural as 
+possible in this case. 
+ 
+ 
+(Refer Slide Time: 15:25) 
+ 
+ 
+ 
+The weather is sunny today, what do we mean by sunny?  
+It is very cold in the Himalayas.  
+ 
+Rich people have a lot of worries. 
+Now, when would you call a person to be rich? When would you call temperature to 
+be very cold? 
+All these things are imprecise. 
+ 
+(Refer Slide Time: 16:33) 
+ 
+ 
+ 
+A fuzzy set differs from crisp set in terms of membership. In the case of a crisp set 
+whenever we look at a crisp set any particular set X which consists of 1, 2, 3, 4, 7, 9 
+then any of these elements either belongs to this set or it does not belong to the set. 
+ 
+ 
+(Refer Slide Time: 16:48) 
+ 
+ 
+ 
+So, if I take a super set a universal set that is a set of all integers now given any u 
+belonging to this. So if I take any integer either that will belong to this X or it will not 
+belong to this X. So the membership of this in the case of a crisp set, membership of u 
+in X is either 1 or 0. That means belongs to or does not belong to and there is nothing 
+in-between. Whereas in the case of fuzzy set the thing is different.  
+ 
+We will use the same notion of membership but if I now change this set to a fuzzy set 
+then let us see how can we talk about it.  Suppose now I say that it is a set height 
+which is 5 ft, 5 ft 2 inches, 5 ft 4 inches, 5 ft 5 inches, 5 ft 6 inches, 5 ft 8 inches etc 
+and I define a set medium height. Now this is my universal set U and this set is a 
+conventional crisp set. For example, 6 ft is not in this set and in this discourse, 5 ft 5 
+inches is there.  
+ 
+Now, what would that set medium height be? Will 5 ft 4 inches be in medium height? 
+Suppose you say it is there then 5 ft 5 inches you think is also in medium height? 5 ft 
+6 inches will also be in medium height, 5 ft 8 inches will also be in medium height, 
+and you say that these two will not be there. These are outside the set so I have taken 
+these four. But the question is, if you consider 5 ft 4 inches is it belonging to medium 
+height as strong as 5 ft 8 inches or 5 ft 6 inches? Probably it is not. This 5 ft 4 inches 
+has got a weaker belonging and this 5 ft 5 inches has less weaker belonging. Whereas 
+5 ft 6 and 5 ft 8 certainly belong to this set. So the degree of belonging of these 
+elements requires to be specified. But this was not the case when we are discussing 
+about crisp set. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 21:21) 
+ 
+ 
+ 
+We can define with the example of a set 2, 3, 5 a, b, c and suppose we have got a 
+universe of discourse now 1 does not belong to S and a belongs to S so that is a crisp 
+set. 
+ 
+(Refer Slide Time: 21:55) 
+ 
+ 
+ 
+But if we try to generalize it in the case of fuzzy set, in the crisp set the membership is 
+either 1 or 0. But in the case of fuzzy set the membership of an element X in a set S is 
+no longer 0 or 1 rather muX is between 0 and 1 and both are included. Now this muX 
+requires a little bit of explanation. I take the example of medium height here. Now I 
+have got an element x belonging to a universal set X.  
+ 
+For example, some element x belonging to the set height which was a crisp set.  Now 
+I am defining a fuzzy set medium height or medium which is a subset of this universal 
+set height or this thing X, these two are the same thing. Now, when I define medium I 
+can say that 5 ft 4 inches has got a belonging of point three in this set. And 5 ft 5 
+inches has a belonging of 0.5, 5 ft 6 inches has a belonging of 0.8. Now these are 
+rather subjective and are coming from the users’ notion. It is your So in this set what 
+we have actually done is, along with every element of X. I have own notion of 
+medium height. And 5 ft 10 inches is certainly medium height. put in a membership 
+function mu of this particular element x in the fuzzy set medium and that is followed 
+by that particular value of x. 
+ 
+(Refer Slide Time: 24:28) 
+ 
+ 
+ 
+Just as in the case of crisp set this mu(x) in a fuzzy set medium would be either 0 or 1 
+in the case of crisp set but for fuzzy set it will be in the interval 0 and 1. It can be 0, 1 
+or any number in-between. So this is mu(x) in the set M where M is a fuzzy set which 
+means membership of x in M. This is also known as degree of membership. So this is 
+a generalization of the conventional set theory. Here you can see that mu in a crisp set 
+S1 is a predicate which denotes x to be an even number.  
+ 
+So here is the final definition that I was trying to explain. Boolean or crisp set A is a 
+mapping for the elements of S to the set 0, 1. That is, A is mapping elements of S to 0 
+and 1. So a characteristic function for a crisp set is 1 if x is an element of the set A, 0 
+if x is not an element of the set A. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 25:55) 
+ 
+ 
+ 
+On the other hand, fuzzy set F is a mapping for the elements of S to the interval 0, 1. 
+So, characteristic function S a membership function of x belonging to F will lie 
+between 0 and 1 where 1 means full membership, 0 means no membership and 
+anything in-between for example 00.5 is a graded membership that is telling us the 
+degree of its belonging. So we can say that mu(xs). Again x is an element of the crisp 
+set S and this is also a predicate, it is a membership predicate. Now let us give some 
+examples.   
+ 
+(Refer Slide Time: 27:33) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 27:33) 
+ 
+ 
+ 
+Fuzzy sets and concepts are commonly used like for example, John is tall, Ravi is 
+smart, Sajni is happy, and the room is hot. Now, for example, the crisp set tall can be 
+defined as x where from x is coming?  
+x is coming from the set height and we say that all the x which are greater than 1.8 
+meters will belong to the set tall. So tall is a set consisting of all x where x is greater 
+than 1.8 meters.  
+ 
+What sort of set is this? A crisp set or a fuzzy set? 
+If I define in this way then it is certainly a crisp set because any number any height 
+that is greater than 1.8 meters will certainly belong to the set tall. And if it is less than 
+1.8 then it will not belong to that set. But such definitions of tall would put us in 
+trouble because what about a person of height 1.79 meters? What about 1.78 meters? 
+What about 10.52 meters? 
+Obviously, logically you will think that 1.8 is in the set tall. We should not be so 
+much cruel to 1.79. We should consider that to be also tall but not certainly, 1.78 
+should also be in the list tall but then how would I distinguish between somebody who 
+is 1.8 and somebody who is 1.78? So the crisp set notion does not allow us to do that. 
+ 
+On the other hand, in a fuzzy set a person of height of 1.8 meters would be considered 
+to be tall to a high degree and a person with a height of 1.7 meters would be 
+considered tall to a lesser degree. Therefore I can define a function to describe the 
+fuzzy set. For example, here is a set which is a typical graph.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 30:02) 
+ 
+ 
+ 
+What is the x axis of this graph? 
+On this side of the graph we have got height and on this side we have got the 
+membership. We are having two axes. On this axis I plot the height in meters and this 
+height is coming from the crisp set that is the universe of discourse. Now it may be 
+1.2 meter, 1.4 meter, 10.5 meter, 1.6 meter, 1.7 meter, 1.8 meter in meters. On this 
+axis I am plotting the membership of a particular height h in the set tall because I am 
+going to define that set tall. So, in tall the graph may be something like this. Over here 
+up to this I am not considering them to be tall but then it is going up and here it is 
+saturating to 1 so this membership is 1.0 and here it is 0.9, 0.8, 0.7 and so on. 
+Therefore here this graph is mentioning my subjective interpretation of the concept 
+tall. 
+ 
+Now if I come across some person who has got a height 1.7 then simply I will project 
+this over here and also give that a membership and place in tall and but with a 
+membership of 0.8. If somebody comes with 1.6 then I will also give him a place 
+maybe with a degree 0.4. If 10.5 comes in he is also not deprived and probably get .1 
+and below that everybody is getting 0 or something. Now this is my one particular 
+definition of tall. But again now let us say I am trying to select a basketball team and I 
+have been told to select only tall people. In that case my notion of this fuzzy set I may 
+like to change because I may like to have again the same axis and on this side I will 
+have height again like 1.8, 1.7 where all the same figures are here and on this side- 
+side I am putting in mu(tall) u or anything maybe h. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 33:29) 
+ 
+ 
+ 
+Now I can redefine my fuzzy set in a different way because I am rather strict about 
+the height so maybe I will make my curve something like this. I will make it very 
+slow and make it 1. So somebody who is 1.8 will certainly get a membership 1. 
+Somebody is 1.7 will get a very low membership.  
+ 
+The earlier curve was a little different it was a little flattened something like this. So, 
+there 1.8 also got a membership, 1.7 got a quite some membership but when my 
+purpose is to select a basketball team I will go for a steeper curve like this. That is 
+what my notion of tall is when I select the basketball team. That is how the fuzzy sets 
+are defined.  
+ 
+(Refer Slide Time: 35:25) 
+ 
+ 
+ 
+Here some numbers and I want to say give me a number which is above 600, what do 
+you mean by that? How much money would you need?  
+I would need about 600 rupees. Now what do you mean by about 600 rupees? 
+Now if I want to conceptualize this notion about 600 then I have to define this about 
+600 to be a fuzzy set over a crisp set of these numbers 500, 600, 700 etc and the shape 
+of the curve will be like this because for 600 certainly it is the membership of 1, 600 
+has the membership of 1. In the fuzzy set about 600 whereas 599 will have a very 
+high membership maybe 0.97 or something here, 550 is it about 600?  
+Well, by looking here we can say it is around 0.5, it is about 600, its membership in 
+the fuzzy set 600 is about 0.5. And for 520 its membership is around 0.2, what about 
+650? Its membership is again 0.5. So here this would be a very natural curve of 
+distribution of the membership to the fuzzy set about 600. Here is another example 
+about conceptualization. I am defining a set.  
+ 
+Here is a rather philosophical question, how true is true?  
+That means I say well what you said is true or I say 550 belongs to the fuzzy set about 
+600 this statement is true. In predicate logic we were saying that a predicate evaluates 
+to true or false. There the concept of true was 1 and the concept of false was 0. Now 
+how true is true? 550 belongs to about 600 is true, I make this statement. 
+ 
+Now about this truth should I give 1 or what? 
+In the earlier diagram we have seen that 550 has got a membership mu of 550 in about 
+600 in that fuzzy set was 0.5. Now membership of 0.5 means its belonging was to the 
+degree 0.5 then it belongs to about 600 is it true? 
+Now I can define truth in fuzzy term where here I put in mu of about 600 and the 
+different values of this thing. And here is the membership in a fuzzy set I define true 
+to be a fuzzy set mu true of v. Now this 0.5 was somewhere here. If I define the truth 
+fuzzy set to be something like this and this curve is such that it is something like 0.6.  
+But you may be even stricter than me and say that this is not my notion of truth, my 
+notion of truth is something different. My notion of truth is this. My notion of truth is 
+very steep and this is dilated so your notion of truth is this.  
+ 
+In that case in your notion of truth the statement 550 belongs to about 600 how true it 
+would be?  
+It will map here and its membership will come to 0.4. Whereas another person may be 
+a bit more lenient because he feels that any membership that is more than 0.2 then I 
+can say it belongs to it a particular set. So we will go for this curve and the same 
+membership of 550 in about 600 is point five and that will be taken up here and it will 
+evaluate to might be 1. So in this way the notion of truth can also be modeled in fuzzy 
+set. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 41:33) 
+ 
+ 
+ 
+(Refer Slide Time: 41:44) 
+ 
+ 
+ 
+Here is another description of a fuzzy set. On the x axis we have plotted height, on the 
+y axis we have plotted the membership of the different heights in different fuzzy sets. 
+Here we have defined three fuzzy sets; one is tall, one is medium, one is short. Now, 
+if you follow the curve for short it is coming like this that is, height of 30 centimeter 
+is certainly short but height of around this 0.50 centimeter in short but is up with 
+membership 1 that is somewhere here, height of 80 centimeter its membership in 
+short is 0.7, height of 100 centimeter its membership in short is 0.2 etc whereas in 
+medium height the distribution is something like this whereas for tall the distribution 
+is something like this. So we capture the different notions. 
+ 
+Now you can ask that where from am I getting these figures? 
+Though there are different ways of doing it these figures are representing pure 
+conceptualization of a particular term. You say that the room is hot. You are saying it 
+from a feeling and your feeling may differ from mine. So up to what room 
+temperature would you really tolerate and after that you would say it is becoming hot 
+and the AC should be turned on? 
+That is your notion. So based on your notion of the term you have to find a particular 
+distribution of the membership values and that will define the fuzzy set.  Here again 
+we are revisiting that strong fever case. In conventional Boolean set theory it was like 
+this and in fuzzy set it is represented in this way.  
+ 
+(Refer Slide Time: 44:05) 
+ 
+ 
+ 
+Now we can define discrete definitions we can say strong fever. If I say strong fever 
+is 35 degree these are zeros and these are discrete definitions and I can have a 
+continuous definition like this. Discrete definition is, 43 degree centigrade 
+membership in strong fever is 1, 42 degree centigrade membership is 1, 41 degree 
+centigrade membership is 0.9, 40 degree centigrade is 0.65 and so on and so forth. So 
+I have discreetly taken up all the values but in this way if I want to tabulate it will be 
+difficult because since it is a continuous domain I have to write for 350.5 degree, 35.4 
+degree and everything else. If I select some discrete values I can do it in this form and 
+I can represent it in the form of a table. Whereas this is a continuous definition here, 
+this is a curve going up so we can take any particular value and come to this point and 
+find out the membership. Therefore 41 degree membership is somewhere here which 
+is 0.9, 39 degree membership is somewhere here and 38.9 degree membership is 
+somewhere here. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 45:45) 
+ 
+ 
+   
+Since we have to work with computers how can we describe a set?  
+A set can be described in two ways. One is by extension or by intension. Even in the 
+case of a conventional set we are familiar with these notions that I can either 
+extensively enumerate that my set X consists of 1, 5, 3, 7 in that way I can go on and 
+this is one sort of definition.  
+ 
+Another sort of definition is I can define a set Y to be all x such that x is greater than 
+5. That means I am defining a set 6 onwards, x is greater than 5 if I say only integers 
+6, 7 etc. This is a definition by extension and this is an implicit definition. Now this is 
+also the case in case of fuzzy sets. So we can define S2 to be a set of tall people and 
+we can put in a membership to this. 
+ 
+(Refer Slide Time: 47:47) 
+ 
+ 
+ 
+Now in the case of fuzzy set we can define it in this form; tall 1.0 its membership in 
+tall is 0, 1.2 its membership is 0, 1.4 its membership is 0, in that way I go on. Now in 
+some books you will find that this comma is replaced by this plus. Now this plus is 
+not addition this means union. So I am talking of a set where this element union this 
+element union this element so all these things are together.  
+ 
+Now how do we represent a fuzzy set in a computer? 
+I am defining a set, for example I have got a set age where age is 5, 10, 20, 30, 40, 60, 
+80. Now I can define different fuzzy sets and also represent them in the form of table. 
+For example, I define one fuzzy set young and here I put in 5, 10, 20, 30, 40, 60, 80. 
+Now I put in the memberships that 5 is certainly young, 10 is certainly young, 20 is 
+certainly young, 30 is .6, 40 is 0.5, 60 is .1 or .01 and 80 is 0 so I can also draw the 
+same thing.  
+ 
+(Refer Slide Time: 50:50) 
+ 
+ 
+ 
+This is my definition of (….. )young.  
+So here it is age and my values are here 5, 10, 20, 30 like that. 
+ 
+What are these curves then?  
+Here is its membership so for 5, 10, 20 the value is 1 and after that it has come to 0.6 
+and after that it has come to 0.5 and then there is a short fall. This is the graph that is 
+representing young and the same thing can be represented in the form of a table. That 
+is one way we can represent the fuzzy set in a computer. Now similarly I can define 
+another fuzzy set say old where obviously 5 is not old, 10 is not old, 20 is not old, 30 
+is not old here you say 0.2, 60 is 0.5 and 80 is 0.9, 90 might be 1. So if I describe this 
+fuzzy set then also I have actually mapped a particular curve.  
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 52:18) 
+ 
+ 
+ 
+What is this curve?  
+If this be the age here and the membership on this side these are all zeros and after 40 
+it is 0.5 and then 0.9 and something of this sort. Now this curve can be mapped to this 
+form of a table. So the curves that we are showing you till now can be represented in 
+the form of table. Therefore it is amenable to be represented in a computer. Here 
+define a fuzzy set adult. Just put in the membership values here and that will define 
+your notion of adult. This is one way in which fuzzy sets can be represented in a 
+computer.  So we always describe these things in terms of some profiles and these 
+profiles reflect our conceptualization of the fuzzy term like tall. 
+ 
+(Refer Slide Time: 52:38) 
+ 
+ 
+ 
+Here is a profile of different heights and this is my notion of tall and what are my axes 
+here?  
+This is the membership one, this is the membership of h where h is any variable on 
+this, membership of h is in the fuzzy set tall this is the profile of tall you must have 
+realized this by now. 
+ 
+(Refer Slide Time: 53:35) 
+ 
+ 
+ 
+Now there are different shapes. How do we get the shapes of profiles? 
+Shapes of profiles are obtained from experiments and expert judgment. We 
+sometimes carry out some statistical experiments like I fill up a questionnaire and go 
+to 1000 people and say would you consider 6 ft to be tall, would you consider 5 ft 8 
+inches to be tall and then we see how many people have really said that 5 ft 8 inches 
+should belong to tall and based on that we try to put in some measure of membership. 
+But however this profiling all said and done is some somewhat vague and this has to 
+be done by the expert or the user who wants his or her notion of fuzzy set to be 
+captured. 
+ 
+(Refer Slide Time: 54:33) 
+ 
+ 
+So there are different types of functions. Here is another type of function which is 
+called the S function. This function this curve can also be expressed as for any x less 
+than a particular value it will be 0. Between two points a and b it will be computed by 
+some function. Between two other points it will be computed by some other function 
+and after that it is 1. This is one type of profile. So this profile can be represented as a 
+table or can be represented as this function which can be computed using a procedure 
+in the computer. 
+ 
+(Refer Slide Time: 55:18) 
+ 
+ 
+ 
+Similarly here is a very interesting thing. I say that a number which is close to a, now 
+conceptually it is something like this; a is certainly close to membership 1, something 
+which is in-between these two points if it is at b either plus on the positive side or 
+negative side to 0.5 then for anything in-between we will have a membership and in 
+that way we can have a bell type of curve. This is another way in which the 
+membership functions can be represented. I would encourage you to find out a 
+mathematical function and expression to represent this sort of a curve close to a so 
+that we can also use it. We can of course tabulate it but we can also use it for 
+computation as a function as a procedure. 
+ 
+ 
+

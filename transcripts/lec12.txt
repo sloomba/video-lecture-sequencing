@@ -1,0 +1,645 @@
+Artificial Intelligence 
+Prof. Anupam Basu 
+Department of Computer Science and Engineering 
+Indian Institute of Technology, Kharagpur 
+Lecture - 12 
+Interface in Propositional Logic 
+ 
+ 
+In the last lecture we introduced the basic idea of propositional logic and we talked about 
+representation of different sentences in propositional logic. In this lecture we will look in 
+a formal way as to how we make inferences when some statements are represented in the 
+form of propositional logic. As it has been proved in the last lecture that the objective of a 
+knowledge representation scheme is not only representing the facts or some rules but also 
+we have to be able to make the inferences. Unless we can make inferences, in whatever 
+form we represent the knowledge that we have will be of no use. So we will be talking 
+about inferencing in propositional logic representation today. But before we proceed with 
+that let us have a quick look at some of the answers to the Quizzes that were given in the 
+last lecture.  
+ 
+Instead of going into all the problems that were given I will rather give you some 
+examples. Like the first problem was it rains in July. Now how do we represent this in 
+propositional logic? It is really a simple case; we can say that rains July. That is sufficient 
+to say that it rains in July. Similarly, if the statement was that it does not rain in 
+November then in that case we could have written it as not rains November etc.  
+ 
+(Refer Slide Time 03:06) 
+ 
+  
+ 
+This is rather simple but the next example we have was also one of the problems given. If 
+it rains today and one does not carry umbrella he will be drenched.  
+How do we represent this?  
+There is some implication here if and then. If it rains today and one does not carry 
+umbrella then he will be drenched, then is implicit here. So, for this part of the clause we 
+can say rains today and does not carry and not carry umbrella. If these two things happen 
+then get drenched. This is one way. Here there is a word one and I have some how 
+escaped using the statement one does not carry umbrella, I have simplified that because 
+in order to capture this sort of thing one does not carry umbrella, no one carries umbrella, 
+somebody does not carry umbrella etc require some more power than what is provided in 
+the case of propositional logic. So let us neglect or ignore this one part here for the time 
+being. So, if we neglect that we will get rains today and carry umbrella and does not carry 
+umbrella implies that somebody gets drenched. Now if we do away with the problem of 
+one here then let us take another example rains today and Tom does not carry umbrella 
+implies that Tom will get drenched. So, rains today, AND NOT carry umbrella Tom, get 
+drenched Tom. 
+ 
+(Refer Slide Time 04:27)  
+ 
+ 
+ 
+Now let us come back to today’s lecture. In today’s lecture our objective is to put you to 
+the position where you will be able to infer the truth values of a proposition. You know 
+that any proposition can be true or false. The truth value of the proposition will be 
+evaluated. How to evaluate that? And you will be able to do reasoning towards arriving at 
+new facts when you are given a new set of propositions. Also this lecture will help you to 
+prove even a set of propositions. This means when a set of propositions are given and 
+another proposition is given then you have to prove this later proposition using the 
+existing propositions which are known to be true. In today’s lecture we will also see the 
+mechanism of doing that.  
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 05:20)    
+ 
+ 
+ 
+I had given two parts of the quiz, one I have answered but the other one I have not. But I 
+assume that you have been able to do that some way or the other. But since we did not 
+introduce any formal method for doing it I will try to give the answers of those a little 
+later. But before that let us look at the procedure that is formally adopted to arrive at the 
+truth value of compound propositions. Suppose we have got a proposition P and 
+proposition Q the objective is to arrive at the truth value of the composite propositions 
+like P AND Q P OR Q etc. Now the standard method for doing that is using the truth 
+table.  
+ 
+Now here you see that we are deriving a truth table for the AND logical operation. So 
+each of them P OR Q can have a value true or false. So we can have four combinations 
+like both of them are false, one is false one is true, one is true one is false and both of 
+them are true. So we make a truth table like this. We usually try to follow a system while 
+you enumerate them false false then we make one of them true that is false true then we 
+make the other one true the other one false true false and then true true. This is something 
+to be noted here. This is a typical order in which we usually write.  
+ 
+Now, when we talk of P AND Q we know that AND is true if both of the propositions are 
+true. Therefore when this is false false P AND Q will be false, if P is false and Q is true 
+then P AND Q will be false because it requires both of them to be true, true and false will 
+become false and only when both of them are true it will become true. Similarly if you go 
+over here now it is again the same combination but OR operation P OR Q will be true 
+when any one of them either P or Q is true.  
+ 
+ 
+ 
+ 
+ 
+ (Refer Slide Time 08:22)  
+ 
+ 
+ 
+Therefore if it is false false it will be false but in false true case since one of them is true 
+the result will be true, true OR false one of them is true so it will be true, if both of them 
+are true then also it will be true. That is how we can find out the truth value of these 
+composite propositions P OR Q. A few more examples: Here we are looking at the 
+implication logical operation. Now what does implication mean?  
+If P is true then Q will certainly be true. So P is a sufficient condition for Q being true. 
+But if P is false then also Q can be true. And if P being false still Q is true then also P 
+implies Q this statement is not valid.  
+ 
+(Refer Slide Time 10:24)  
+ 
+ 
+So the truth table will be, both of them are false then obviously this is true because it is 
+telling the truth that if it is false it may be false that is true this entire thing is true. If P is 
+false and still Q is true yes that can happen because P is a sufficient condition P is truth it 
+is a sufficient condition but not a necessary condition for Qs being true. If it is false and 
+Q is true P implies Q then this statement is still true. If P is true and Q is false now we 
+have a problem because P is a sufficient condition. Therefore if P is true Q has to be true 
+if this is true. But P is true but still Q is false then obviously P implies Q this statement 
+does not hold. Therefore P implies Q becomes false. But if both of them are true then also 
+is true. So, when we try to derive the formula for one such composite statement in 
+proposition calculus we can use this method called […..].10:29. 
+ 
+Here we have taken the example of a little more complicated thing that we want to find 
+out the truth value of the statement NOT P OR Q implies P AND Q. Is this statement true 
+or when will it be true?  
+Again we have to start with the standard method of enumerating the truth value of P 
+AND Q. Now again we will have these four combinations false false, true true, true false, 
+true true. Now, again since we have got NOT P here so if P is false NOT P is true we 
+make a column for NOT P. P is false NOT P is true; P is true NOT P is false; P is true 
+NOT P is false. And now we make another column for this entire NOT P OR Q and that 
+column is here P OR Q. So NOT P OR Q how do you compute? It is an OR so NOT P is 
+true Q is false NOT P OR Q is true, NOT P is true we have to just look at these two 
+columns because we need only these two. Both of them are false so this is false, this is 
+false this one is true so this will be true so I have got the truth value of this.  
+ 
+(Refer Slide Time 11:48)  
+ 
+ 
+ 
+And on this side we have got P AND Q. Now we have got P here Q here so P false Q 
+false makes it false, P false Q true makes it false and since it is AND only when both of 
+them are true it becomes true.  
+ 
+Now I have got these two. Now I want to see whether this statement which is an 
+implication between this implies this, this implies this is true? What is the truth scenario 
+for that? If the antecedent is true if this part is true then this has to be true because this is 
+a sufficient condition. Now we see here this is true but this is false so this combination 
+makes this entire statement false. There is a mistake here, this should be false, this should 
+be false and this should be true there is a mistake here. This should be false and this 
+should be true then this should be true. So, if this is false and this is true then this should 
+be true. If both of them are false then also this is true, if both of them are true then this is 
+true.  
+ 
+(Refer Slide Time 13:16)  
+ 
+ 
+ 
+Now we come to another very important theorem called the De Morgan’s theorem. De 
+Morgan’s theorem states that, if I make a negation, for example P AND Q this entire 
+thing is negated then each of these literals each of these propositions like P AND Q will 
+be individually negated and this operation would be complimented, this dual one will be 
+taken so the dual of AND is OR and the dual of OR is AND. Therefore NOT of whole 
+thing P AND Q will be NOT P and this one will be complementary and will become OR 
+NOT Q. Similarly NOT of P OR Q will be NOT P and this will be complimented AND 
+NOT Q.  
+ 
+Now this is De Morgan’s theorem so if we just write down to prove the truth table then 
+we can see that P AND Q will have these combinations again so P OR Q will have this 
+value NOT of P OR Q will be compliment true, false or true becomes false true becomes 
+false. Now we look at the right hand side of this, NOT P here P was false and NOT P is 
+true, Q was false so NOT Q is true, so we get these things NOT P AND NOT Q and so 
+NOT P AND NOT Q true true will become true so I am trying to compute this part, I am 
+trying to prove De Morgan’s theorem. So I have found the column for this value and now 
+I am trying for this value. So, as soon as this becomes true false false false I can compare 
+this column and this column and I can see they are identical. Therefore these two are 
+equal proving De Morgan’s theorem.  
+ 
+The next thing we can do is retrieve the earlier quiz. What was given here is, if P is true 
+and Q is true then is the following are true or false? First thing that was given P implies Q 
+is it true or false if P is true and Q is true. Now we have got a formal method at our 
+disposal so let us make a truth table for that. We see that P and Q and P implies Q if we 
+make this picture we will find if P is true and Q is true P implies Q is true. Now let us 
+take the second example.  
+ 
+(Refer Slide Time 15:40)  
+ 
+ 
+ 
+ (Refer Slide Time 15:57)  
+ 
+ 
+Another example is NOT P OR Q implies P, how to deal with that? Again let us see if P 
+AND Q are true. Here I have used another notation NOT P can be written in this or P 
+prime can also be used to denote NOT P. Here you see P is true because it has been told 
+in the problem if P is true then P prime is false negation of P is false and Q is true then 
+what happens is S is this entire statement, is it true? NOT P is false so this is false Q is 
+true therefore this part is true. And this part is true implies that P and P is also true.  
+ 
+(Refer Slide Time 17:40) 
+ 
+ 
+ 
+So this is true implies that this is true so this entire statement is true. Therefore you can 
+use the truth table method to derive the validity of correctness of any propositional 
+statement. Now let us come to reasoning. How do we carry out reasoning in the case of 
+propositional logic? So, what we mean by reasoning that is using the given propositions 
+which are assumed to be true you are trying to derive new facts which will also be true. 
+Suppose there is a proposition it is the month of July and there is another proposition it 
+rains and there is a rule that is told that P implies Q that means if it is the month of July 
+then it rains is the statement.  
+ 
+Now another statement is given, it is the month of July that means P is true then what can 
+you infer? Using your common sense you can say that you can conclude that it rains. 
+Now how we did it? What was the mechanism that went behind this? We can write this in 
+this form: P implies Q is a true proposition, if it is the month of July then it rains. I was 
+also told it is the month of July so if P implies Q AND P then we can infer Q. So P 
+implies Q is given AND P is given so we can infer Q. This is a very common deduction 
+technique we often use in our day to day life and it has got one name and that name is 
+Modus ponens. This is one typical inference rule which is very popularly used for 
+carrying out inferences. Now was it true? Is Modus ponens valid? Is it a correct inference 
+rule?  
+ 
+Let us look at that, P implies Q can certainly be written as NOT P OR Q that you have 
+seen in the last class, NOT P OR Q result in the same truth table so we have got NOT P 
+OR Q and P is true. So, if we conjoin it with P then we can write P AND NOT P OR Q 
+therefore P AND NOT P by associativity OR Q so P AND NOT P is false OR Q anything 
+false OR Q will be [….] so that is the proof of the Modus ponens. That means if P is 
+given and P implies Q is given then you can certainly infer Q and that is a very common 
+and usual inference rule. And when we talk of a valid inference rule it is irrespective of 
+the interpretation.  
+ 
+(Refer Slide Time 19:41)  
+ 
+ 
+ 
+We are talking of inference rules which can be mechanically applied and these are 
+irrespective of the meaning which is the interpretation we give. 
+ 
+So, irrespective of whatever the interpretation is Modus ponens allows us to infer the 
+truth of Q. So Modus ponens is an inference rule that allows us to deduce the truth of a 
+consequent depending on the truth of the antecedents, it is just a rule.  
+ 
+Why are we so much bothered about inference rules?  
+We are so much bothered about inference rules because we want to develop some 
+mechanical procedures using which we can make the machine infer new facts. Only those 
+inference rules are of interest to us which can be mechanically applied.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 20:16)  
+ 
+ 
+ 
+Besides Modus ponens there are couple of other inference rules which you can see 
+through your common sense like P AND Q. If P is true and Q is true then obviously P is 
+true. If P is true then P or Q is true. If NOT of NOT of P is true then P is true it is a 
+double negation by De Morgan’s law or any other law so these two cancel out each other 
+and then we will get P. there is another interesting and useful rule called the chain rule.  
+ 
+For example, if we have one rule like if P is true then Q is true and I have got another rule 
+if Q is true then R is true then we can certainly infer that, if P is true then R is true 
+because Ps being true makes Q true and Qs being true makes R true so there is a chain. P 
+is true makes Q true and Q true makes R true. Therefore by transitivity we can say if P is 
+true then R is true. This is called a chain rule in which we will find a lot of applications 
+when we look at rule based systems.  
+ 
+Besides these inference rules now we come to a very important concept called 
+satisfiability. What does satisfiability mean?  
+Let us remember that whenever we try to prove any proposition we are proving it with 
+respect to a particular interpretation. And that interpretation is nothing but mapping to a 
+world. And a sentence is satisfiable by an interpretation if that interpretation makes the 
+sentence true. That means, if under that interpretation that sentence evaluates to true only 
+then that interpretation satisfies the sentence.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 21:55) 
+ 
+ 
+ 
+(Refer Slide Time 22:48) 
+ 
+ 
+ 
+Now, if no interpretation makes a sentence true then that sentence is called unsatisfiable 
+or inconsistent. If there are no interpretations that make all the sentences true you have in 
+a set then that set of sentences is inconsistent or unsatisfiable. This is a very important 
+notion.  
+ 
+Briefly speaking satisfiability means that, if given an interpretation a sentence evaluates 
+to true then that interpretation satisfies the sentence. The sentence is satisfied under that 
+interpretation. This leads to a very important concept called logical entailment. In our day 
+to day way of speaking we often say this is a logical consequence of that, this logically 
+follows from that. What does the term logically follows really mean? What does it mean 
+by the term following logically? That is essentially captured in the idea of entailment. If 
+something logically entails something else then we can say it is a logical consequence. 
+But what I said now is equally vague so let us try to make it concrete.  
+ 
+Suppose there is a set of sentences S and let us suppose there is another sentence here 
+shown in small green bubble and we are thinking of one particular interpretation I that 
+has been given to these set of sentences and this interpretation obviously makes these set 
+of sentences true. That means this interpretation I satisfies these set of sentences. Suppose 
+we apply the same interpretation to this new candidate sentence and if the same 
+interpretation also makes this sentence true that means the interpretation that made these 
+set of sentences true also makes this candidate sentence true then we can say that these 
+set of sentences logically entail this sentence.  
+ 
+(Refer Slide Time 25:24)  
+ 
+ 
+ 
+These set of sentences went through will also make this one true. That is called logical 
+entailment. If put in words, there is a set of sentences and if a sentence S1 the small 
+bubble here has a value true for all interpretations that make all sentences in a set of 
+sentences S true then we can say that this set of sentences S logically entails S1. That 
+means the set of sentences logically entails this new sentence or in other words S1 
+logically follows from S or S1 is a logical consequence of S etc. 
+ 
+Now we no longer remain vague when we say that this thing logically follows from this 
+thing. That means a particular interpretation makes a set of sentences s true will also 
+make the new candidate sentences s or S1 to be true. Now this is a very important 
+consequence of our understanding of logical inference because when we try to infer we 
+are actually trying to derive new sentences which are correct which are valid. Now by 
+looking from another direction or from the angle of inference suppose we have got a set 
+of sentences here and I have got a new proposition or a new sentence and I have got a 
+decision machine, the decision machine takes this set of sentences which are known to be 
+true.  
+ 
+Suppose I have told some geometric theorems to the machine, now these geometric 
+theorems are already proved and they are known to be true. And I have got a new 
+theorem that I want to prove or a new problem that I want to prove. So I have got a set of 
+sentences which are known to be true. Now, given that the decision machine takes this 
+new proposition and asks this question is it true and the decision machine will come up 
+with the answer yes or no. Therefore the answer will be yes if this new proposition is 
+logically entailed by this set of sentences which are known to be true under a particular 
+interpretation. That is what our proof mechanism is and nothing other than that.  
+ 
+(Refer Slide Time 28:12)  
+ 
+ 
+ 
+So if we have got a set of sentences which are known to be true and if a new proposition 
+logically follows from that then the decision machine will be able to say that this is true. 
+That is how our basic inference mechanism goes on. Now we have seen Modus ponens to 
+be a very interesting and powerful way of inference that is an inference rule. Now we will 
+look at another interesting inference mechanism known as resolution. But before going to 
+resolution quickly we need to have a look at a special form of representation of 
+propositions called the clause.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 29:00) 
+ 
+ 
+ 
+A clause is a special form. Before defining a clause we must know what a literal is. A 
+single proposition which we often call an atom, a single proposition is always called an 
+atom but a literal can be a single proposition or its negation. For example, P or NOT P, P 
+is a literal NOT P is a literal. Now what is a clause? A clause is a disjunction of all these 
+literals.  
+ 
+What does disjunction mean?  
+Disjunction means connection through OR not AND. When we connect it with AND we 
+call it conjunction. But disjunction means that all these literals are connected with R. So 
+you say P OR Q OR NOT R this is a valid clause. Now this is a particular form that is 
+very useful for inferencing. Given any particular proposition can we convert it to the 
+clausal form? The representation form in the form of clause is called a clausal form.  
+ 
+How can we convert a compound proposition to a clausal form?  
+There are some steps that we can follow and do that. Consider the sentence or a well 
+formed formula A implies B OR C implies A. This is not in clausal form because we 
+have got literals no doubt but we have got disjunction but we have got operators which 
+are not disjunction. In a clause there will be only disjunction operator. This is a particular 
+form of clause that I am talking of called Disjunctive Normal Form DNF that is of 
+interest to us right now.  
+ 
+How can I convert this to a disjunctive normal form?  
+First of all I can eliminate these implication signs by the simple rule we know that if we 
+write P implies Q then that thing can be written as NOT P OR Q we have already 
+discussed that it can be written as NOT P OR Q. In the same way we can convert it in the 
+clausal form. Any implication can be converted to this. My clause was NOT of A implies 
+B OR C implies A so first I am trying to eliminate the implication sign. There was a NOT 
+here and let it be there. So A implies B will become NOT A OR B and C implies A will 
+become NOT C OR A which is the first step.  
+ 
+(Refer Slide Time 32:15) 
+ 
+ 
+ 
+Now we have got this, still it is not a clausal form now how can we make it a clausal 
+form?  
+We will have to eliminate the double negation sign and reduce the scope of the NOT 
+signs using De Morgan’s law. I had NOT of NOT A OR B so I will remove this double 
+negation so if I apply De Morgan’s law NOT applied here will negate this so this will 
+become A and this will become NOT B but this operator will become AND which is the 
+dual of that and similarly for this it will be NOT C OR A. But unfortunately as we have 
+done this I have got an AND operator which is not allowed in a clausal form so I have to 
+do something more. So what we got here is it is not a disjunctive form there are some 
+ANDs also here.  
+ 
+Therefore, as we go down we will have to conjunct this conjunctive normal form to 
+disjunctive. I will first convert that to conjunctive normal form using these rules that I 
+have got. Therefore by using the distributive and associative rules A AND B OR NOT C 
+OR A can be converted to A OR NOT C OR A AND NOT B OR NOT C OR A. This can 
+be further reduced to A OR NOT C this is one, AND NOT B OR NOT C OR A. Now 
+each of them is a disjunction but they are connected with an AND operation. Since they 
+are connected with AND this is called conjunctive normal form.  
+ 
+But our objective was to derive clauses and in the clauses there were only disjunctions 
+allowed so what do we do?  
+We have got here individual clauses which are satisfying the definition of clause but they 
+are connected with an AND. The answer is very simple. Each of these clauses can be 
+looked upon separate clauses which are true. So we have to get the set of clauses A OR 
+NOT C is one clause NOT B OR NOT C OR A is another clause. Thereby we derive the 
+conjunctive normal form but the conjunctive normal form consists of a conjunction of 
+individual parts which are in disjunctive normal form, they are clauses so we have got 
+two clauses over here. Therefore in this way we can convert any particular proposition 
+into the clausal form. 
+ 
+(Refer Slide Time 34:54) 
+ 
+ 
+ 
+Why do we look at all these? Why are we so much interested into getting the clausal 
+form?  
+It is because the clausal form will allow us to apply a very interesting inference 
+mechanism called resolution. Resolution is another technique of inference that we learn. 
+At the very beginning in the objective we said we learnt to prove new facts given a set of 
+facts.  
+ 
+Given a set of facts proving a fact means proving the logical entailment. We have also 
+defined this. Modus ponens was one way but resolution is another way. Resolution is a 
+sound inferencing mechanism. Suppose x is a literal and S1 and S2 are two sets of 
+propositional sentences represented in clausal form then if we have x OR S1 AND this 
+AND is a logical AND and NOT x OR S2 then we can get S1 OR S2. This is the basic 
+principle. You can easily prove that x OR S1 and NOT x OR S2 if we apply the 
+associativity over here then again we will have false OR S1 OR S2 then we get S1 OR S2 
+so that therefore we can eliminate a literal with its compliment and therefore here S1 OR 
+S2 is the result of the resolution. This process is called the resolution. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 36:54)  
+ 
+ 
+ 
+So we take two clauses and resolve one literal with its negation and the remaining part 
+when combined gives us the resolvent. S1 OR S2 is the resolvent and x is a literal that is 
+resolved upon and the entire process is resolution. Let us take an example. If a triangle is 
+equilateral then it is isosceles. It is a rule a geometric theorem already proved by 
+someone. And again if a triangle is isosceles then two sides AB and AC are equal and 
+that is the definition. If AB and AC are equal then the base angles B and C are equal. 
+ABC is an equilateral triangle and suppose you are asked to prove angle B is equal to 
+angle C can you prove it? We can try to do these things in this way.  
+ 
+(Refer Slide Time 38:20)  
+ 
+ 
+Suppose I change this a little bit……. If now it is told that ABC is an equilateral triangle 
+and I have been told to prove that these two angles B and C are equal how can I prove it? 
+My task is to prove angle B is equal to angle C, how do you prove it? There are different 
+ways of proving, you can try Modus ponens or let us try with resolution. The first thing 
+we will be doing is, convert each of these English like sentences into a propositional 
+form. So, if a triangle is equilateral then it is isosceles. I can write this equilateral ABC 
+implies isosceles ABC. If a triangle is isosceles then two sides AB and AC are equal.  
+ 
+I can write that isosceles ABC implies equal AB and AC. If AB and AC are equal then 
+angle B and angle C are equal. I can also write this statement as equal AB AC implies 
+equal BC. These were some if then type of implications or rules and there is a statement 
+ABC is an equilateral triangle. The proposition corresponding to that is simple equilateral 
+ABC. Therefore from these statements we have got a set of propositions. Now we have to 
+convert each of these propositions into the clausal form. So equilateral ABC implies 
+isosceles ABC that is turning out with NOT equilateral ABC OR isosceles ABC. 
+Isosceles ABC implies equal ABC that will equivalently be NOT isosceles ABC OR 
+equal AB AC. equal AB AC implies equal BC that will be converted to NOT equal AB 
+AC OR equal BC.   
+ 
+(Refer Slide Time 40:32)  
+ 
+ 
+ 
+Here this implication sign is changed to OR. And the fourth was originally in the clausal 
+form so I did not do anything. Therefore I have got four clauses that were given but I had 
+another thing to prove, angle B is equal to angle C and when we represent that in a 
+proposition equal BC therefore equal BC is a proposition AND it is in the clausal form 
+itself so I need not convert it to clausal form any further. 
+ 
+Now, one approach that all of you must have done in the course of mathematics 
+sometime is called proof by refutation sometimes it is also called reductio ad absurdum. 
+So in order to prove equal BC what we can do is, we can also disprove not equal BC. If 
+we can prove that not equal BC is false that implies equal BC is true. So resolution 
+actually tries to prove in that way.  
+ 
+We were supposed to prove equal B C and what I will be doing here is I will take the 
+negation of this NOT equal BC and I will try to disprove it. That means I will try to prove 
+that NOT equal BC is not a logical entailment of the set of propositions that has been 
+given. That is the method of resolution. Here I have enumerated all the clauses I had 
+NOT equilateral ABC etc all the clauses including that ABC is an equilateral triangle 
+except the clause that I want to prove or actually the clause that I want to refute. So I take 
+it on this side NOT equal BC which I want to disprove by this resolution.  
+ 
+Now we will start the method of resolution, how can I do it?  
+I will select one of the clauses from here. I need to be little intelligent and find out that 
+here is a clause which has got the compliment of this literal NOT equal BC and here is 
+equal BC. So I will select this clause, I will take this clause and will try to resolve 
+between these two clauses.  
+ 
+Why did I select this clause?  
+It is because these are the negation of some part of the clause I am going to disprove. So 
+when I select these two clauses I resolve them and when I resolve them what I get is these 
+two will resolve out and the resolvent will be NOT equal AB AC. Now when I get NOT 
+equal AB AC again I look over here and I will try to find out another clause which has 
+got the compliment of that. Equal AB AC is here so I take this clause and try to resolve 
+between these two. As I resolve these two will resolve out so I will get NOT isosceles 
+ABC. So, if you just have a careful look you will see NOT isosceles this clause was 
+actually meaning isosceles ABC implies equal AB AC.  
+ 
+(Refer Slide Time 44:19) 
+ 
+ 
+ 
+So from that what I have got is if it is equal ABC then I get isosceles ABC. So you just 
+form it in the clausal form. I have got the NOT isosceles ABC. Again next step is, I start 
+with this NOT isosceles ABC and I will try to resolve, so which clause have got isosceles 
+ABC? This clause has got so I select this clause so this clause comes in I resolve between 
+this resolvent and this what shall I get? I will get NOT equilateral ABC. Now I get Not 
+equilateral ABC so I resolve further, here there is an equilateral ABC so what will happen 
+if I resolve between these two? One is stating its equilateral ABC, another is saying NOT 
+equilateral ABC so when I resolve them I will get a null clause.  
+ 
+(Refer Slide Time 45:05) 
+ 
+ 
+ 
+What is the significance of this null clause?  
+The significance of this null clause is that I have arrived at a contradictory situation that 
+is a situation not supported by the given set of facts. There were a given set of facts like 
+this and I started with NOT equal BC and from there by resolving I have come to a 
+situation where I have got a null clause and the null clause essentially means that here is a 
+contradiction. Therefore, the premise with which I started is false.  
+ 
+And what was my premise?  
+My premise was negation of the goal to be proved and that is disproved that means the 
+goal is proved. This is the method of resolution. So the basic procedure for resolution if 
+you enumerate will be like this: Convert a given proposition into a clausal form. Convert 
+the negation of the sentence to be proved into clausal form. So first take the sentence to 
+be true, take its negation then take it to the clausal form and combine all these clauses 
+together into a set and iteratively apply resolution to the set as we were doing, and adding 
+the resolvent to the set. So, if we go up a couple of slides earlier we tried to resolve this 
+and once we resolved this we got this.  
+ 
+Now my resolution is taking place between this clause and this entire set of clauses and 
+we are resolving between this element and this element and getting a null clause. So the 
+fourth step is, iteratively apply resolution to the set and add the resolvent to the set and 
+we will continue until no further resolvents can be obtained or a null clause is obtained. 
+That is the complete step of resolution. Here is a quiz.  
+ 
+(Refer Slide Time 47:29) 
+ 
+ 
+ 
+Consider the following sentences: mammals drink milk. Assume whether in the real 
+world this is true or not, let us not bother about that. We are thinking of logical world so 
+when we are making a statement I am assuming that this statement is true. Mammals 
+drink milk, man is mortal, man is a mammal, Tom is a man so these are four statements 
+that we have said. Prove that Tom drinks milk, prove that Tom is mortal it is very simple. 
+Actually you can add in more implications but what you can try to do is, represent all 
+these sentences in the clausal form. Now prove these two statements 5 and 6 using Modus 
+ponens and again try to prove 5 and 6 using resolution. Therefore try to prove them using 
+Modus ponens and resolution. This is the assignment.  
+ 
+Now let us look into the objective of today’s lecture that is the formal way of inferencing 
+using propositional logic. We have discussed about a couple of things. One is the truth 
+table method. Using the truth table method we can find out the truth of any compound 
+proposition when you know the truth values of the individual propositions. We have also 
+seen that there are some inference rules which are not dependent on any interpretation. 
+The propositions will evaluate to true or false based on some interpretation. So we have 
+got a set of propositions we will give you the interpretation we will have some to be true 
+some to be false but the inference rule is independent, it is true for all interpretations. 
+Modus ponens is one such inference rule.  
+ 
+We have also seen a couple of inference rules like P OR Q implies P that is also another 
+inference rule. But Modus ponens that if P is true then Q is true and we also know that P 
+is true then we can derive that Q is true is a very powerful method of inference. This is 
+typically the deductive method of inference. The other rule and a very powerful technique 
+we learnt today is resolution. Resolution requires that propositions can be converted into 
+clausal form. 
+ 
+(Refer Slide Time 48:22) 
+ 
+ 
+ 
+We have also seen the technique of how we can convert a proposition into its clausal 
+form. The steps are, first we will have to do away with the implication sign which you 
+can easily do by converting P implies Q to the technique NOT P OR Q and after that we 
+will eliminate the double negation. Then we will apply the distributive and associative 
+properties and after that we will get a conjunctive normal form. And now we will 
+decompose this conjunctive normal form into each of those components which are 
+disjuncts so each of them will be clauses. Hence we start with a set of clauses. 
+ 
+Next when we want to do resolution we take the negation of the goal and convert into 
+clausal form and then we take all these known things as well as the goal to be proved and 
+resolve it in the manner that has been described, we iteratively apply that until we come 
+to a null clause.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 49:11)  
+ 
+ 
+ 
+If we get a null clause then certainly the negation of the goal has been disproved and 
+therefore the goal has been proved.  
+

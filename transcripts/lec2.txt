@@ -1,0 +1,911 @@
+Artificial Intelligence 
+Prof. Sudeshna Sarkar 
+Department of Computer Science and Engineering 
+Indian Institute of Technology, Kharagpur 
+Lecture - 2 
+Intelligent Agents 
+ 
+Today we will start our second lecture of artificial intelligence. In the first lecture we 
+introduced certain things namely what artificial intelligence is all about, the definition of 
+intelligence and we looked at several examples of AI systems and we also traced the 
+history of AI. Today we will go to the second part of this introduction where we will talk 
+about intelligent agents.  
+ 
+In a major part of this course we will talk about the various aspects of an intelligent 
+agent. Today we will introduce what an intelligent is and how we look at intelligent 
+agents. Now, to describe the instructional objective of today’s lecture we would like to 
+define an intelligent agent as to what we mean by intelligence as an agent, define a 
+rational agent.  
+ 
+In the last class we talked about rationality. We will talk about what we mean by a 
+rational agent. Then we will explain the concept of rationality as we see or the concept of 
+bounded rationality which we will deal with. We will discuss the different characteristics 
+of the environment in which the agent operates and we will explain different agent 
+architectures.  
+ 
+(Refer Slide Time: 02:31) 
+ 
+ 
+ 
+On completing this lesson you will be able to understand what an agent is and how an 
+agent interacts with the environment. As we will see in the course of this lecture the 
+environment is an important component of the agent design and the agent should be 
+designed so that it can work properly in its environment. After you have taken today’s 
+lecture you should be able to do the following:  
+ 
+When you are given a problem situation, you should be able to identify which are the 
+percepts to the available to the agent or what the agent can sense and how the agent 
+should act to optimize its performance. We should also look at what are the performance 
+measures by which we should evaluate an agent to try to see if the agent design has been 
+successful and we hope to understand what we mean by the definition of what a rational 
+agent is.  
+ 
+(Refer Slide Time: 03:48) 
+ 
+ 
+ 
+We will also look at the concept of bounded rationality which is the rationality that we 
+will deal with. In summary we will be familiar with different agent architectures 
+including stimulus response agents, state based agents, deliberative or goal directed 
+agents, utility based agents as well as learning agents.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 04:28) 
+ 
+ 
+ 
+And we should also we able to identify given a problem situation the characteristics of 
+the environment and recommend what the architecture of the desired agent should be in 
+this environment.  
+ 
+(Refer Slide Time: 04:48) 
+ 
+ 
+ 
+So this is our agent. The agent operates in an environment. The agent receives percepts 
+from the environment and the agent acts and its actions can change the environment. The 
+agent uses its various sensory organs so depending upon the sensors that the agent has for 
+example the agent may be able to see if the agent has a camera, the agent may be able to 
+hear if it has a sonar sensor and so agent can see or hear or accept different inputs from 
+the environment.  
+ 
+Inside the agent there is an agent program which decides on the basis of the current 
+percept or the percept sequence it has received till date to decide what should be the good 
+action to take in the current situation. So the agent has actuators or effectors to take 
+actions. These actions can potentially change the environment and the agent can use its 
+sensors to sense the changed environment.  
+ 
+(Refer Slide Time: 06:39) 
+ 
+ 
+ 
+The agent does the following things:  
+The agent operates in an environment. The agent perceives its environment through its 
+sensors. The agent acts upon the environment through actuators or effectors and also the 
+agent has goals.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 07:10) 
+ 
+ 
+ 
+Goals are the objectives which the agent has to satisfy and the actions that the agent will 
+take will depend upon the goal it wants to achieve.  
+ 
+What is a percept?  
+The complete set of inputs at a given time the agent gets is called its percept. The input 
+can be from the keyboard or through its various sensors. The sequence of percepts may 
+be the current percept or may be all the percepts that the agent has perceived so far can 
+influence the actions of an agent. The agent can change the environment through 
+effectors or actuators. An operation which involves an actuator is called an action. So, 
+agent can take action in an environment through the output device or through the 
+different actuators that it might be having. These actions can be grouped into action 
+sequences. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 08:35) 
+ 
+ 
+ 
+We have already seen that the agent has sensors and actuators and has goals. And the 
+agent program implements a mapping from percept sequences to actions.  
+ 
+ (Refer Slide Time: 09:06) 
+ 
+ 
+ 
+We also have to talk about a performance measure by which we will evaluate an agent, 
+evaluate how successful the agent design has been. And finally we will like to talk about 
+autonomous agents.  
+ 
+ 
+ 
+(Refer Slide Time: 09:25) 
+ 
+ 
+ 
+In artificial intelligence artificial intelligent agent’s autonomy is extremely important. 
+The agent should be able to decide autonomously which action it should take in the 
+current situation. So an autonomous agent decides autonomously what action to take in 
+its current situation in order to maximize its progress towards its goals. So, if the agent 
+has a goal the agent should try to maximize its goal too so that its performance measure is 
+at maximum. The behavior and performance of intelligent agents we will look at in terms 
+of the agent function. An agent function as we have already talked about is a mapping 
+from perception history to action.  
+ 
+Now what is the mapping that the agent should implement?  
+Obviously the mapping the agent should implement is the one which maximizes its 
+performance measure. The ideal mapping of an agent specifies which action an agent 
+should take at any point of time. We will talk presently about how the agent should 
+achieve this maximization. The performance measure is in fact a subjective measure 
+which characterizes how successful an agent is. And how the performance measure is 
+characterized can vary.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 11:15) 
+ 
+ 
+ 
+The performance measure could be the amount of how rich the agent will become if the 
+agent behaves in a particular way or how quickly the problem can be solved or how 
+precise or how good the solution is, what is the quality of the solution that the agent has 
+been able to achieve, the amount of power the agent’s objective may be to minimize the 
+amount of power consumed or the performance measure could be a combinations of 
+several of these factors.  
+ 
+Actually an agent could be anything. We can look upon a human being as an agent, we 
+can look upon a calculator as an agent. So, in order to characterize something as an agent 
+we have to look at the different characteristics in terms of the different mappings the 
+agent performs such as its percepts, its actions, the environment it operates, the entire 
+characteristics of the environment and certain other things. So let us look at some 
+common things that we are familiar with and look at what are the characteristics 
+associated with such agents.  
+ 
+We are all familiar agents, so what are our sensory organs?  
+We can see with our eyes, we can hear with our ears, we can smell, we can touch, we can 
+taste so these are the five primary input mechanisms we possess.  
+ 
+What are the actuators we possess?  
+We have our hands with which we can take some action, we have our fingers, we have 
+our legs and several other things including the mouth with which we can take our actions.  
+ 
+Now, if we design a robot what are the percepts, what are the different sensory organs we 
+can give to the robot that we can build into a robot?  
+We can have a camera with a robot, a camera with which it can take pictures of what is in 
+front of the robot and the robot function or the robot program can analyze that image and 
+find out salient characteristics of the environment which will decide the way it should act. 
+Then the robot can use other types of sensors like sonar sensors, infra red sensors etc. 
+And the type of actuators we can have or we can build into a robot are wheels, speakers, 
+lights, grippers and any other output device that we may want to. And then we can look at 
+a software agent. 
+ 
+The software agent is becoming increasingly common now-a-days. So many people call 
+them softbots. These softbots have some functions as sensors. They compute a function 
+of the input. So they have some functions as sensors and some functions as actuators. We 
+will later look at some specific software agents to look at the sort of function which they 
+take as the input and the sort of function they compute to give the output.  
+ 
+(Refer Slide Time: 14:58) 
+ 
+ 
+ 
+This is a picture of a robot. This is the Xavier robot developed at CMU it was one of the 
+earlier robots that was developed at CMU.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 15:02) 
+ 
+ 
+ 
+Then this is a robot called the Cog robot which was developed by Rodney Brooks group 
+at MIT.  
+ 
+(Refer Slide Time: 15:15) 
+ 
+ 
+ 
+We will have an occasion to talk more about Rodney Brooks’ activity in the course of 
+today’s lecture. So the basic motivation behind creating Cog is the hypothesis that they 
+wanted to build a humanoid robot a robot having intelligence like a human being. This 
+picture shows professor Rodney Brooks with the robot Cog.  
+ 
+ 
+ (Refer Slide Time: 16:14) 
+ 
+ 
+ 
+And thirdly we have this entertainment robot. This Aibo robot is sold by Sony. This robot 
+is claimed to be autonomous, sensitive to its environment, it can learn, it has different 
+stages of its life and it can be personalized according to the environment in which it 
+grows up in. 
+ 
+(Refer Slide Time: 16:43) 
+ 
+ 
+ 
+Then there are other types of agents like softbots or software agents. For example, there 
+are sites like askjeeves dot com which you can consider as an example of a software 
+agent. There are various expert systems including the medical expert systems for 
+example, the cardiologist which are also software agents. Other than software agents we 
+have other types of robots for example, the autonomous spacecrafts like the Mars Rover 
+and then there are other types of robots like intelligent buildings which have intelligence 
+built into them to decide the lighting condition, air conditioning etc.  
+ 
+(Refer Slide Time: 17:33) 
+ 
+ 
+ 
+So an intelligent agent must have certain fundamental faculties. It should be able to act. 
+An intelligent agent must act. The intelligent agent must sense its environment. An agent 
+must sense its environment. If the agent acts without sensing, it is a blind action and blind 
+action cannot be intelligent. So there are certain types of architectures where the agents 
+can sense and act and the agents do not do, do not perform any deeper deliberative action. 
+In fact robotics is about sensing and acting only. At the outside we only require the agent 
+to act appropriately. Understanding is not necessary. Understanding may be important for 
+choosing proper actions but understanding by itself may not be necessary.  
+ 
+However, we must realize that sensing really needs understanding to be useful. So an 
+intelligent agent who possesses complete intelligence must be able to do the following:  
+It must be able to understand or interpret what it senses, it should be able to reason and 
+finally the agent should also be able to learn so that the agent can operate in an unknown 
+environment. In fact learning is a prerequisite for the agent to be autonomous. An 
+autonomous agent which can adjust to a changing environment must have some learning 
+component.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 19:36) 
+ 
+ 
+ 
+Also, intelligent agents must be rational.  
+ 
+(Refer Slide Time: 19:45) 
+ 
+ 
+ 
+In artificial intelligence we will talk about building rational agents and we will talk about 
+different aspects the rational agent has and look at the ….   
+ 
+Now, what is a rational agent?  
+A rational agent is an agent which always does the right thing.  
+ 
+Now what is the right thing?  
+So in order to understand that we must understand what are the functionalities or the 
+goals of the agent. What are the components of the agent and we must look at how we 
+should build these agents.  
+ 
+(Refer Slide Time: 20:35) 
+ 
+ 
+ 
+Perfect rationality assumes that the rational agent knows everything and will take that 
+action which maximizes her utility. So, perfect rationality is prevalent to demanding that 
+the agent is omniscient or all knowing. If the agent knows everything and the agent can 
+reason extremely fast then the agent is a perfect rational agent. However, a perfect 
+rationality is something which is not within the scope of even human beings. We do not 
+satisfy the definition of perfect rationality. We are not omniscient; there are many things 
+which we do not know, there are many things which we cannot reason in a reasonable 
+time frame given what we know. The concept of bounded rationality was introduced by 
+Herbert Simon of CMU in 1972 in his theory of Economics. So, bounded rationality says 
+that because of the limitations of the human mind humans must use approximate methods 
+to handle many tasks. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 22:08) 
+ 
+ 
+ 
+Hence, bounded rationality does not aim at maximizing the absolute utility of the agent 
+because that is something which may not be achievable given a realistic agent given 
+realistic resource path. So, instead rationality as we will look at we will concentrate on 
+using approximate methods where appropriate so that the agent can take the best action 
+given its resource limitation and given what it already knows. 
+ 
+Rational action is the action that maximizes the expected value of the performance given 
+the percept sequence to date. When an agent takes an action the action may not always 
+have the same outcome. Sometimes the outcome of the action may be good, sometimes it 
+may be bad. So, when we talk about rationality we must look at the expected value of the 
+performance measure and not always the absolute value of the performance measure.  
+ 
+Also, we must evaluate an agent not on the basis of how it should behave in a perfect 
+case but how it can behave based on what it can sense. So something that the agent 
+cannot sense or foresee we cannot hold the agent responsible for those things. Therefore 
+rational action in the light of bounded rationality talks about maximizing the expected 
+value of the performance measure given the percept sequence which is available to the 
+agent.  
+ 
+Therefore does rational action means the best action?  
+The answer is yes but to the best of the agent’s knowledge based on what percepts the 
+agent already has access to.  
+ 
+Does rational mean optimum?  
+Yes, but to the best of the abilities of the agent and subject to the resource constraints. 
+The agent may have limitations in the way it can act. The agent may have limitations in 
+terms of the resources that it has access to. There could be time limitations, there could be 
+space limitations. So, given these constraints given its abilities the agent should take the 
+best action that is expected to maximize its utility. That is the rationality we will talk 
+about.  
+ 
+(Refer Slide Time: 25:15) 
+ 
+ 
+ 
+We must understand that a rational agent need not be omniscient because it does not 
+know the actual outcome of its actions. And certain aspects of the environment may be 
+unknown to the agent. So rationality takes into account the limitations of the agent, the 
+percept sequence that it has access to, the background knowledge the agent has and the 
+actions that the agent can take. And we only deal with the expected outcome of actions.  
+ 
+(Refer Slide Time: 25:50) 
+ 
+ 
+ 
+As we have already talked about, in 1957 Herbert Simon proposed the notion of bounded 
+rationality. Formally if we define bounded rationality, It is that property of an agent that 
+behaves in a manner that is nearly optimal with respect to its goal as its resources will 
+allow as nearly optimal as its resources will allow.  
+ 
+(Refer Slide Time: 26:22) 
+ 
+ 
+ 
+Now we come to another very important component of an agent. Actually the design of 
+the agent depends a lot on the environment in which the agent operates. And the task 
+environment of the agent can be defined in different ways. So we will look at several 
+ways of characterizing the environment. There are two ways of characterizing an 
+environment. One way of characterizing the environment is in the absolute sense and 
+another is from the point of view of the agent.  
+ 
+For example, when we want to talk about whether an environment is deterministic or 
+stochastic we must not look at whether the environment is deterministic from an absolute 
+point of view but rather whether the agent appears, whether the environment appears 
+deterministic to the agent based on what it can perceive.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 27:34) 
+ 
+ 
+ 
+Environments can be divided into two types based on the observability of the 
+environment. An environment may be fully observable or it may be partially observable. 
+If the environment is fully observable the entire environment which is relevant to the 
+action being considered is observable. All the relevant portions of the environment are 
+observable. 
+ 
+On the other hand, in the case of partially observable environments not all the relevant 
+portions may be observed. The relevant features of the environment are only partially 
+observable. For example, consider an agent playing chess like the deep blue chess 
+playing program. The agent has complete knowledge of the board. So everything about 
+the environment is accessible to the agent. So the chess environment is a fully observable 
+environment.  
+ 
+Consider again the environment where the agent is playing pokers where the agent cannot 
+see the hand of the opponent. So the environment in this case is only partially observable 
+to the agent. So, if the environment is fully observable the agent need not keep track of 
+how the environment is changing and deliberating about the environment. So, if the 
+environment is partially observable the agent in order to behave successfully in such an 
+environment has an added task of keeping track of the environment and reasoning about 
+the properties of the environment.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 29:53) 
+ 
+ 
+ 
+Then, if you look at the aspect of determinism again environments can be divided into 
+two or three types.  
+ 
+Deterministic environments: In deterministic environments the next state of the 
+environment is completely described by the current state and the agent’s action. When we 
+looked at diagram of agent environment we have already seen that the agent’s action 
+changes the environment. Now, in a deterministic environment given the agent’s action 
+how the environment change is deterministic. There is no other unknown thing which 
+comes into the picture to decide how the environment changes.  
+ 
+In stochastic environments, on the other hand, there is some element of uncertainty. 
+Therefore how the environment changes depends not just on the action that the agent 
+takes. So, whether an environment is deterministic or stochastic depends on how you 
+look at the environment. If you cannot observe the environment fully the environment 
+may appear stochastic to you whereas it is actually deterministic if you have access to the 
+entire environment. 
+ 
+For example, take the example of pokers again. If the agent did have access to both the 
+players’ hands and all the cards which are there then the environment actually behaves in 
+a deterministic way. However when it is partially observable it appears to be a stochastic 
+environment. So this is an environment which appears to be stochastic because of partial 
+observability. If you look at the game of Ludo it is a stochastic environment because how 
+the environment evolves depend on the value which the die has rolled. So whether the die 
+has rolled 1 or 2 or 6 depending on that the agent can decide its actions. Therefore this is 
+a truly stochastic environment.  
+ 
+A strategic environment is an environment state which is wholly determined by the 
+preceding state and the actions of multiple agents. In a strategic environment apart from 
+the current agent itself there are other agents around and the actions of all these agents 
+influence the environment. A strategic environment is one where the environment is only 
+changed by the actions of the agent itself and other agents. For example, a chess playing 
+agent operates in a strategic environment. 
+ 
+(Refer Slide Time: 33:18) 
+ 
+ 
+ 
+Then if we look at the episodicity of the environment an environment may be episodic or 
+sequential. An episodic environment is one where subsequent episodes do not depend on 
+what actions occurred in previous episodes. First of all sometimes certain tasks can be 
+divided into different phases or different episodes. In such episodic environments the one 
+episode may or may not influence the subsequent episode. So, if one episode does not 
+influence the subsequent episode such an environment is called an episodic environment.  
+Therefore in such an environment an agent did not plan beyond episodes. In a sequential 
+environment, on the other hand, the agent engages in a series of connected episodes. So 
+subsequent episodes are dependent on what happened in the previous episodes. Hence, in 
+this case the agent may need to plan ahead or base its action upon what happened in the 
+previous episodes.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 34:46) 
+ 
+ 
+ 
+Then if you look at another characteristic of the environment is its dynamism. 
+Environments may be static or dynamic. A static environment does not change by itself. 
+So an advantage is that a static environment does not change when the agent is 
+deliberating. The agent does not need to observe the world during its thinking process. A 
+dynamic environment changes by itself that is apart from the action that the agent takes.  
+ 
+(Refer Slide Time: 35:29) 
+ 
+ 
+ 
+Also, another dimension by which we can characterize environments is by its continuity. 
+An environment is discrete or continuous. An environment is discrete if the number of 
+distinct percepts and actions are limited and the number of states is limited. If the number 
+of states is discrete then that environment is a discrete environment. And the environment 
+is a continuous environment if the range of percepts is continuous or the range of actions 
+that it can take is many or the number of states is either continuous or too many so that 
+we treat them as continuous.  
+ 
+(Refer Slide Time: 36:21) 
+ 
+ 
+ 
+(Refer Slide Time: 36:24) 
+ 
+ 
+ 
+And finally we can also characterize the environment according to whether there is one 
+agent whom we are talking about in the environment or whether there are other multiple 
+regions in the environment. That is, if the environment contains other agents then it is a 
+multi agent environment. In games when we look at two person games we usually talk 
+about one opponent agent. There are environments where there is a single agent but for 
+many tasks that the agent does usually we talk about a single agent environment but there 
+are many situations which require distributed agents or with social and economic systems 
+we deal with multiple agent systems.  
+ 
+(Refer Slide Time: 37:39) 
+  
+ 
+ 
+Therefore the complexity of the environment includes knowledge rich environments and 
+input rich environments. In knowledge rich environments there is enormous amount of 
+information the environment contains. Knowledge rich environments contain lots of 
+information. And input rich environment is one where there is enormous amount of input, 
+enormous amount of percept that the agent can get. And in such environments which are 
+complex, which are either knowledge rich or which are percept rich the agent must have a 
+way of managing this complexity. So, such considerations in the environment are 
+complex. The agent must develop it strategies for sensing or its strategies of attentional 
+mechanisms. The agent must decide selectively what to sense, what is more relevant and 
+what it should give its attention to rather than deal with the entire complexity of the full 
+environment. Thus, an agent needs to focus its effort in such rich environments.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 38:57) 
+ 
+ 
+ 
+Now we will look at the different types of agent architectures. Table based agents, 
+stimulus response agents, goal based agents, and utility based agents and learning agents. 
+We will briefly talk about these agent architectures. A table base agent is a very simple 
+agent. An agent has to take actions given its sense given what it senses, given its 
+percepts.  
+ 
+Now, in a table based agent the mapping from percepts to actions is stored in the form of 
+a table. Therefore, on the left side we have the percepts and on the right side we have 
+actions. And the agent program is extremely simple. Hence, given the percept the agent 
+looks at the table and decides what action to take. Therefore based on this mechanism we 
+can develop what we call reactive agents which can take the action depending on the 
+percept. Unfortunately the best action for the agent it depends not only on the current 
+percept but on the percept sequence.  
+ 
+Now the number of possible percept sequence can be very large. In fact it can be infinite 
+till the agent acts over many time steps, many unbounded time steps then it can become 
+infinite. So this table can become very large if you have a mapping from percept 
+sequence to action. In simple tasks where the action only depends on the current percept 
+it may be easy to develop a table based agent but it is infeasible when the correct action 
+or the best action depends on the past and not only what the agent sees or perceives at the 
+current time step.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 41:24) 
+ 
+ 
+ 
+(Refer Slide Time: 41:34) 
+ 
+ 
+ 
+So, a table is a very simple way to specify a mapping from percepts to actions but tables 
+may become very large. And in a table based agent there is no intelligence in the agent 
+itself and the entire work is done by the designer in designing the table. So the designer 
+makes the table and the agent just looks it up to decide how to act. So such agents have 
+no autonomy. All actions, all behaviors are predetermined and there is really no concept 
+of learning.  
+ 
+Now, the mapping from percept to action may be done in different ways. It may be in 
+terms of a natural table, it may be in terms of a production system or rules. This mapping 
+can also be implemented by neural networks or one can implement the mapping by 
+algorithm. So, this mapping can be implemented in a rule based manner using a neural 
+network or using some algorithms.  
+ 
+(Refer Slide Time: 42:48) 
+ 
+ 
+ 
+So such agents where the action depends only on the percepts and there is no deliberation 
+involved are called reactive agents. The term reactive agent means those agents whose 
+information come from sensors and they can take actions through their actuators or 
+effectors. And we can additionally assume that the actions change the current state of the 
+world and the agent can only take some action without any deliberation. Such agents are 
+also called stimulus response agents. They have no notion of history but all their history 
+is encoded in the current state as the sensors see it right now.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 43:56) 
+ 
+ 
+ 
+Now let us talk about professor Rodney Brooks of MIT and the subsumption architecture 
+he proposed based on stimulus response agents. In 1986 professor Rodney Brooks gave 
+this notion of the subsumption architecture. His argument was that lower animals behave 
+in a largely reactive manner. They have a very little sense of deliberation. Therefore, 
+most of their actions are reactive actions. And his argument was that in the time scale of 
+evolution reactive behavior came much earlier than deliberative behavior. And he has 
+been able to show that a number of such components having simple reactive behavior can 
+achieve a surprising degree of intelligence.  
+ 
+Thus, Brook’s idea has been to follow the evolutionary path how life has evolved and 
+build simple agents for complex worlds. It is a combination of simple agents working 
+well in the complex world. The features of the subsumption architecture are that there is 
+no explicit knowledge representation. Behavior is not centrally controlled but behavior is 
+distributed among different components. The response to stimulus is reflexive and more 
+importantly the design is bottom up. The complex behaviors are fashioned from the 
+combinations of simple behaviors. Simple behaviors are put together to achieve complex 
+behaviors. And each individual agent is simple and inexpensive. Therefore the 
+subsumption architecture is basically a layered architecture.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 46:18) 
+ 
+ 
+ 
+According to professor Brooks the time scale for evolution has been 5bn years. It has take 
+5bn years to evolve from single cells since cells evolved to the present day. The first 
+humans appeared two and a half million years ago only whereas the first cells appeared 
+5bn years ago and symbols did not appear until only 5000 years ago. Therefore his 
+proposition is that we should look at simpler behavior as the first step towards building 
+intelligent agents.  
+ 
+Hence, in subsumption architecture there are different layers of behavior and higher 
+layers override lower layers and each activity in each layer consists of a simple finite step 
+machine. Now, this is an example of a simple architecture proposed by Rodney Brooks. 
+In this system there are several layers. This is a very simple robot. In the layer zero there 
+is the avoid obstacles layer. In this layer there are several sensory organs. The sonar 
+component generates sonar scan, the collide component sends halt message to forward 
+and the feel force component is the signal sent to runaway or turn around. So layer zero 
+of the agent is to avoid obstacles. This is the first layer of the agent which enables the 
+agent to navigate in an environment without colliding with other agents. So it is a very 
+simple behavior of a navigating robot without using a lot of deliberation.  
+ 
+In the second layer, layer 1 there is the wander behavior. This wander behavior generates 
+a random heading. It allows the robot to occasionally wander. So in the wander layer 
+there are two components. One generates a random heading and secondly the avoid 
+component reads repulsive force and generates new heading and feeds that to turn and to 
+forward.  
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 49:17) 
+ 
+ 
+ 
+Layer 2 that is the third layer has the exploration behavior. So this has several 
+components. The whenlook component notices whenever there is idle time it looks for an 
+interesting place. The path plan component sends new direction to avoid. The integrate 
+component monitors path and sends them to the path plan.  
+ 
+(Refer Slide Time: 49:53) 
+ 
+ 
+ 
+So as we have seen this percept based agents are efficient because they do not require 
+internal representation for reasoning or inference. However, there is no strategic planning 
+or learning and they are not good for multiple opposing goals.  
+ 
+(Refer Slide Time: 50:13) 
+ 
+ 
+ 
+In the second type of agent the more knowledge rich agents we come to state based 
+agents. In state based agents information comes from sensors and it changes internally the 
+agent’s current view of the world based on the state of the world and the knowledge the 
+agent has. It triggers action through the effectors. And in order to do this the agent does 
+some deliberation.  
+ 
+(Refer Slide Time: 50:51) 
+ 
+ 
+ 
+So based on the state of the world and knowledge the agent chooses the action and carries 
+out the action through the effectors.  
+ 
+(Refer Slide Time: 51:00) 
+ 
+ 
+ 
+Now, in goal based agent the agent’s action depends upon its goals and goal formulation 
+is based on the current situation. Therefore, based on the goal that the agent has to 
+achieve and the current state of the agent as it perceives the agent goes through some 
+deliberations to decide what the next action should be.  
+ 
+We will look at search and planning. These are the two fields of AI in which we will look 
+at different ways of deciding what action to take in order to achieve the agent’s goals. 
+Hence, in goal based agents the sequence of steps required to solve a problem is not 
+known a priori. They are not available in a table and they must be determined by a 
+systematic exploration of the alternative actions by deliberations.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 52:05) 
+ 
+ 
+ 
+Thirdly, we have utility based agents. Utility based agents are akin to goal based agent 
+but they are a more general frame work. If an agent has several goals and it can achieve 
+only some of them these goals may have preferences associated with them as to which 
+goals are more preferable. In this case we can talk about utility based agents where we 
+have different preferences for different goals.  
+ 
+A utility function is a very general function that maps a state or a sequence of states to a 
+real valued utility. So a state is mapped to a utility value and we can say that the goal of 
+the agent is to maximize its utility or the goal of the agent is to maximize its expected 
+utility. When we look at the decision theory we can consider agents which are based on 
+utility. And finally and very importantly we have learning agents. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 53:08) 
+ 
+ 
+ 
+We have said that learning is an extremely important component of autonomy. An 
+autonomous agent should have some learning built into it. Learning allows an agent to 
+operate in unknown environments. And the learning element modifies the performance 
+element and learning is required for true autonomy. We will take up learning later in this 
+course when we look at several types of learning that can be carried on by the agents.  
+ 
+(Refer Slide Time: 53:51) 
+ 
+ 
+ 
+In summary of today’s lecture an agent perceives and acts in an environment, it has an 
+architecture and an agent is implemented by an agent program. An ideal agent chooses 
+the action which maximizes its expected performance. An autonomous agent uses its own 
+experience rather than built-in knowledge of the environment by the designer.  
+ 
+(Refer Slide Time: 54:16) 
+ 
+ 
+ 
+An agent program maps from percept to action and updates its internal state. Reflex 
+agents respond immediately to percepts. Goal based agents act in order to achieve their 
+goals. Utility based agents maximize their own utility function. And then in order to have 
+goal based agents the agent must represent its knowledge, must represent its history, must 
+have some background knowledge etc. So, representing knowledge is important for 
+successful agent design.  
+ 
+(Refer Slide Time: 54:59) 
+ 
+ 
+Now we will come to a set of questions based on today’s lecture.  
+Question 1: Define an agent.  
+Question 2: What is a rational agent?  
+Question 3: What is bounded rationality?  
+Question 4: What is an autonomous agent?  
+Question 5: Describe the salient features of an agent.  
+ 
+ (Refer Slide Time: 55:31) 
+ 
+ 
+ 
+Question 6: Find out about the mars rover.  
+What are the percepts for this agent?  
+Characterize the operating environment for this agent.  
+What are the actions that this agent can take?  
+How can one evaluate the performance of this agent?  
+What sort of agent architecture do you think is most suitable for this agent?  
+Question 7: Answer the same questions above for an internet shopping agent.  
+ 
+

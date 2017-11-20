@@ -1,0 +1,637 @@
+Artificial Intelligence 
+Prof. Anupam Basu 
+Department of Computer Science and Engineering 
+Indian Institute of Technology, Kharagpur 
+Lecture - 31 
+Fuzzy Reasoning - II 
+ 
+In this lecture we will continue our discussion about fuzzy sets and fuzzy reasoning. In 
+the last lecture we concluded with an example membership function like this which is a 
+bell shaped curve representing some number like close to a. Now, as was mentioned 
+earlier this can be represented in the computer as a table. 
+ 
+(Refer Slide Time: 1:15) 
+ 
+ 
+ 
+For each of these values, for 20 we stored the membership value 0.1, for 30 we stored the 
+membership value 0.5, for 40 we stored the membership value 0.9, for 50 we stored the 
+membership value 1 etc. There is also another way of dealing with such curves and 
+storing them in the computer as a function. For example, if I ask you to represent a fuzzy 
+set close to a, the curve will be something like this where this number is a, and any 
+number which is close in this z1 will have high membership values. So if I want to store a 
+curve which is of this shape I can either put it as table or I can also find out some 
+function.  
+ 
+For example, if I write that the mew of any number x in the set close to a to be 
+represented as 1 by 1 plus (x minus a) whole square then also we will be able to represent 
+this sort of a curve just to verify this. Suppose this a is  0, in that case mew of c-2-a(1) the 
+membership of 1 in that set will be 1 plus 1 square that is 0.5, the square part will take 
+care of minus 1 also because minus 1 will also be 0.5. We can see that of curve is 
+asymmetric nature. Similarly, for c-2-a(2) is equal to 1 by 1 plus (2) square that is 4 that 
+is 1 by 5 that is 0.2. So quite sharply it is falling down. So, instead of storing all the 
+possible values and their membership function as a table we can decide on the nature of 
+the curve and find an equivalent function which can be computed in the computer. 
+ 
+(Refer Slide Time: 4:53) 
+ 
+ 
+ 
+Now if I really want to have a much more sharper curve like instead of the bell like curve 
+I like to have some curve like this or even sharper sort of curve you can try in that case at 
+mew c-2-a(x) is equal to 1 by 1 plus mode of x minus a. If you try this you will find that 
+the nature of the curve is becoming quite sharp. So we can have either an explicit 
+presentation of a fuzzy set which is in the form of a table, data structure or an implicit 
+presentation which is in the form of a function. These are the two possibilities of 
+representing a fuzzy set in a computer.  
+ 
+We usually prefer to have piecewise linear like triangular or this is another sigmoid but 
+instead of being a very continuous curve it is a piecewise linear curve. This is often 
+preferred because it is easier to represent and also calculation is easier it saves the 
+computation. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 6:25) 
+ 
+ 
+ 
+(Refer Slide Time: 6:59) 
+ 
+ 
+ 
+Next we come to the notion of linguistic variable. What are linguistic variables? For 
+example, we use the sentences Ravi is tall. Here tall is an adjective and set of all in 
+English is an adjective. Set of all tall people is fuzzy and statements like Europeans are 
+mostly rich, now this tall is a linguistic variable, rich is a linguistic variable. Now in this 
+sentence we are using adverb which is qualifying this word rich, Europeans are mostly 
+rich. Now how to deal with mostly? That is, as we have some x and square of x similar to 
+that mostly adverb can be assumed to be an operator over this adjective. So we can define 
+a linguistic variable as a predicate of a sentence and is typically an adjective which is 
+often qualified an adverb. This is an observation; A linguistic variable in order to be 
+amenable to fuzzy logic representation must be related to some crisp set on which we can 
+define the fuzzy set.  
+ 
+For example, when we say rich then we may have a crisp set of possible incomes and we 
+can define the set rich on that crisp set. Unless we have got some underline numerical 
+definition corresponding to crisp set we will not be able to define a fuzzy set over that. A 
+fuzzy set is always define over a crisp set and said to be the subset of that crisp set a 
+fuzzy subset as it is said. Linguistic variables can be of different types usually they are 
+terms and associated with every term we have got a degree of membership and that 
+degree of membership can be computed through a membership function and some phase 
+variables. Here are some interesting curves. 
+ 
+(Refer Slide Time: 9:25) 
+ 
+ 
+ 
+Here is the underlined numerical crisp set of the different temperatures. And on this side 
+is a membership function of the fuzzy set that we defined over this crisp set. So we can 
+define low temperature as in this way which we can again translate in the form of a table 
+or some function if possible. This is piecewise linear so I can always have up to 36 or less 
+than equal to 36 should be 1 otherwise it will be a straight line equation with a given 
+radiant up to 37. This is a normal temperature that means from 36 to 37 so somewhere in 
+between 360.5 is a normal temperature raised temperature we start from here and strong 
+fever starts from here goes up like this. Therefore over the same crisp set we can define 
+different fuzzy sets based on different linguistic variables. So these are the different 
+terms. Corresponding to each term we will have a different fuzzy set and they will be 
+different membership functions which define the degree of membership of the different 
+values of the crisp set. 
+ 
+Now if you have 38 degree centigrade as a particular value then obviously we will get 
+membership around 0.8 which we can say is pretty much raised and again the same value 
+is intersecting in a slightly strong fever here is our corresponding comment on this 
+membership. Therefore from a crisp value we are coming to fuzzy value so I am getting a 
+membership function and corresponding to the membership function again I can have a 
+corresponding linguistic state.  
+ 
+(Refer Slide Time: 11:40) 
+ 
+ 
+ 
+There is another term that needs to be introduced called hedges. Hedges are entities 
+which deal with adverb. For example, John is tall so we can define a fuzzy set tall, this is 
+the height and this is the fuzzy set tall so on this we can say Jack is very tall, very tall is 
+further qualification over this and so that curve will be something like this. And 
+somewhat tall is somehow a sort of relaxation and will look like this. Now at this a point 
+I would like to mention about two operators. 
+ 
+One is the concentration operator and the other is the dilation operator. Suppose for some 
+value of x I have got a membership in tall as 0.5 and the fuzzy set tall will be looking as 
+something like this. Now for a particular height maybe 5 ft 6 inches I have got a 
+membership value something like 0.5. Obviously for this height the membership in a set 
+very tall should be less. So intuitively we can think of curve that the set very tall will be 
+something like this, this will be very tall.  
+ 
+Now, according to z a it is very convenient to have the membership of very tall obtain 
+very of x obtain from this as mew of tall x whole square. So this operation square is 
+known as concentration operation and that is reflected in this curve. on the other hand if 
+we look at the same height and we want to define a set more or less tall then obviously 
+the membership of 5 .6 should increase so that curve will be somehow like this. So this is 
+a dilated curve and this is known as dilation operation. And this one we can obtain as 
+square root of mew tall x so this is one way, this square root raised to the power half is a 
+standard dilation operation and squaring is a concentration operation. 
+ 
+ 
+(Refer Slide Time: 12:32) 
+ 
+ 
+ 
+Therefore by this concentration operation this curve will automatically be a membership 
+of this 5 .6 in very tall will be 0.25 whereas more or less tall will be quite high. So these 
+are again two very important operations in fuzzy set or fuzzy logic and this is used to 
+compute hedges. The boy is running, the boy is tall, the boy is very tall, so how do I 
+handle very tall when I know the definition of the fuzzy set tall? 
+ 
+(Refer Slide Time: 16:09) 
+ 
+ 
+ 
+That is how the hedges are represented. These are also called linguistic hedges. Now 
+there are two more important concepts before we move to fuzzy operators. One is set of 
+support. The set of support for a fuzzy set is defined as the set it is a crisp set, a crisp set 
+consisting of elements whose membership values in the corresponding fuzzy set is greater 
+than 0. So all the elements say height in tall, so all the heights in the set tall, all the 
+heights which have got a membership value greater than 0 in the fuzzy set tall will be 
+called the set of support for the fuzzy set tall. Another thing is alpha cut, it is threshold.  
+ 
+That is, we put up some threshold alpha say 0.3 and all the elements whose membership 
+are less than alpha will be taken out of the set. So, if you look over here we have put in 
+some alpha here. All the elements whose membership value is less than alpha will go out 
+of this alpha cut of the fuzzy set. Therefore the values which will have all these elements 
+in this zone and those values having membership value greater than equal to alpha will 
+only be in the alpha cut of the fuzzy set a. So please note that the set of support and alpha 
+cut which are derived from the fuzzy set a will be two different crisp sets.    
+ 
+(Refer Slide Time: 18:38) 
+ 
+ 
+ 
+So this is again the alpha cut. Now let us look at probability and fuzziness. So when we 
+throw a die then the die can have 6 phases 1 2 3 4 5 6 and the probability of each phase 
+will be 1 by 6 1 by 6 etc. But if we say, from this dice if I define a fuzzy set called small 
+number then 1 will be a small number certainly so that is 1, 2 will have a membership 0.5 
+in this set small number, 3 and all those things will be 0.  
+ 
+So this will be a definition of small, similarly this will be a definition of medium and this 
+will be a definition of big number etc. On the other hand, probability-wise all of them are 
+the same. Therefore we must understand the difference between fuzzy number and a 
+priority value, they are conceptually different. Now our ultimate objective is to go 
+towards fuzzy inferencing. But in order to deal with fuzzy sets just as we do in 
+conventional sets we need to carry out some set operations. So here we are introducing 
+some fuzzy logic operations just like AND, OR, NOT as we did in the case of a normal 
+set and for normal logic. Let us see what they are for fuzzy sets.  
+ 
+(Refer Slide Time: 19:17) 
+ 
+ 
+ 
+For example, equality: Two fuzzy sets a and b are straight to be equal if for all x their 
+memberships are the same. The membership of all x in the set a is the same as it is in the 
+set b. Now look at the difference between this. In the case of a normal set we said that 
+two sets that a and b are equal if all the elements in this set are equal to this. But in this 
+case all the elements are same but this is a fuzzy set and this is another fuzzy set then 
+unless the membership of this is not the same as the membership of this element and 
+similarly for all the elements, just the belongingness will not do but the membership 
+values should also be the same then only we can see that the theory works.  
+ 
+(Refer Slide Time: 20:35) 
+ 
+ 
+ 
+The other thing is complement. In normal set and fuzzy set it is the same the complement 
+is here. The complement of fuzzy set a is denoted as a’ or a complement, membership of 
+a complement x is 1 minus mew membership of x in a and that is for all x. Containment 
+that is a is the sub set of b a is contained in b is true in case if all the membership values 
+for all the xs’ in a or less than equal to membership value of the same element in b. This 
+is the way we are dealing with the membership values. 
+ 
+Here are two important operators union and intersection. The union of two fuzzy sets a 
+and b is defined as a new fuzzy set where the membership value of all the elements here 
+will be the max of their membership elements in the individual sets. And similarly in 
+intersection the membership value in the intersection set will be the minimum of their 
+membership in the individual sets. 
+  
+(Refer Slide Time: 23:05) 
+ 
+ 
+ 
+Here is an example; We are looking at a fuzzy set a this is a fuzzy set a, this blue line is a 
+fuzzy set a and then the compliment of fuzzy set a compliment is defined by this red line, 
+wherever its membership is, suppose it is membership of 20 or 0.4 then the membership 
+of compliment for 20 of will be 1 minus 0.4 to 0.6 so this is the compliment set. Here we 
+are looking at the intersection, this blue line is the fuzzy set a and this green line is a 
+fuzzy set b, then the intersection of that is for all the xs’ which are common to both a and 
+b and whose membership value maybe this 40 the 40’s membership value in a is 
+something like 0.8 and 40’s membership in b is something like 0.4 so in the intersection 
+forties membership will be the minimum of this 0.2 to 0.4 so it should be 0.4 50, its 
+membership in a is 0.6 5, its membership in b is also .6 5 so in the intersection set 
+membership of fifty will be the minimum of this so the minimum of 0.6 5 and 0.6 5 0.6 5 
+so in this way with this red line we will define the intersection set. 
+ 
+The union set on the other hand will look like this. This was a and the green was b and 
+the union is red line where I have taken max of the membership values. And 40’s 
+membership in b was 0.4 and in a it was something like point 8 so I have taken that 0.8 so 
+this is the union in this set. As we know we can modify the meaning of fuzzy set uses 
+hedges like very more or less slightly. And typically very f is nothing but f square like 
+tall, is very tall and more or less is the square root of that. Next we come to a very 
+important notion that is a fuzzy relation.  
+ 
+(Refer Slide Time: 26:00) 
+ 
+ 
+ 
+What is a relation?  
+We know, if we have got a crisp set a in which we have got Tom and John and in the set 
+b we have got marks like 80 and 70 then we can define a set a into b which will be 
+something like all the possible tuples Tom that is one element from this and one element 
+from this, John 80, Tom 70 and John 70 so these are the possibilities. Then we define a 
+relation r which is a subset of a into b. Hence may be all the things are not there 
+depending on what r is, Tom 80 and John 70. 
+ 
+Now I give a name to this relation marks obtained. So, marks obtained is a relation, Tom 
+got 80 and John got 70. That is what we know about what relation is all about in the 
+typical Computer Science, Discrete Mathematics sense the Discrete Structures. This is 
+the definition of a relation. Similarly, I could have defined, if there was set c like Mary 
+and Susan I could have defined a relation likes between a into c so Tom likes Mary and 
+John likes Mary could be a set, could be relation. 
+ 
+Now here you see that, in a relation either this tuple belongs to this relation or it does not 
+belong to this relation. From this a into b either it belongs to this or it does not belong to 
+this. But in the case of a fuzzy relation this belongingness will again be fuzzy, there will 
+be degree or grade or belongings. So it will belong very strongly or it will belong very 
+weakly. Now this relation Tom John etc I can further represent it in a form of a graph 
+where I have got Tom and John and here I have got those marks say 80 and 70 and my 
+relation was defined as the graph that is Tom got 80 and John got 70. 
+(Refer Slide Time: 28:56) 
+ 
+ 
+ 
+Now the strength of these links are one. I can also have another relation say Tom, John 
+another relation Mary and Susan and a relation may be something like this Tom likes 
+both Mary and Susan and John likes Mary. So this graph can be used to represent the 
+relation. 
+ 
+(Refer Slide Time: 29:42) 
+ 
+ 
+  
+Now the strength of relation of these links which is denoting that relationship from Tom 
+to Mary are all having a strength of one in the case of a crisp relation. But in the case of a 
+fuzzy relation there is a degree of association or degree of belonging. So we define it as r 
+the fuzzy relation will be a grade of membership of all these elements x1, x2 etc. It is like 
+x1’s membership in this relation, x2’s membership in this relation etc. So this relation is 
+actually associating the membership grade mew for each tuple. 
+ 
+For example, friendship, so Manas and Suman are friends; they belong to the friendship 
+relationship membership of 0.9. Manas and Jyoti are friends but not that strong so that is 
+0.1, Alex and Mike 0.8, Alex and John .3 so here along with those hedges we had shown 
+we are also putting some grade of membership.  Next operator we are looking at is the 
+typical AND OR NOT. We know that NOT of a is denoted by compliment of a is 1 
+minus mew a(x), a and b which is the intersection essentially is when we have got min we 
+have got two memberships that x has got only for the element which is there in both. Of 
+course the membership that is minimum in a and b I take its membership in a and is 
+membership b and take the minimum, a or b will be the maximum. So, if I just take a 
+crisp set that a and b can only have values 0 and 1 which is the truth table and if I apply 
+min a b for the case of 1 1 is 1 and everything else is 0 this is the truth table for 
+conventional a and b. 
+ 
+(Refer Slide Time: 32:32) 
+ 
+ 
+ 
+But if I apply min a b then also a and b will be 0, min of 0 and 1 will be 0, min of 1 and 0 
+will be 0, min of 1 and 1 will be 1. Similarly for r the max of 0 and 0 will be 0, 0 and 1 
+will be 1, 1 and 0 will be 1, max of 1 and 1 will be 1. Therefore in this way you can see 
+that the fuzzy logic is actually covering our conventional logic. So fuzzy logic can be 
+considered to be a super set of the Boolean logic.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 34:04) 
+ 
+ 
+ 
+Next in order to do some inferencing what we need to do is, we have to look at if then 
+type of rules. We use fuzzy sets and fuzzy operators as the subjects and verbs of fuzzy 
+logic to form the rules. Now consider this rule; if velocity is small then current needed is 
+small. Now obviously this is a rule where the statements are different than what we had 
+in the case of conventional rule because here we have got all these fuzzy terms here. So 
+such rules can be written as if x is a then y is b.  
+ 
+If the boy is tall then the boy is strong. If the boy is tall then A is fuzzy set tall. So A is a 
+linguistic term defined by a fuzzy set tall, then Y is strong, B a linguistic term which is a 
+fuzzy set strong defined over some crisp set Y. So we can have a couple of more 
+examples; if temperature is high then put coolant as moderate. Here if I write this as, if x 
+is a now x is this linguistic term which is taking a value from a fuzzy set A. And that 
+fuzzy set A is the fuzzy set high, then y is B, y is the variable coolant and B is again the 
+fuzzy set moderate. So this is a fuzzy set and this is another fuzzy set. So fuzzy rules can 
+be generalized in this way if x is a fuzzy set then y is B.  
+ 
+Now the question is, if I have a rule like this if x is A where A is a fuzzy set then y is B 
+this is another fuzzy set. Now, I have to evaluate in order to fire this rule in the form of 
+forward changing I have to first evaluate this antecedent and earlier we found that this 
+antecedent usually is evaluated to true or false. Now, if temperature is high now I have 
+got a fuzzy set high and suppose temperature is 70 degree and in the fuzzy set high the 
+membership of 70 degree is mew of 70 in high is 0.7 so this will evaluate to not 1 or 0 but 
+it will evaluate to 0.7. Therefore unlike the conventional rule base where the antecedent 
+was evaluating to true it is now also having a quantity of truth. 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 36:54) 
+ 
+ 
+ 
+I can even make this antecedent a little more complex. If x is A is true now what will be 
+the value of this antecedent? So x is again temperature 70 degree and A is high so I 
+evaluate this in some fuzzy set high temperatures as something like this where I got 70 
+degree and in that I found its membership to be 0.7 so this one comes to 0.7. Now this is 
+true and here is the mew value of x in high and there we got .7 and this is my definition 
+for the value true, this is the fuzzy set true as something like this. So 0.7 will have a 
+membership say 0.5 here this is a two level thing. So this entire thing will now evaluate 
+to 0.5. This is how the antecedents are evaluated.   
+ 
+(Refer Slide Time: 40:07) 
+ 
+ 
+ 
+Again we can have some rules like; if x is A and just a conjunction y is B, if the 
+temperature is high and the pressure is low and as in the earlier case it was 70 this was 
+high so this value evaluated with 0.7 and this was some value of 56 PSI and in the set low 
+pressure is some how evaluated with 0.8 then what will be the evaluation? What will be 
+the truth of this entire antecedent? We actually take the min of these two so min of these 
+two 0.7 and 0.8 we will take so it will become 0.7 so we evaluate this conjunct antecedent 
+with a strength 0.7.  
+ 
+(Refer Slide Time: 41:17) 
+ 
+ 
+ 
+Evaluation of fuzzy rules: In Boolean logic we know that p implies q if p is true then q is 
+true. But in fuzzy logic if p is true to some degree as we have seen x is A true with the 
+degree 0.7 then q is true to some degree, it is not just as q is true absolutely. Like here 
+simply if p is true with 0.5 then q will be assumed to be true with 0.5.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 41:34) 
+ 
+ 
+ 
+(Refer Slide Time: 42:05) 
+ 
+ 
+ 
+Max-min rule of composition: 
+Suppose I have got multiple rules, there are n observations E1, E2, E3 up to EN over x and 
+we have got n different hypothesis for them. Now I want to evaluate the max, I want to 
+evaluate the strength of the hypothesis and here this can be a conjunction as we said x is 
+A and y is B so what we will do is we take the min of that so we will get a min value of 
+E1, I will get min value of E2, I will get min value of EN. Then out of those I will take the 
+max of those.  
+ 
+ 
+(Refer Slide Time: 43:02) 
+ 
+ 
+ 
+(Refer Slide Time: 43:05) 
+ 
+ 
+ 
+Again the same example; x is A is the if part and y is B then maybe something like b is q 
+is one rule. There is another rule say j is B and k is C implies r is may be q or l. Now x is 
+A is evaluated with 0.7 and y is B is evaluated with 0.8. So we took the min of these two 
+and this antecedent is evaluated to 0.7. Suppose this part evaluated with 0.5 and this part 
+evaluated with 0.9 then I will take the min of this so it will be 0.5. Now, out of this 0.5 
+and 0.7 I will take the max of these two so I will select this rule and I will fire this 
+concept, so this is one approach of doing that.  
+ 
+ 
+(Refer Slide Time: (44:42) 
+ 
+ 
+ 
+This is what is told here; the max of all mins. Evaluation of fuzzy rules: The most 
+common way is to chop-off the consequent.  
+ 
+(Refer Slide Time: 45:02) 
+ 
+ 
+ 
+Just now we saw the example where we aggregate the outputs into a single fuzzy set 
+which combines a decision. Now let us come to fuzzy inferencing problem. There are 
+some things we need to do for this. The first thing is fuzzification.  
+ 
+What is meant by fuzzification? We are given some number, why do we need to fuzzify?  
+We need to fuzzify because our inference rules are not crisp rules as we have shown in 
+the conventional rule based expert systems. In this case our rules are themselves fuzzy. If 
+the velocity is small then the current is quite small. Therefore when we get some value 
+maybe the velocity is 5 meters per second now 5 meters per second is it really a small 
+velocity?  
+ 
+(Refer Slide Time: 46:44) 
+ 
+ 
+ 
+What is its membership in the fuzzy set small is what we have to find out. And this 
+process is known as fuzzification. So we get some crisp value converting a crisp value 
+such as height for example 5 ft 6 inches to a membership value of fuzzy set such as 
+medium on may be tall. There are different ways of fuzzification. Some are experimental 
+and some are subjective. And fuzzified values serve as the input to the fuzzy rules. So 
+fuzzification is converting a crisp value to a fuzzy membership. The other thing is 
+defuzzification. 
+ 
+What we mean by defuzzification? 
+It is converting a fuzzy term such as small shift. Suppose some rule is like this; if the 
+temperature is moderate then turn the coolant control and give that coolant control a 
+small shift. Now the rule is stating small shift. Now for the robot arm or some automated 
+machine we will have to give a small shift and then actually command using some crisp 
+term say 5 degree, 10 degree whatever it is. And this process of converting this small 
+shift to a crisp value is known as defuzzification. There are different methods of 
+defuzzification such as centre of gravity method.   
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 46:49) 
+ 
+ 
+ 
+For example, I have got some fuzzy set like this any arbitrary fuzzy set where this is the 
+variable and here is the membership. Now I get some crisp membership value here. Now 
+this membership value will have to be translated to some crisp value which is known as 
+the process of fuzzification.  
+ 
+Now, suppose this is a curve and a curve is of this form as something like this and a 
+particular membership value is actually cutting this curve in two points here and here so I 
+am getting this so which one will I take? There are different ways, I can take the mid 
+point of this or I can take the center of gravity method that means for each of these points 
+I take membership and I multiply this value with their membership and then divide by 
+these values so that I get the average of this. So there are different methods like max, 
+center of gravity method etc. There are a number of good books to refer like […..] 49:56 
+and Falger and the book by Timothy Ross. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 49:35) 
+ 
+ 
+ 
+ Now we will show an example where we will be applying this fuzzy inferencing. Let me 
+first explain the problem here. The problem is something like this; we are going to 
+control something.  
+ 
+(Refer Slide Time: 50:30) 
+ 
+ 
+ 
+We are given some measured value from a plant. I get some numerical value but my 
+inferencing method is fuzzy. Therefore first thing that I have to do is fuzzify this and get 
+the linguistic variable. Then using my fuzzy rules I will get some output in terms of 
+linguistics, in terms of give a small shift or something like that.  
+Then I will have to defuzzify that and I will get a numerical value which I will again 
+feedback to this control. So here you see I am working at two levels numerical and 
+linguistic. Now here is an interesting example. There is a crane moving along this axis 
+and there is a container hanging from here. And the control must leave this container at a 
+proper point of times so that it falls on the ship which is this or it takes it from the ship 
+and falls on the trailer. Now it is very difficult to model such systems using normal state 
+phase approach. 
+ 
+(Refer Slide Time: 51:38) 
+ 
+ 
+ 
+Here, there are two measured variable and one control variable. So what we do is, we 
+have got angle and distance as two issues, now the question is, at which angle I should 
+leave it or from which distance I should leave it. Now I have to give the container grain a 
+particular power and depending on the power I give we the grain will move with different 
+speed and accordingly the angle and distant vary so I have to control that power which is 
+my objective. So I read the numerical values the angle and distance and then fuzzify it.  
+So I get some linguistic values and then get the power and then defuzzify it and again 
+actually put the real numerical power to the controller crane. That is the problem we are 
+trying to solve. So the first thing that I have to do is to define a set of fuzzy sets like 
+distance, is far, medium, close, zero, negative close etc. Angle again may be positive big, 
+positive small, negative small, negative big etc. power can be positive high, positive 
+medium, zero, negative medium, negative high etc. Now these are very big so I have to 
+actually define their membership functions.   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time: 53:36) 
+ 
+ 
+ 
+Therefore I can define the negative big here on an angle, the negative big is this fuzzy set, 
+negative small is this fuzzy set, positive small is this fuzzy set in this way I can define all 
+of them. And given any particular value maybe 4 degree of angle I can find out the 
+membership that its membership in 0 is 0.2 and its membership in positive small is 0.8. 
+So, in that way I can find out their memberships. So this is fuzzification. I get an angle 
+and get these membership values.  
+ 
+(Refer Slide Time: 54:44) 
+ 
+ 
+ 
+ 
+ 
+This is how I do the fuzzification first. After doing the fuzzification we will apply the 
+rule. Suppose there are couple of rules; if distance is medium and angle is positive small 
+then power is positive medium. If distance is medium and angle is 0 then power is 0. If 
+distance is far and angle 0 then power is positive medium. So we need to do the two 
+things. First we need to do the aggregation. That means first we have to do the 
+computation of the ‘if part’ and composition is the computation of the then part. The 
+computation of the ‘if part’ is what we have already discussed.  
+ 
+(Refer Slide Time: 55:01) 
+ 
+ 
+ 
+In the first rule we get the distance medium was 0.8 and the angle positive small was 0.9, 
+the angle had a membership 0.9 here and the distance was 0.8 in medium so this thing 
+will be the min so it is 0.8. And for the second rule suppose in the same the two 
+antecedents get 0.2 and for the third rule it is giving 0.1. So for each of these rules we do 
+the aggregation, we compute with the min function the truth of their antecedents then I 
+will select to the composition so all these rules will give you power to be positive 
+medium powered to be 0 powered to be positive medium.  
+ 
+Then when I compose them positive high is not coming with any membership, positive 
+medium is 0.8 because it was the max of 0.8 and 0.1 where from this 0.8 and 0.1 come? 
+Again looking back, positive medium was 0.8 the first rule was saying positive medium 
+with 0.8 and the last rule was saying positive medium with 0.1. So I have got these so I 
+have taken the max. Therefore out of this I have taken max so I have got 0.8. 
+ 
+Now with 0.8 what is the positive medium power I have to give? But how would I give 
+that 0.8? So 0.8 is somewhere here, 0.8 membership is positive medium so 0.8 is coming 
+somewhere here so I will again compute the crisp value corresponding to this using some 
+method like center of the maximum and I will get 6 0.4Kw and that is the power I will 
+have to give. So this is the approach we adopt in the case of fuzzy inferencing.  
+ 
+(Refer Slide Time: 56:02) 
+ 
+ 
+ 
+Given a set of fuzzy rules suppose you have a set of fuzzy rules where the antecedents are 
+fuzzy and the consequents are fuzzy so you have got some value, then the first thing you 
+have to do is you have to fuzzify. And in order to fuzzify you have to define the fuzzy 
+sets before hand. And those fuzzy sets can be stored as tables or functions. So 
+fuzzification means you will get some membership value. So, for every rule that is 
+applicable you will compute the truth of their antecedents.  
+ 
+How do you compute the truth of their antecedents?  
+If the antecedent is a conjunction then we will take the minimum of those. Now, out of 
+the rules which are applicable out of this minimum I will take the maximum and that rule 
+I will apply and that consequent will give me some fuzzy membership and with that 
+fuzzy membership positive medium it is saying or turn the knob slightly to the left, in that 
+slightly left you are getting a membership 0.4. Now you defuzzify and 0.4 membership is 
+leading to which particular crisp value and that is the shift we will give. Now this 
+approach is rather effective and it is being applied in several applications now-a-days. 
+ 
+

@@ -1,0 +1,1 @@
+Automatic building of the optimal learning path in a vide-lecture based curriculum.

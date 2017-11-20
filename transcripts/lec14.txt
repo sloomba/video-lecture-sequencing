@@ -1,0 +1,579 @@
+Artificial Intelligence 
+Prof. Anupam Basu 
+Department of Computer Science and Engineering 
+Indian Institute of Technology, Kharagpur 
+Lecture - 14 
+Reasoning using First -Order Logic 
+ 
+In the last lecture we introduced the first order logic also known as predicate logic to 
+express the different domain specific knowledge we require in order to build an 
+integrated system. In today’s lecture we will be talking about different ways and means 
+for reasoning using such a language that is the first order logic. How we can use different 
+sentences of first order logic to reason out a particular problem is what we will start 
+looking at from today. Before we go into the inferencing process we would like to first 
+show or rather revisit some of the notions we presented in the last lecture. To start with 
+we introduced sentences in first order logic.  
+ 
+What a sentence is?  
+A predicate is a sentence and we had already seen what a predicate is. And if sen is a 
+short form of any sentence and say sen prime is a negation of sen, so suppose there is a 
+sentence or the negation of a sentence these are sentences on the whole.  
+ 
+(Refer Slide Time 03:27)  
+ 
+ 
+ 
+If these are sentences and x is a variable then sen is a sentence, NOT of sen is a sentence, 
+there exists x such that the sentence is true is a sentence in first order logic, for all x sen is 
+a sentence, now these two are equivalent. If you look I have sometimes written the NOT 
+symbol as this and sometimes as this prime. But essentially these two are meaning the 
+same thing. So sentence and the negation of the sentence is a sentence, sentence OR the 
+negation of the sentence is also a sentence. Suppose we are considering two sentences 
+this is not the proper way, say sen and sen prime are two sentences suppose there are two 
+sentences and NOT sen is the compliment of sentence, if sen is a sentence and sen prime 
+is another sentence and x is a variable then sen is a sentence, NOT of sen is a sentence, 
+there exists x sen is a sentence, for all x sen is a sentence, sentence, sen and sen prime the 
+conjunction of these two sentences is a sentence, sen OR sen prime is a disjunction of 
+these two sentences is also a sentence, sen implies sen prime is one sentence implying the 
+other is also a sentence and in proper predicate logic nothing else is considered as a 
+sentence.  
+ 
+So what we really mean is, we start with a predicate say P(x) tall(x) that is a sentence and 
+say strong(y) is another sentence. So tall(x) tall(x) is a predicate and hence it is a 
+sentence. there exists some x such that tall(x) is a sentence, for all x tall(x) may not be 
+true, that is for all people they are tall, for all x tall(x) is a sentence may not be true, may 
+not be satisfied in a particular domain. So tall(x) and strong(y) is a sentence, tall(x) 
+strong(y) is a sentence, tall(x) implies strong(y) is another sentence. So these are 
+sentences. That means if we take a predicate and the negation of the predicate is a 
+sentence since the predicate itself is a sentence existential quantifier which we had 
+introduced in the last lecture existentially quantified sentence is a sentence, universally 
+quantified sentence is a sentence, the conjunction of two sentences are sentence, the 
+disjunction of two sentences is a sentence, implication one sentence implying the other is 
+also a sentence and nothing else is a sentence.  
+ 
+Now let us look at some example sentences. If we write the predicate birthday (x, y) so 
+this is a binary predicate and why is it a binary predicate? It is because it has got two 
+variables as parameters, what is the meaning of this in a particular domain? It means that 
+x celebrates birthday on the date y.  
+ 
+(Refer Slide Time 09:15) 
+ 
+  
+ 
+So for example, Tom celebrates birthday on 1st January or Julie celebrates birthday on 1st 
+March etc. So in general I can say x celebrates birthday on date y and can be written as 
+this predicate, so this is a sentence. Now If we write for all y there exists x such that 
+birthday(x, y) what does it mean? Looking at this predicate we can see x celebrates 
+birthday on the date y. And what does this sentence mean? This is a sentence according 
+to our last definition. This is also a sentence because it is existentially quantified. You 
+said there exists x sen is a sentence but again you are saying for all y.  
+ 
+Let us go back a little bit and let us have a look at that again. Here it is said that an 
+existentially quantified sentence is a sentence so this whole thing is a sentence. Therefore 
+if I apply a universal quantifier over a sentence then that also remains a sentence. So here 
+we can see that x celebrates birthday on date y and what does it mean? That is, for all y 
+that means for all dates, for all possible dates there exists some person who has got a 
+birthday on that date.  
+ 
+(Refer Slide Time 11:11) 
+ 
+  
+ 
+Now if I express this in English then it would mean, that for all dates there exists a person 
+who celebrates his or her birthday on that date. That is, everyday someone celebrates his 
+or her birthday. Now this relatively complicated notion can be very succinctly, in a very 
+expressive manner, in a very brief and packed manner can be expressed in the language 
+of first order predicate logic as is shown here. So this is a sentence and when I quantify 
+this with an existential quantifier that is a sentence and this whole sentence when 
+quantified with a universal quantifier is also a sentence.  
+ 
+Next let us go to another example; when I write brother (x, y) that means that x is the 
+brother of y. Now, when I write loves (x, y) that means x loves y. These two are 
+predicates, both binary predicates and these two are also sentences. Now I want to make a 
+more expressive statement; brother (x, y) implies loves (x, y) and that is universally 
+quantified over all x and all y. That means for all x and for all y if x is the brother of y 
+then x will love y, whether in real world that is true or not that is a different issue but this 
+is a proper sentence in terms of language of first order predicate logic. So what is the 
+meaning of this? The meaning of this sentence is; everyone loves, all of his brothers or 
+her brothers, now this is a correct sentence.  
+ 
+Now you might have noted that often I am saying valid and then I am just changing that 
+word valid because I am using this word as a valid sentence in normal English but in 
+terms of logic since we have already discussed the interpretation of sentence in a 
+particular domain this word valid has got a special meaning.  
+ 
+When a sentence is evaluated to be true in a particular domain then the sentence is said to 
+be satisfied. But when we say a sentence is valid strictly in terms of first order logic then 
+actually we mean that for all possible domains this sentence will evaluate to be true. So it 
+has got a special logical connotation although in our normal day to day English we often 
+use the word valid in a much looser sense. That is why whenever I am talking of logic 
+and normally the word valid is being used but I am trying to retract from it. So it is a 
+correct sentence in terms of the grammar of first order logic. So, everyone loves, all of 
+his or her brothers is expressed in this sentence.  
+ 
+Now let m (x) represent mother of x then I want to express this English sentence 
+everyone loves his or her mother. How would I express it? Suppose by m (x) I denote m 
+is a predicate this predicate will denote mother of x and I want to express everyone loves 
+his or her mother what would be the correct first order predicate logic sentence in order to 
+express this? It will be for all x loves x m (x) why is it for all x? Everyone so I can take 
+any x and whatever x it be Tom, Dick, Harry, Ram, Shyam, Jagjeet then x will love 
+mother of x because m (x) denotes this. So these are some examples of first order 
+predicate logic sentences.  
+ 
+(Refer Slide Time 14:01) 
+ 
+ 
+ 
+Till now we were giving examples from our day to day usage but when we come to a 
+little more mathematical domain then also we will find that first order logic can express a 
+lot more things in a powerful and succinct manner. Here is an example; Suppose any 
+number is the successor of its predecessor, I take any number 7 what is the predecessor of 
+7? It is 6 and what is the successor of 6? It is 7 so these are very true sentences that any 
+number is the successor of its predecessor. So in order to express this I choose two 
+predicates successor x and predecessor x that is succ x pred x. Now with these two I also 
+Introduce another predicate equal (x, y) which means x and y are equal.  
+ 
+Using these three predicates I would like to express this English sentence that any 
+number is the successor of its predecessor how can I do it? For all x equal x successor 
+predecessor x, now let us try to see what it means? For any number if x be the number 
+then predecessor of x will return me the predecessor of that number and the successor of 
+that number will return me the successor of predecessor of x. And this number, and this 
+number, and this number should be equal.  
+ 
+Say x is 20 then predecessor x will return me 19 then I am computing successor of 19 
+what is that? It is 20. So 20 is my y and the x was my 20 so these two are equal. So these 
+two are equal and the same thing can be expressed in this way. It is for all x so you can 
+take any number and this will hold true. Now you can think that I could have represented 
+that in a better manner why I did not use the equality sign? I tried an alternative way of 
+representing it. So the previous example can be represented very succinctly as, for all x 
+successor of predecessor x equals x.  
+ 
+Now if you are careful you can note that I have put in this equality in a different color. 
+Unfortunately the definition of sentences and the valid operators we mentioned in the 
+case of first order logic did not have any equality operator. There were predicates, there 
+were quantifiers but this equality operator was not there. Therefore we had to take 
+recourse to this sort of predicate equal (x, y) which was essentially denoting x equals y.  
+ 
+(Refer Slide Time 18:00)  
+ 
+ 
+ 
+In the standard predicate logic as defined this equality operator does not exist therefore 
+this is not a grammatically correct predicate sentence. However it was found that this 
+limitation was really becoming a little difficult to maintain because often if we had the 
+equality operator allowed in predicate logic we could have expressed many sentences in a 
+better way. Therefore first order logic was extended with first order logic with equality; it 
+was extended to first order logic with equality.  
+ 
+In first order logic with equality we are allowed to use the equality sign between two 
+functions. This is for representational ease and so we can now modify the definition of 
+sentences we have provided where we had written sen, sen prime as two sentences we 
+can call them as terms. Each of these sen can be called terms and there are different ways 
+of defining this. We said sen, sen prime are sentences therefore for all x sen is a sentence. 
+Now whenever it becomes a sentence we can call that small sentence a term. So now we 
+extend this definition as term equals term which is also a valid sentence.  
+ 
+(Refer Slide Time 20:00)  
+ 
+ 
+ 
+So we can now use this equality operator as a part of the first order predicate logic [r….] 
+20:20 valid operator. In the last quiz that was given to you now with this revision of 
+predicate logic let us work that out a little bit. The first sentence we wanted to represent 
+in predicate logic was; some dogs bark, you must have tried this and this one we can 
+represent as a first order predicate sentence as there exists x because it is such that some 
+dog x AND bark x, why do I need this existential operator? It is because some dogs bark 
+and I did not say that all dogs bark. But if all dogs bark then also this will be true because 
+in order to prove its truth I just need to find one dog one x which is a dog and that which 
+barks then this sentence will be proved true.  
+ 
+The next example is, all dogs have 4 legs. Now this can be represented as for all x dog x 
+implies have 4 legs x here I should have put another parenthesis, here there should be 
+another bracket because the scope of this for all x is over this entire sentence so there 
+should be a corresponding matching parenthesis with this parenthesis. Actually there 
+should be another parenthesis here. So, for all x dog x implies have 4 legs x. now there 
+could be another alternative representation to this, I could have said here in the first one I 
+have used this both these are unary predicates because have 4 legs is a predicate which is 
+having only one variable parameter whereas here for all x dog x implies legs x 4 so legs 
+is a binary predicate which has got one which is the variable x and here is a constant 
+term.  
+ 
+Here again I have missed one parenthesis, so for all x dog x implies legs x 4. So this is 
+another way we can do it. Now just a question here, could I write this as, for all x dog x 
+and have 4 legs x? Would it be correct or is this a better representation? Here I have said 
+for all x dog x implies have 4 legs x. If I had written it as for all x dog x and have 4 legs 
+x, would there be any problem? That is another issue. Now another example that was 
+given in the last quiz was, all barking dogs are irritating. Now with this discussion we had 
+in revision of first order logic you should be able to work on it. The next sentence that 
+was asked to converted was, no dogs purr, one possible representation of that is, there 
+does not exist an x such that dog x AND purr x. 
+ 
+(Refer Slide Time 24:34)  
+ 
+ 
+ 
+Now this is one way of representing it. Could there be another alternative way?  
+If I had started this as, suppose for all x then how would I have written this? For all x dog 
+x implies not purr x or could I write it for all x dog x AND not purr x, it is also possible. 
+Here we bring in the duality nature that any existential quantification can also be 
+converted to universal quantification. Therefore no dogs bark can be represented in this 
+way. Now here is the next example; fathers are male parents with children. Now this is 
+the solution to that; for all x if x is a father implies that x is a male and x has children. So 
+I can represent this as father x implies male x AND has children x.  
+ 
+The next example is; students are people who are enrolled in courses. May be you should 
+be able to do that now. Try something like this; student x implies people x etc and put in 
+the proper quantifier to that. Although it was given in the last lecture try out whether you 
+can write them down in the first order logic.  
+ 
+(Refer Slide Time 28:02)  
+ 
+ 
+ 
+Also try another thing whether you can represent some of these in the form of 
+propositional logic and when you cannot think why you cannot do it in propositional 
+logic then try to do it in predicate logic. May be there will be some sentences which you 
+cannot really capture in predicate logic also but those are different cases. But you will 
+find many sentences that we use in our day to day conversation that you can represent it 
+in predicate logic. This is all about the revision we intended to do about the first order 
+logic.  
+ 
+The next thing that we will be doing is inference rules because given the sentences which 
+are represented in first order logic our ultimate objective is to reason using them. And in 
+the inference rules there are some basic techniques which we must learn. One is universal 
+elimination. That means, if we have a sentence like this for all x Likes (x, flower) then 
+Likes (x, flower) will hold for all x. Therefore I can substitute this x by some constant 
+like a particular name Shirin, Shirin likes flower, there will be nothing wrong that I am 
+doing because you have said it is for all x. So whenever there is a universal quantifier I 
+can drop it and represent this with a constant term. So eliminate this for all x part and the 
+substitution of that x in this part of the parameter should be done with a constant term and 
+that is technique one and that is universal elimination, the elimination of universal 
+quantifiers.  
+ 
+ 
+ 
+ 
+(Refer Slide Time 30:20)  
+ 
+ 
+ 
+The next thing is which is little more complex which is elimination of the existential 
+quantifiers now why are we doing this? We are trying to come to a state where we can 
+take these predicate logic sentences and use them in our reasoning in a mechanical way 
+and that is the purpose. So we are trying to give them a different form where we are 
+removing the universal quantifier but what will happen in the case of existential 
+quantifier. For universal quantifiers it was so simple. For all x P(x) so I can always drop 
+that x and put in any constant because it will hold for all x. But what happens in the case 
+of existential quantifier there exists some x for which P(x) is true.  
+ 
+Now with which x can I replace that x part of P(x)?  
+This method is also known as skolemization. Here for all x there exists x such that Likes 
+(x, flower). This one means Likes (person, flower). Now this person is some particular 
+person which is not there in the knowledge base and if I can find out that person I can put 
+that in and that particular person say there is a sentence there exists x such that likes John 
+x and food x say x is a food and there exists x such that John likes x. now then there is 
+some x which John likes. Suppose I find out apple then I can represent that particular x 
+parameter with apple and remove that existential quantifier. This method of finding out a 
+particular constant that satisfies the predicate there exists x such that john likes x.  
+ 
+Finding out that particular constant satisfies, this is known as skolemization and when we 
+can find that out we can represent it. Thus by eliminating this existential quantifier we 
+can get such a sentence where the existential quantifier is not there. Just the opposite, in 
+some cases we may like to introduce existential quantifiers. That is existential 
+introduction. Suppose I am given a sentence Likes (Shahid, flower) now I know that 
+Shahid likes flower then I can certainly write it as there exists x such that Likes (x, 
+flower) because I know that it will always be true because I can replace this x with 
+Shahid and there will be no problem. This is just the opposite of existential elimination 
+and this is existential introduction. Now with this let us go into the reasoning and start 
+with a particular problem. 
+ 
+(Refer Slide Time 34:30) 
+ 
+ 
+ 
+And the problem is defined here as we are making a statement; a perfect square is nothing 
+but 16, 20, 5 etc, so, if a perfect square is divisible by a prime number p say 25 is a 
+perfect square and is divisible by a prime p 5 then it is also divisible by the square of p 
+this is one sentence I state and in mathematics that is right. The next statement I make is; 
+every perfect square is divisible by some prime number. Think about a square 16 it is 
+divisible by 2 it is a prime number. I also say 36 is a perfect square.  
+ 
+What are the three statements that have been made?  
+If a number is a perfect square then it is divisible by a prime number and if a perfect 
+square is divisible by prime number then it is also divisible by the square of that prime 
+number. And every perfect square is divisible by some prime, 36 is a perfect square. Now 
+with these three statements now I want to reason to find out does there exist a particular 
+prime number q such that the square of q divides 36. That is what we want to find out. 
+The next step will be to convert these into predicate sentences.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 37:05) 
+ 
+ 
+ 
+The next thing we will be doing is convert them into the first order predicate logic form. 
+So here is a sentence; the method is you have to take the sentences one by one and 
+convert them into predicate form. So if a perfect square is divisible by a prime p then it is 
+also divisible by the square of p. So I write it as, for all x and y or for all x for all y also 
+which means the same thing the perfect square x if x is a perfect square and prime y so y 
+is a prime and divides (x, y) that is this prime y divides x that takes care of this if a 
+perfect square is divisible by a prime p.  
+ 
+Although over here I have said p in my sentence I need not write p I can write x, y 
+anything but I must be consistent in this sentence then it is also divisible by the square of 
+p. This implies divides x which is a perfect square by the square of y. Now I did not use p 
+in my logic sentence, I have used y so I have used y here also. So if a perfect square is 
+divisible by a prime p then it is also divisible by the square of p. This is the conversion of 
+this sentence into the predicate form. Next is, every perfect square is divisible by some 
+prime. Since that is every perfect square so for all x perfect square x there is some prime 
+number which divides it. So I put in for all y for all x there exists y some prime is there 
+such that y is a prime so perfect square x AND prime y AND divides (x, y) x is divided 
+by y. Therefore x has been universally quantified by y it is the same for every perfect 
+square and y has been quantified with existential quantifier y because there is some prime 
+which divides it, not that all prime numbers will divide it.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 39:45)  
+ 
+ 
+ 
+There exists y and y is a prime number AND divides (x, y). So these are two sentences, 
+what was the next sentence? It is very simple, 36 is a perfect square so I can write down 
+perfect square 36 there is no problem with this. Does there exist some prime number q 
+such that the square of q divides 36. In order to answer this question does there exist I can 
+also pose it as a theorem which I will be proving. If I can prove it I can say I just make a 
+statement there exists a prime q such that the square of q divides 36 I make that statement 
+and then I try to prove it by inference.  
+ 
+If I can prove it then there exists an x and if I cannot prove it then it does not exist. So 
+this particular query shown here can be converted in the form of a predicate which I shall 
+try to prove using my reasoning mechanism of first order logic. Therefore I can write it 
+down as there exists y such that y is a prime AND divides 36, I can divide 36 by square 
+of y. These are my sentences. With these I have got a knowledge base and what is that 
+knowledge base? These statements; for all x, y, perfect square x AND prime y, AND 
+divides (x, y) implies, divides (x, square (y)) that was the first sentence, the second 
+sentence was this, the third sentence was this which we just now did.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 42:40)  
+ 
+ 
+ 
+Now comes reasoning the inference from two and universal elimination. What was two? 
+Two was this for all x perfect square x AND prime y AND divides (x, y). Now when I 
+eliminate this I want to prove it that I am dealing with a particular perfect square that is 
+36 that is of interest to me. Therefore I can put 36 in place of x and remove this for all x 
+part. That was I put 36 here as well as I put 36 here that was our inference method of 
+elimination of universal quantifier. So I eliminate that then I get a new clause, now the 
+part for all x is gone so there exists y perfect square 36 AND prime y AND divides 36 y 
+that is just the thing that was here and from here I have replaced these two x‘s with 36 
+and I have removed this universal quantifier and I have got the 4th clause.  
+ 
+Now from this 4 I want to eliminate this existential quantifier. Now existential quantifier 
+elimination is by skolemization that means I will find out some constant which is a prime. 
+So let me put some constant P and remove this existential quantifier and get this new fifth 
+clause, perfect square 36 AND prime p AND p divides 36. This is the fifth one and what 
+was the one? One was this. I have eliminated from two but here for all x, y perfect square 
+(x) AND prime (y) AND divides (x, y) implies divides (x, square (y)).  
+ 
+Now 1 and 5 what is my 5? It is this one I can get. So I get perfect square 36 prime p 
+divides 36 p. Now this was also universal quantifier so I put 36 here and in place of y I 
+put p and I can remove all these quantifications straight away. So I get perfect square 36 
+and prime p and divides p 36 that was this part clause 5 implies divides 36 square of p. So 
+that is the 6th one that I am getting.  
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 45:54) 
+ 
+ 
+ 
+Now this is the 6th one. So I get divides 36 square p. Now from 5 and 6 prime p AND 
+divides 36 by square of p what was 5 and what was 6? Here 5 was this perfect square 36 
+prime p and divides 36 p and I get p as divides 36 square of p. so in place of p I can 
+simply put square p, here also square p so what I get is perfect square 36 and prime 
+square p, prime p and divides 36 square p. Now you can see the use of existential 
+introduction. I introduce this existential quantifier so now all these are constants and in 
+place of p I put a variable y, here also for p I put a variable y and introduce this 
+existential quantifier and I get there exists y such that prime y and divides 36 square y.  
+ 
+Now, if you recall, that was my thing to be proven. My objective was to prove this; does 
+there exist a prime q such that the square of q divides 36? That was this thing; prime y 
+divides 36 square of y and that is the thing I wanted to prove. And through the technique 
+of universal elimination, existential elimination and again existential introduction and 
+replacement of variables I get the same thing that means I could prove this I could infer 
+this. However inferencing would have been easier if the knowledge base consisted of the 
+following sentences. Suppose the knowledge base consisted of the sentences like this; 
+perfect square 36 which was there, prime p divides 36 p and for all x, y prime perfect 
+square (x) AND prime (y) divides (x, y) then the inferencing would have been easier.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 48:36) 
+ 
+ 
+ 
+Now I would like to introduce a very important notion called a particular type of 
+sentences which is known as horn sentences or horn clauses. This horn sentences are also 
+known as horn clauses and this has got a tremendous application in the case of 
+inferencing in predicate calculus.  
+ 
+(Refer Slide Time 49:08)  
+ 
+ 
+ 
+What are horn clauses? What are the possible horn sentences?  
+Any atomic sentence is a horn sentence. So, sentence like perfect square 36 is a horn 
+sentence. Implications with a conjunction of atomic sentences where atomic sentences are 
+joined together conjuncted and a single atom is on the right so a sentence like this; for all 
+x, y perfect square (x) AND prime (y) AND divides (x, y) implies divides (x, square (y) 
+that is a horn sentence and there is no existential quantifier. There should not be any 
+existential quantifier. On the left hand side of this implication there are atomic sentences, 
+there can be negations on that side also and on the right hand side we have a single atom 
+and there are no existential quantifiers. So, if this be our horn sentence and this side the 
+conjunction there is no ORing and here also there is only one unit now if a particular 
+sentence given to you is not a horn sentence then we will have to convert it to the horn 
+sentence.  
+ 
+(Refer Slide Time 51:04) 
+ 
+ 
+ 
+How can I convert it to a horn sentence?  
+We know the fact that existential quantifiers can be removed using existential 
+elimination. You can eliminate the existential quantifiers by the process of skolemization. 
+If the existential quantifier is outside any universal quantifier a skolem constant is 
+introduced. You know a skolem constant is a particular constant that I find out from the 
+knowledge base and replace it in place of that particular variable y for example which 
+was quantified with there exists. So, if I have something like this there exists y prime y 
+now y being existentially quantified I can put a skolem constant p in place of this. This is 
+a horn sentence. Otherwise the skolem function is introduced.  
+ 
+When I do not find the constant I can still leave the responsibility as if I am leaving a 
+responsibility to a function that function is a magic function which will some how find 
+out a particular constant value which will satisfy the clause of the sentence. It will find 
+out if there exists something that skolem function will find out that constant. For example 
+here, for all x there exists y prime y and divides (x, y) here y is universally quantified so I 
+replace there exists y with for all x prime say PD is a function say prime detector or 
+whatever you can think of x. That divides x so in the given x I find out some prime PD 
+AND divides (x, PD(x)) where PD(x) is a skolem function, this is a skolem function. So 
+using that I can get rid of the universal quantifiers. 
+(Refer Slide Time 53:41)  
+ 
+ 
+ 
+And the AND part can always be eliminated on the other side if a conjunction here on the 
+right hand side I can always do say prime P AND divides (x, P) can always be written as 
+two clauses like prime p and divides (x, P) it is possible. I can break them up into two 
+different clauses and each of them remains a horn clause because any atomic sentence is 
+a horn clause.  
+ 
+The other thing which is often required in inferencing in first order logic is substitution. 
+Substitution replaces variables with constants. Variables are represented with constants. 
+If substitution is an operator x is replaced with 49 then if I do this substitution then 
+perfect square x will become perfect square 49. Substitution of x with (49, x) is 
+substituted with 49 and y is substituted with 7 then divides (x, y) with this particular 
+substitution it will reduce to 49 replaces x so divides 49 and y is 7 so (7 divides 49). This 
+is a substitution operator where I have to define a consistent substitution and then from 
+this divides (x, y) I can come to this.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 55:05)  
+ 
+ 
+ 
+Now this gives us a very nice operator often used in predicate logic that is unification. 
+Let us just look at some examples of unification. There are algorithms given in any 
+artificial intelligence book where you can find unification algorithms. Unification is a 
+process of finding a particular substitution that will make two atomic sentences identical. 
+When two atomic sentences are identical then I can use one for the other and that is our 
+attempt. That is often our attempt that helps out in inferencing.  
+ 
+So what is a substitution?  
+All substitutions cannot unify. For example, there are prime x prime 7 and prime x now I 
+apply the substitution x substituted by 7 then this substitution really makes these two 
+identical so they can be unified. This means it is possible to unify prime 7 with prime x 
+with the substitution of x with 7. It is possible to unify these two sentences divides (49 by 
+x, x) divides 49 and divides (7, y) these two can be made identical with the substitution of 
+(y by 49) and (x by 7). So if I do this then what will happen is, this will become (x by 7) 
+so divides (49, 7) and divides (y by 49) divides (49, 7). This particular substitution is 
+possible which unifies these two sentences. On the other hand you see unify prime 7 and 
+prime 17. It is not possible because there cannot be any substitution that will change these 
+to constants.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Refer Slide Time 57:43)  
+ 
+ 
+ 
+On the other hand, here you see, the attempt to unify divides (49, x) and divides (x by 7). 
+It is not possible because if I substitute x I can substitute x here with a particular variable. 
+In that case I will have to again replace it here these two cannot be unified these are not 
+possible. So it is not the case that always I can find a substitution but if I can get a 
+substitution then it will be possible to make two clauses identical and that will help us in 
+inferencing. 
+  
+Let us quickly revisit what we had done in today’s lecture. A revision of first order logic, 
+how to make the sentences and we have seen the basic steps of universal elimination, 
+existential quantification elimination, existential quantification introduction and 
+substitution as well as we have seen horn clauses and how non horn clauses can be 
+converted to horn clauses. So with this background we will move to the next lecture 
+which will be farther reasoning techniques on first order logic.  
+ 
+        
+
